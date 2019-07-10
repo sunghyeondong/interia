@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>공방관리자</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/admin/store_admin_common.css">
+    <link rel="stylesheet" type="text/css" href="../../css/admin/store_admin_switch.css">
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="../../node_modules/blueimp-file-upload/css/jquery.fileupload.css">
+	<link rel="stylesheet" href="../../node_modules/blueimp-file-upload/css/jquery.fileupload-ui.css">
+    <link rel="shortcut icon" href="../favicon.ico">
+
+</head>
+
+<body>
+    <div id="ad-header"></div>
+    <div class="ad-main-wrapper">
+        <div class="ad-main-content">
+            <!-- ad-breadcrumb -->
+            <ol class="ad-breadcrumb">
+                <li class="ad-breadcrumb-item"><a href="#">관리자</a></li>
+                <li class="ad-breadcrumb-item active">공방관리
+                    <!--공방관리&ensp;/&ensp;메인화면관리-->
+                </li>
+            </ol>
+            <div class="ad-card-default">
+                <div class="ad-card-header">
+                    <i class="fas fa-share-square"></i> SNS 등록
+                </div>
+                <div class="ad-card-body">
+                    <div class="ad-sns-wrapper">
+                        <div class="ad-sns">
+                            <div class="ad-sns-img ad-sns01"></div>
+                            <div class="ad-input">
+                                <input type="text" class="form-control" placeholder="URL" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-warning" type="button">저장</button>
+                                </div>
+                            </div>
+                            <label class="switch switch-flat"> <input
+								class="switch-input" type="checkbox" /> <span
+								class="switch-label" data-on="활성화" data-off="비활성화"></span> <span
+								class="switch-handle"></span>
+							</label>
+                        </div>
+                        <div class="ad-sns">
+                            <div class="ad-sns-img ad-sns02"></div>
+                            <div class="ad-input">
+                                <input type="text" class="form-control" placeholder="URL" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-warning" type="button">저장</button>
+                                </div>
+                            </div>
+                            <label class="switch switch-flat"> <input
+								class="switch-input" type="checkbox" /> <span
+								class="switch-label" data-on="활성화" data-off="비활성화"></span> <span
+								class="switch-handle"></span>
+							</label>
+                        </div>
+                        <div class="ad-sns">
+                            <div class="ad-sns-img ad-sns03"></div>
+                            <div class="ad-input">
+                                <input type="text" class="form-control" placeholder="URL" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-warning" type="button">저장</button>
+                                </div>
+                            </div>
+                            <label class="switch switch-flat"> <input
+								class="switch-input" type="checkbox" /> <span
+								class="switch-label" data-on="활성화" data-off="비활성화"></span> <span
+								class="switch-handle"></span>
+							</label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-around">
+                <div class="ad-card-wrap-custom">
+                    <div class="ad-card-default">
+                        <div class="ad-card-header">
+                            <i class="fas fa-images"></i> 홍보 이미지 등록하기
+                        </div>
+
+                        <div class="ad-card-body">
+          	                <input id="fileupload" type="file" name="files" multiple>
+							<div id="ad-images-div"></div>
+                        	<button class="ad-btn ad-btn-color3" id='imgUpload' type='button'>파일첨부</button>
+							<button class="ad-btn ad-btn-color1" id='upload-btn' type='button'>등록</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ad-card-wrap-custom">
+                    <div class="ad-card-default">
+                        <div class="ad-card-header">
+                            <i class="fas fa-sitemap"></i> 메뉴설정
+                        </div>
+                        <div class="ad-card-body">
+                            <div class="ad-menu">
+                                <div class="ad-cat">
+                                    <span>홈</span>
+                                </div>
+                                <div class="ad-cat">
+                                    <span>공방소개</span>
+                                    <label class="switch switch-yes-no">
+										<input class="switch-input" type="checkbox" /> <span
+										class="switch-label" data-on="보이기" data-off="가리기"></span> <span
+										class="switch-handle"></span>
+									</label>
+                                </div>
+                                <div class="ad-cat">
+                                    <span>공방작품</span>
+                                    <label class="switch switch-yes-no">
+										<input class="switch-input" type="checkbox" /> <span
+										class="switch-label" data-on="보이기" data-off="가리기"></span> <span
+										class="switch-handle"></span>
+									</label>
+                                </div>
+                                <div class="ad-cat">
+                                    <span>공방소식</span>
+                                    <label class="switch switch-yes-no">
+										<input class="switch-input" type="checkbox" /> <span
+										class="switch-label" data-on="보이기" data-off="가리기"></span> <span
+										class="switch-handle"></span>
+									</label>
+                                </div>
+                                <div class="ad-cat">
+                                    <span>공방체험</span>
+                                    <label class="switch switch-yes-no">
+										<input class="switch-input" type="checkbox" /> <span
+										class="switch-label" data-on="보이기" data-off="가리기"></span> <span
+										class="switch-handle"></span>
+									</label>
+                                </div>
+                                <div class="ad-cat">
+                                    <span>구매후기</span> <label class="switch switch-yes-no">
+										<input class="switch-input" type="checkbox" /> <span
+										class="switch-label" data-on="보이기" data-off="가리기"></span> <span
+										class="switch-handle"></span>
+									</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ad-main-content-->
+    </div>
+    <!--ad-main-wrapper-->
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+	<script src="../../node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
+	<script src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+	<script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+	<script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script> 
+	<script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>  
+    <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/ad_header.js"></script>
+    <script src="../../js/upload.js"></script>
+    <script>
+
+    </script>
+</body>
+
+</html>

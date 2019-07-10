@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- MemberDao.class 파일에서 불러온다! -->
+<mapper namespace="bitcamp.java106.pms.dao.MemberDao">
+
+<!-- 여기는 DB 컬럼을 Java에서 지정한 함수명을 저장하는 것 -->
+<!-- Member 클래스 -->
+  <resultMap type="Member" id="MemberMap">
+    <id column="memno" property="no"/>
+    <result column="id" property="id"/>
+    <result column="pwd" property="password"/>
+    <result column="name" property="name"/>
+    <result column="nknm" property="nickname"/>
+    <result column="phno" property="phoneNumber"/>
+    <result column="zcode" property="zipCode"/>
+    <result column="baddr" property="baseAdd"/>
+    <result column="daddr" property="detailAdd"/>
+    <result column="mppho" property="profilePhoto"/>
+    <result column="mbpho" property="bannerPhoto"/>
+  </resultMap>
+  
+  <!-- 회원 전체 리스트 출력 -->
+  <select id="selectList" 
+          resultMap="MemberMap" parameterType="map">
+    select *
+    from INTR_MEMBER
+    order by memno asc
+    limit #{startRowNo}, #{pageSize}
+  </select>
+  
+  <!-- 회원가입 폼에서 작업을 하기 위한 문법 -->
+  <insert id="insert" parameterType="Member">
+    insert into INTR_MEMBER(id, pwd, name, nknm, phno) 
+    values(#{id}, password(#{password}), 
+           #{name}, #{nickname}, #{phoneNumber})
+  </insert>
+  
+  <!-- 회원정보 관련(아이디&닉네임 표시하게 함) -->
+  <select id="selectOne" parameterType="int" resultMap="MemberMap">
+    select * from INTR_MEMBER 
+    where memno=#{no}
+  </select>
+  
+  <!-- 아이디와 비밀번호 둘다 일치하면 로그인! -->
+  <select id="selectOneWithPassword" parameterType="map" resultMap="MemberMap">
+    select memno, id, pwd
+    from INTR_MEMBER 
+    where id=#{id} and pwd=password(#{password})
+  </select>
+  
+  <!-- count : 로그인 할 조건 검사 (id와 password가 일치할 시에) -->
+  <select id="count" parameterType="map" resultType="int">
+    select count(*) 
+    from INTR_MEMBER 
+    where id=#{id} and pwd=password(#{password})
+  </select>
+  
+  <update id="update" parameterType="Member">
+    update INTR_MEMBER set 
+        pwd=password(#{password}), 
+        name=#{name},
+        nknm=#{nickname},
+        phno=#{phoneNumber},
+        zcode=#{zipCode},
+        baddr=#{baseAdd},
+        daddr=#{detailAdd}
+    where memno=#{no}
+  </update>
+  
+  <!-- 회원 탈퇴용(바로 집어 넣고 보자) -->
+  <delete id="delete" parameterType="String">
+    delete from INTR_MEMBER where memno=#{value}
+  </delete>
+  
+  <!-- 아이디 찾기 검색 -->
+  <select id="selectSearchOne" parameterType="map" resultType="String">
+    select id
+    from INTR_MEMBER 
+    where name=#{name} and phno=#{phoneNumber}
+  </select>
+  
+  <!-- 비밀번호 찾기 (service에서 boolean용으로 쓰이기) -->
+  <select id="selectSearchPassword" parameterType="String" resultType="int">
+    select count(*)
+    from INTR_MEMBER 
+    where id=#{id} 
+  </select>
+  
+  <!-- 비밀번호 변경 관련 문법 -->
+  <update id="updatePassword" parameterType="map">
+    update INTR_MEMBER set 
+        pwd=password(#{password})
+    where memno=#{no}
+  </update>
+  
+  <!-- 아이디를 통해 해당 회원번호값 추출 -->
+  <select id="selectOneNumber" parameterType="String" resultType="int">
+    select memno from INTR_MEMBER where id=#{id}
+  </select>
+  
+    <!-- 마이페이지 배너 사진 업데이트 -->
+  <update id="updateBphoto" parameterType="Member">
+    update INTR_MEMBER set 
+        mbpho=#{bannerPhoto}
+    where memno=#{no}
+  </update>
+  
+  <!-- 마이페이지 사용자 정보 가져오기 -->
+  <select id="selectMemInfo" resultMap="MemberMap">
+    SELECT ID, MPPHO, MBPHO FROM INTR_MEMBER WHERE MEMNO = #{no}
+  </select>
+  
+  <!-- 프로필 사진 업데이트 -->
+  <update id="updatePphoto" parameterType="Member">
+    update INTR_MEMBER set 
+        mppho=#{profilePhoto}
+    where memno=#{no}
+  </update>
+  
+</mapper>
+
+
+
+
+
+
+

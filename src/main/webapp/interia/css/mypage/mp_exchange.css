@@ -1,0 +1,131 @@
+h4 {font-weight: bold;}
+.ib-mp-a:hover {
+	color: black;
+}
+.ib-mp-big {
+	font-size: 1.125em;
+	font-weight: bold;
+}
+.ib-mp-small {
+	font-size: 0.875em;
+	font-weight: bold;
+}
+.ib-mp-dbox {
+    margin-bottom: 3.125em;
+    font-size: .9em;
+}
+.ib-mp-gray {
+	color: #E7E7E7;
+}
+.ib-mp-red {
+	color: red;
+}
+.mp-nav>ul>li>p {
+    margin: 0;
+}
+
+
+/**** 제목 ***/
+.ib-mp-titl {
+	padding: 0 1em .5em 1em;
+}
+
+
+/**** 전체 틀 ****/
+.ib-mp-whole {
+	margin-bottom: 10em;
+}
+
+
+/**** 주문 정보 ****/
+.ib-mp-dsubtitl {
+	padding-bottom: 0.3125em;
+	border-bottom: 2px solid #000;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.ib-mp-dsubtitl > p {
+    margin-bottom: 0;
+ }
+.ib-mp-dlist {
+	display: flex;
+	align-items: center;
+}
+.ib-mp-dimg {
+	width: 130px; height: 130px;
+	margin-right: 2.5em;
+	overflow: hidden;
+}
+.ib-mp-dimg img {
+	width: 100%;
+	height: 100%;
+}
+.ib-mp-dpdt > p {
+	margin-bottom: 0.5em;
+}
+.ib-mp-dinfo tr td:first-child {
+	width: 550px;
+}
+.ib-mp-dinfo th {
+	text-align: center;
+}
+.ib-mp-dinfo td {
+	vertical-align: middle;
+	text-align: center;
+}
+.ib-mp-select1 {
+	width: 90px;
+	display: inline-block;
+    font-size: .9em;
+}
+
+/**** 교환 사유 ****/
+.ib-mp-exchage {
+	padding: 1.25em 0.9375em;
+}
+.ib-mp-select2 {
+	width: 300px;
+	margin-bottom: 0.9375em;
+	font-size: .9em;
+}
+textarea {
+	resize: none;
+}
+
+/**** 원상품 회수지/교환상품 배송지 정보 ****/
+.ib-mp-dsubtit {
+	font-size: 1.125em;
+	padding-bottom: 0.3125em;
+	border-bottom: 3px solid #000;
+}
+.ib-mp-receive table th {
+	width: 180px;
+	font-weight: normal;
+	text-align: center;
+	background: #FAFAFA;
+}
+.ib-mp-receive table tr:last-child {
+	border-bottom: 1px solid #dee2e6;
+}
+
+
+/**** 버튼 ****/
+.ib-mp-btns {
+	margin-top: 3em;
+	text-align: center;
+}
+.btn-outline-secondary {
+	padding: 0.4375em 1.875em;
+	margin-right: 2.5em;
+}
+.btn-outline-secondary:hover {
+	background: #fff;
+	color: #6c757d;
+}
+.btn-dark {
+	background: #343855;
+}
+.btn-dark:hover {
+	background: #343855;	
+}

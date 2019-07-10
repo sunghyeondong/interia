@@ -1,0 +1,58 @@
+.sp-font-darkgray {color: #747474;}
+
+/****전체 팝업****/
+.sp-inq-popup {
+	border: solid #D5D5D5 0.5px;
+	/*margin: 6.25em auto;*/
+	background: white;
+	overflow: hidden;
+	width: 400px;
+	padding: 1.875em;
+}
+
+/****문의 내용****/
+.sp-inq-titl {
+	font-size: 0.8125em;
+}
+.sp-inq-popup > div {
+	margin-bottom: 0.9375em;
+}
+label {
+	margin-top: 0.625em;
+}
+select {
+	width: 340px;
+    height: 30px;
+    padding-left: 0.625em;
+    border: 0.5px solid #BDBDBD;
+    font-size: 0.8125em !important;
+    border-radius: 0;
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;
+    background: url("../../images/works/works_detail/select_arrow.png") no-repeat 95% 50%; /* 화살표 아이콘 추가 */       
+}
+textarea {
+	border-radius: 0;
+}
+
+/****버튼****/
+.sp-inq-btns {
+	margin-top: 1.25em;
+	text-align: center;
+}
+input.btn-warning {
+	margin-right: 0.625em;
+	border-radius: 0;
+	padding: 0.3125em 1.25em;
+	background: #ffc001;
+	color: white;
+}
+button.btn-outline-warning {
+	border-radius: 0;
+	padding: 0.3125em 1.25em;
+}
+button.btn-outline-warning:hover {
+	background: white;
+	color: #ffc001;
+}

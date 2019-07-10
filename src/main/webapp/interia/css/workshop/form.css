@@ -1,0 +1,438 @@
+section {height: 1400px;margin: 0 auto;}
+h1,h2,h3,h4,h5,h6,p {margin: 0;padding: 0;}
+a {color:#333;text-decoration:none}
+a:active, a:hover {text-decoration:none;}
+.main_visual0 {
+	width: 100%;
+	height: 650px;
+	margin: 0 auto;
+	margin-top: 7.5rem;
+	background-color: #ccc;
+}
+.form_mainText {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	width: 1200px;
+	height: 120px;
+	margin: 0 auto;
+}
+.form_mainText h1:nth-child(1) {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+.form_mainText h1:nth-child(2) {
+	font-size: 1rem;
+	font-weight: bold;
+	margin-top: 0.75rem;
+	color: #999;
+}
+.form_subText {
+	display: flex;
+	align-items: flex-end;
+	width: 1200px;
+	height: 80px;
+	margin: 0 auto;
+}
+.form_subText h1 {
+	font-size: 1.125rem;
+	font-weight: bold;
+}
+.form_subText p {
+	font-size: 0.75rem;
+	color: #f00;
+	margin-left: 1em;
+}
+
+.form_mainForm{
+	width: 1200px;
+	height: 400px;
+	margin: 0 auto;
+	border-top: 2px solid #999;
+	box-sizing: border-box;
+	margin-top: 1em;
+}
+.form_mainForm_Id00{
+	display: flex;
+	align-items: center;
+	width: 190px;
+	height: 60px;
+	float: left;
+	background-color: #e0e0e0;
+	font-size: 1rem;
+	color: #000;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.form_mainForm_Id00 label{
+	padding-left: 1.25em;
+}
+
+.form_mainForm_Id00_1{
+    display: flex;
+    align-items: center;
+    width: 190px;
+    height: 120px;
+    float: left;
+    background-color: #e0e0e0;
+    font-size: 1rem;
+    color: #000;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.form_mainForm_Id00_1 label{
+    padding-left: 1.25em;
+}
+
+.form_mainForm_Id01{
+	width: 1010px;
+	height: 60px;
+	float: left;
+	background-color: #fff;
+	font-size: 0.75rem;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.form_mainForm_Id02{
+	width: 1010px;
+	height: 60px;
+	float: left;
+	background-color: #fff;
+	font-size: 0.75rem;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+.form_mainForm_Id03{
+    width: 1010px;
+    height: 60px;
+    float: left;
+    background-color: #fff;
+    font-size: 0.75rem;
+    box-sizing: border-box;
+}
+
+.form_mainForm_Address{
+    width: 1010px;
+    height: 60px;
+    float: left;
+    background-color: #fff;
+    font-size: 0.75rem;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.form_mainForm_Address > input[type="text"] {
+    width: 1010px;
+    height: 100px;
+    float: left;
+    background-color: #fff;
+    font-size: 0.75rem;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.form_mainForm div > input[type="button"]{
+    float: left;
+    width:100px;
+    height:30px;
+    padding: 0.625em;
+    margin: 1.125em 0;
+    border: solid 1px #ccc;
+    box-sizing: border-box;
+    margin-left: 1.5em;
+}
+
+.form_mainForm div > input[type="text"], input[type="password"], input[type="date"]{
+	float: left;
+	width:200px;
+	height:30px;
+	padding: 0.625em;
+	margin: 1.125em 0;
+	border: solid 1px #ccc;
+	box-sizing: border-box;
+	margin-left: 1.5em;
+}
+
+
+.form_mainForm div > select{
+	float: left;
+	width:200px;
+	height:30px;
+	padding: 0.4em;
+	margin: 1.125em 0;
+	border: solid 1px #ccc;
+	box-sizing: border-box;
+	margin-left: 1.5em;
+}
+.form_mainButton {
+	width: 1200px;
+	height: 100px;
+	margin:0 auto;
+}
+.form_mainButton01{
+	display: flex;
+	justify-content: space-between;
+	width: 270px;
+	height: 100px;
+	margin: 0 auto;
+}
+.form_mainButton01 button{
+	width: 120px;
+	height: 40px;
+	background-color: #ffc001;
+	font-size: 0.875rem;
+	color: #333;
+	border: 0;
+}
+
+
+/*usersearch*/
+.usersearch_form {
+	width: 300px;
+	height: 190px;
+	margin: 0 auto;
+	margin-top: 2em;
+}
+.usersearch_form button {
+	width: 300px;
+	height: 50px;
+	margin: 0 auto;
+	margin-bottom: 1em;
+	border: 0;
+	background-color: #ffc001;
+}
+
+/*idsearchEnd*/
+.idsearchEnd_text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 500px;
+	height: 200px;
+	margin: 0 auto;
+}
+
+/*pwdsearchEnd*/
+.pwdsearchEnd_button {
+	width: 120px;
+	height: 40px;
+	margin:0 auto;
+	background-color: #f00;
+}
+.pwdsearchEnd_button button{
+	width: 120px;
+	height: 40px;
+	background-color: #ffc001;
+	font-size: 0.875rem;
+	color: #333;
+	border: 0;
+}
+
+/*workshop_sellerRequest*/
+.workshop_sellerRequest_input {
+	display: flex;
+	width: 1200px;
+	height: 20px;
+	margin: 0 auto;
+	margin-top: 1em;
+}
+.workshop_sellerRequest_input input[type=checkbox]{
+	margin-top: 0.35em;
+	margin-right: 0.5em;
+}
+.workshop_sellerRequest_warning {
+	width: 1200px;
+	height: 15px;
+	margin: 0 auto;
+	color: #666;
+	font-size: 0.8em;
+	margin-top: 1em;
+}
+.workshop_sellerRequest_form {
+	width: 1200px;
+	height: 100px;
+	margin: 0 auto;
+	border-top: 2px solid #333;
+	border-bottom: 1px solid #999;
+	box-sizing: border-box;
+	margin-top: 2em;
+}
+.workshop_sellerRequest_form00 {
+	display: flex;
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid #333;
+	box-sizing: border-box;
+}
+.workshop_sellerRequest_form00_1 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 400px;
+	height: 50px;
+	font-weight: bold;
+}
+.workshop_sellerRequest_form01 {
+	display: flex;
+	width: 100%;
+	height: 50px;
+}
+.workshop_sellerRequest_form00_2 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 400px;
+	height: 50px;
+	font-size: 0.8rem;
+}
+
+/*workshop_profileChange*/
+.workshop_form_mainForm{
+	width: 1200px;
+	height: 340px;
+	margin: 0 auto;
+	border-top: 2px solid #999;
+	box-sizing: border-box;
+	margin-top: 1em;
+}
+.workshop_form_mainForm_Id00{
+	display: flex;
+	align-items: center;
+	width: 190px;
+	height: 60px;
+	float: left;
+	background-color: #e0e0e0;
+	font-size: 1rem;
+	color: #000;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.workshop_form_mainForm_Id00 label{
+	padding-left: 1.25em;
+}
+.workshop_form_mainForm_Id01{
+	width: 1010px;
+	height: 60px;
+	float: left;
+	background-color: #fff;
+	font-size: 0.75rem;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.workshop_form_mainForm_Id01 p{
+	color: #999;
+	margin: 1.7em 0 0 0;
+}
+.workshop_form_mainForm_Id00_textarea{
+	display: flex;
+	align-items: center;
+	width: 190px;
+	height: 100px;
+	float: left;
+	background-color: #e0e0e0;
+	font-size: 1rem;
+	color: #000;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.workshop_form_mainForm_Id00_textarea label{
+	padding-left: 1.25em;
+}
+.workshop_form_mainForm_Id01_textarea{
+	width: 1010px;
+	height: 100px;
+	float: left;
+	background-color: #fff;
+	font-size: 0.75rem;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.workshop_form_mainForm_Id01_textarea p{
+	color: #999;
+	margin: 1.7em 0 0 0;
+}
+.workshop_form_mainForm_Id00_img01{
+	display: flex;
+	align-items: center;
+	width: 190px;
+	height: 120px;
+	float: left;
+	background-color: #e0e0e0;
+	font-size: 1rem;
+	color: #000;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.workshop_form_mainForm_Id00_img01 label{
+	padding-left: 1.25em;
+}
+.workshop_form_mainForm_Id01_img01{
+	width: 1010px;
+	height: 120px;
+	float: left;
+	background-color: #fff;
+	font-size: 0.75rem;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.workshop_form_mainForm_Id01_img01 p{
+	color: #999;
+	margin-left: 1.5em;
+}
+.workshop_form_mainForm_Id00_img02{
+	display: flex;
+	align-items: center;
+	width: 190px;
+	height: 120px;
+	float: left;
+	background-color: #e0e0e0;
+	font-size: 1rem;
+	color: #000;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.workshop_form_mainForm_Id00_img02 label{
+	padding-left: 1.25em;
+}
+.workshop_form_mainForm_Id01_img02{
+	width: 1010px;
+	height: 120px;
+	float: left;
+	background-color: #fff;
+	font-size: 0.75rem;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.workshop_form_mainForm_Id01_img02 p{
+	color: #999;
+	margin-left: 1.5em;
+}
+.workshop_form_mainForm_Id01 input[type="text"]{
+	float: left;
+	width:200px;
+	height:30px;
+	padding: 0.625em;
+	margin: 1.125em 0;
+	border: solid 1px #ccc;
+	box-sizing: border-box;
+	margin-left: 1.5em;
+	margin-right: 1em;
+}
+.workshop_form_mainForm_Id01_textarea textarea{
+	float: left;
+	width:200px;
+	height:70px;
+	padding: 0.625em;
+	margin: 1.125em 0;
+	border: solid 1px #ccc;
+	box-sizing: border-box;
+	margin-left: 1.5em;
+	margin-right: 1em;
+}
+.workshop_form_mainForm_Id01_img01 input[type=file]{
+	margin: 1em 0 1em 1.5em;
+}
+.workshop_form_mainForm_Id01_img02 input[type=file]{
+	margin: 1em 0 1em 1.5em;
+}

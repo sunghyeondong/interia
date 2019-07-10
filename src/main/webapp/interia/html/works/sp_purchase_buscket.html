@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>구매하기</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/header_move.css">
+    <link rel="stylesheet" href="../../css/works/sp_form_purchase_commissioned.css">
+    <link rel="stylesheet" type="text/css" href="../../css/works/sp_purchase.css">
+
+    <title>제작 의뢰하기</title>
+</head>
+
+<body>
+    <header id="header">
+
+    </header>
+
+    <div class="sp-container" style="margin-top: 7.5em;">
+
+
+        <form class="form-horizontal">
+            <div class="sp-form-botton">
+                <!-- 여기는 제작 의뢰하기 관련 폼 -->
+                <!--  -->
+                <div class="sp-sb-header2">
+                    <div class="sp-sb-h-name">
+                        <h5 class="sp-title">주문 결제하기</h5>
+                        <!-- <p>장바구니</p> -->
+                    </div>
+                    <div class="sp-sb-h-nav">
+                        <p>장바구니&ensp;>&ensp;<b>주문결제</b>&ensp;>&ensp;주문완료</p>
+                    </div>
+                </div>
+                <!-- sp-sb-header2 -->
+
+                <!-- id 부분은 나중에 DB 용으로 남겨두었다. -->
+                <div class="form-group" id="workshop-list">
+                    
+                            <!-- 핸들바 처리 - 공방부분 -->
+                    
+                </div>
+            </div>
+            
+    <script id="workshop-template" type="text/x-handlebars-template">
+        {{#each studioNames}}
+                    <table class="table sp-table-sub" >
+                        <thead  style="background:#eee;">
+                            <th class="sp-table-left" style="width:80%;border-bottom: 1px solid gray;border-top:1px solid gray">주문 스토어 : <span id="studioName{{workshopNumber}}" style="color:#ffc001">{{studioName}}</span></th>
+                            <th class="sp-table-right sp-table-center" style="border-bottom: 1px solid gray;">배송비</th>
+                        </thead>
+
+                        {{!-- 장바구니 제품 목록 --}}
+                        <tbody id="works-list{{workshopNumber}}">
+
+                        </tbody>
+                    </table>
+        {{/each}}
+    </script>
+
+    <script id="works-template" type="text/x-handlebars-template">
+        {{#each worksPurchase}}
+        
+            <tr>
+                <td class="sp-table-left">
+                    <div class="col-sm-10 row" style="vertical-align: middle">
+                        <div class="sp-product-image col-sm-1">
+                            <img src="../../../files/works/{{path}}" width="100px" height="100px">
+                        </div>
+                        <div class="sp-product-store col-sm-7">
+                            <!--차후에 조건문 추가할 것! width 길이의 따라 줄바꿈 실행 하도록!! -->
+                            [{{studioName}}] {{title}}<br><br> {{optionValue}}
+                        </div>
+                        <div class="sp-price-store col-sm-4">
+                            <span id="allPrice{{worksNumber}}">{{priceValue}}</span> 원 | 수량 : <span id="buyValue{{worksNumber}}">{{buyValue}}</span>
+                        </div>
+                    </div>
+                </td>
+                <td class="sp-table-right" style="vertical-align: middle; text-align: center">선결제<br>
+                    {{!-- 배송비 --}}
+                    <span id="allDeliveryPrice{{worksNumber}}">{{resultDelivery}}</span>원
+                </td>
+            </tr>
+        
+        {{/each}}
+    </script>
+
+            <!-- 여기는 배송지 정보 폼 -->
+            <h5 class="sp-title sp-title-sub sp-margin-top">배송지 정보</h5>
+
+            <div id="" class="sp-form-botton">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <label for="col-sm-2 control-label" class="col-sm-2 control-label">받는분 </label>
+                        <!-- <input id="sp-recipient" type="text" class="col-sm-4 sp-input-height"> <br> -->
+                        <input id="sp-order-name" type="text" class="col-sm-4 sp-input-height"> <br>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <label class="col-sm-2 control-label">우편번호 </label>
+                        <input id="fZcode" name="fZcode" type="text" class="col-sm-2 control-label sp-input-height" readonly="true"> &nbsp;&nbsp;&nbsp;
+                        <input type="button" onclick="execDaumPostCode()" class="btn sp-btn btn-sm sp-input-height" value="배송지찾기">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <label class="col-sm-2 control-label">주소 </label>
+                        <input id="fBaddr" name="fBaddr" type="text" class="col-sm-8 sp-input-height" style="margin-bottom:1em" readonly="true"> <br>
+                        <label class="col-sm-2 control-label"></label>
+                        <input id="fDaddr" name="fDaddr" type="text" class="col-sm-8 sp-input-height"> <br>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <label class="col-sm-2 control-label">휴대전화</label>
+                        <!-- 
+                        <input id="sp-delivery-phone1" type="text" class="sp-input-phone sp-input-height"> &nbsp; - &nbsp;
+                        <input id="sp-delivery-phone2" type="text" class="sp-input-phone sp-input-height">&nbsp; - &nbsp;
+                        <input id="sp-delivery-phone3" type="text" class="sp-input-phone sp-input-height"> <br>
+                         -->
+                        <input id="sp-order-phone1" type="text" class="sp-input-phone sp-input-height"> &nbsp; - &nbsp;
+                        <input id="sp-order-phone2" type="text" class="sp-input-phone sp-input-height">&nbsp; - &nbsp;
+                        <input id="sp-order-phone3" type="text" class="sp-input-phone sp-input-height"> <br>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <label class="col-sm-2 control-label">배송 메모 </label>
+                        <input type="text" id="sp-delivery-memo" class="col-sm-8 sp-input-height" placeholder="ex) 부재시 경비실에  맡겨주세요"> <br>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- script Layer 팝업 실행 (다음 주소 API) -->
+            <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+            <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+                    <img src="../../images/address_api/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+            </div>
+    
+            <script async="async" src='https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js'></script>
+            <script charset="UTF-8" type="text/javascript" src="http://t1.daumcdn.net/postcode/api/core/180619/1529384927473/180619.js"></script>
+            <script src="../../js/sp_daum_add.js"></script>
+            
+                <!-- 여기는 주문자 정보 폼 (제거) -->
+            <!--
+                <h5 class="sp-title sp-title-sub sp-margin-top">주문자 정보</h5>
+                <div id="" class="sp-form-botton">
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">이름 </label>
+                            <input id="sp-order-name" type="text" class="col-sm-2 sp-input-height" readonly="true" > <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">이메일 </label>
+                            <input id="sp-email-1" type="text" class="col sp-input-email sp-input-height" readonly="true"> @
+                            <input id="sp-email-2" type="text" class="col sp-input-email sp-input-height" readonly="true"> <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">휴대전화 </label>
+                            <input id="sp-order-phone1" type="text" class="sp-input-phone sp-input-height" readonly="true"> &nbsp; - &nbsp;
+                            <input id="sp-order-phone2" type="text" class="sp-input-phone sp-input-height" readonly="true">&nbsp; - &nbsp;
+                            <input id="sp-order-phone3" type="text" class="sp-input-phone sp-input-height" readonly="true"> <br>
+                            <div style="margin-top:0.625em">
+                                <input type="checkbox" style="margin-left:7.1875em;"> sms 수신동의 <span class="sp-sms-agree">(배송 정보를 SMS로 보내드립니다.)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            -->
+                <!-- 여기는 결제 정보 폼 -->
+                <h5 class="sp-title sp-margin-top">결제 정보</h5>
+                <table class="table sp-table-sub">
+                    <tr class="sp-table-pay-infomation">
+                        <th class="table-secondary sp-table-left sp-table-pay-information-th ">총 상품금액</th>
+                        <td class="sp-table-right"> <span id="all-product-price">0</span> 원</td>
+                    </tr>
+                    <tr class="sp-table-pay-infomation">
+                        <th class="table-secondary sp-table-pay-information-th sp-table-left">할인 쿠폰</th>
+                        <td class="sp-table-right">사용 안함</td>
+                    </tr>
+                    <tr class="sp-table-pay-infomation">
+                        <th class="table-secondary sp-table-pay-information-th sp-table-left">배송비</th>
+                        <td class="sp-table-right"> <span id="all-delivery-price">0</span> 원</td>
+                    </tr>
+                    <tr class="sp-table-pay-infomation">
+                        <th class="table-secondary sp-table-pay-information-th sp-table-left">총 결제금액</th>
+                        <td class="sp-table-right"><span style="color:#ffc001"> <span id="all-order-price">10000</span> 원</span></td>
+                    </tr>
+                    <tr class="sp-table-pay-infomation">
+                        <th class="table-secondary sp-table-pay-information-th sp-table-left">결제 수단</th>
+                        <td class="sp-table-right">
+                            <!-- 
+                            <input type="radio" name="chk_pay" value="카드 결제"> 카드 결제&nbsp;&nbsp;
+                            <input type="radio" name="chk_pay" value="무통장 입금"> 무통장 입금&nbsp;&nbsp;
+                            <input type="radio" name="chk_pay" value="휴대폰"> 휴대폰 &nbsp;&nbsp;<br>
+                            -->
+                            <input id="kakaoPay" type="radio" name="chk_pay" value="카카오페이" checked> 카카오페이<br>
+                            <input id="agree-on" type="checkbox" name="agree"> 결제 진행 필수사항 동의<br>
+                            <p class="sp-sms-agree">개인정보 제 3자 제공 및 결제대행 서비스 표준 이용약관 보기></p>
+                        </td>
+                    </tr>
+                </table><br><br>
+
+                <!-- 완료 시 결제하기 -->
+                <p class="sp-privacy"><input id="btnPay" align="center" class="btn sp-submit-button btn-lg" value="결제하기"></p>
+        </form>
+
+
+    </div>
+
+    <footer id="footer">
+        
+    </footer>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+    <script src="../../js/sp_purchase_buscket.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>공방관리자</title>
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../css/admin/store_admin_common.css">
+<link rel="stylesheet"
+	href="../../node_modules/@fortawesome/fontawesome-free/css/all.css">
+<link rel="shortcut icon" href="../favicon.ico">
+
+</head>
+
+<body>
+	<div id="ad-header"></div>
+
+
+	<div class="ad-main-wrapper">
+		<div class="ad-main-content">
+			<!-- ad-breadcrumb -->
+			<ol class="ad-breadcrumb">
+				<li class="ad-breadcrumb-item"><a href="#">관리자</a></li>
+				<li class="ad-breadcrumb-item active">판매관리&ensp;/&ensp;클레임관리</li>
+			</ol>
+
+			<div class="ad-card-default">
+				<div class="ad-card-header">
+					<i class="fas fa-search"></i> 클레임검색
+				</div>
+				<div class="ad-card-body">
+					<div class="ad-claim">
+						<div class="ad-claim-status ad-claim-request">
+							<p>
+								클레임요청&ensp;<span id="reqClaim"></span>&ensp;건
+							</p>
+						</div>
+						<div class="ad-claim-status ad-claim-finish">
+							<p>
+								클레임완료&ensp;<span id="finClaim"></span>&ensp;건
+							</p>
+						</div>
+						<div class="ad-claim-status ad-claim-withdraw">
+							<p>
+								클레임철회&ensp;<span id="rejClaim"></span>&ensp;건
+							</p>
+						</div>
+					</div>
+					<form class="ad-searchForm ad-searchForm-collapse">
+						<div class="ad-searchInfo">
+
+							<div class="ad-searchDist ad-searchTerm">
+								<div class="ad-cat-select">
+									<select class="ad-cat-select-content" name="slct" id="slct">
+										<option>분류기준일</option>
+										<option value="1">클레임요청일</option>
+										<option value="2">주문일</option>
+									</select>
+								</div>
+								<input type="date"> &ensp;~&ensp; <input type="date">
+								<div class="ad-form-group">
+									<div class="ad-btn-toolbar">
+										<div class="ad-btn-group">
+											<button type="button" class="ad-term-btn ad-term-btn-color">
+												오늘</button>
+											<!---->
+											<button type="button" class="ad-term-btn ad-term-btn-color">
+												1주일</button>
+											<!---->
+											<button type="button" class="ad-term-btn ad-term-btn-color">
+												1개월</button>
+											<!---->
+											<button type="button" class="ad-term-btn ad-term-btn-color">
+												3개월</button>
+											<!---->
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="ad-searchDist ad-searchTerm ad-input-long">
+								<div class="ad-cat-select">
+									<select class="ad-cat-select-content" name="slct" id="slct">
+										<option value="0">처리상태전체</option>
+										<option value="1">클레임요청</option>
+										<option value="2">클레임완료</option>
+										<option value="3">클레임철회</option>
+									</select>
+								</div>
+								<div class="ad-cat-select">
+									<select class="ad-cat-select-content" name="slct" id="slct">
+										<option value="0">상세조건검색</option>
+										<option value="1">주문상태</option>
+										<option value="2">구매자ID</option>
+										<option value="3">상품명</option>
+										<option value="4">상품번호</option>
+										<option value="5">상품주문번호</option>
+										<option value="6">주문번호</option>
+										<option value="7">상품번호</option>
+										<option value="8">클레임</option>
+									</select>
+								</div>
+								<input type="text">
+
+							</div>
+						</div>
+						<div class="ad-cat-search-left">
+							<button type="button" class="btn btn-warning">검색</button>
+							<button type="button" class="btn btn-secondary">초기화</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="ad-card-default">
+				<div class="ad-card-header">
+					<i class="fas fa-paste"></i> 조회결과
+				</div>
+				<div class="ad-card-body">
+					<div class="ad-table-btn">
+						<span style="font-size: 18px; font-weight: bold;">클레임처리
+							&ensp;| &ensp;</span>
+						<button type="button" id="finClaimBtn" class="ad-btn ad-btn-color1">클레임완료</button>
+						<button type="button" id="rejClaimBtn" class="ad-btn ad-btn-color2"
+							data-toggle="modal" data-target="#claimRejectModal">클레임철회</button>
+						<button type="button" id="chngToExchangeBtn" class="ad-btn ad-btn-color1">교환으로변경</button>
+						<button type="button" id="chngToReturnBtn" class="ad-btn ad-btn-color1">환불로변경</button>
+					</div>
+					<table cellspacing="0" border="1" summary="명단관리  리스트"
+						class="frt_tbl_type"
+						style="min-width: 900px; padding-right: 15px;">
+						<caption>명단관리 리스트</caption>
+						<colgroup>
+							<col width="30" />
+							<col width="100" />
+							<col width="100" />
+							<col width="100" />
+							<col width="100" />
+							<col width="100" />
+							<col width="100" />
+   							<col width="100" />
+   							<col width="100" />
+   							<col width="12"/>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col"><input type="checkbox" name="chk_all" id='chk_all'
+									value="" onclick="" /><label for="chk_all">선택</label></th>
+								<th scope="cols">상품주문번호</th>
+								<th scope="cols">주문번호</th>
+								<th scope="cols">주문일시</th>
+								<th scope="cols">주문상태</th>
+								<th scope="cols">클레임상태</th>
+								<th scope="cols">클레임요청일</th>
+								<th scope="cols">상품명</th>
+								<th scope="cols">구매자 닉네임</th>
+							</tr>
+						</thead>
+					</table>
+
+					<div
+						style="max-height: 300px; min-width: 1010px; overflow-x: hidden; overflow-y: scroll;">
+						<table cellspacing="0" border="1" summary="명단관리 리스트"
+							class="frt_tbl_type" style="border-top: 0px;">
+							<caption>명단관리 리스트</caption>
+							<colgroup>
+								<col width="30" />
+								<col width="100" />
+								<col width="100" />
+								<col width="100" />
+								<col width="100" />
+								<col width="100" />
+								<col width="100" />
+								<col width="100" />
+								<col width="100" />
+							</colgroup>
+							<tbody class="ad-return-data">
+															
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- claimRejectModal -->
+			<div class="modal fade" id="claimRejectModal" tabindex="-1"
+				role="dialog" aria-labelledby="claimRejectModalTitle"
+				aria-hidden="true" style="z-index: 10800;">
+				<div class="modal-dialog modal-dialog-centered " role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="claimRejectModalTitle">
+								<b>클레임철회</b>
+							</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<form>
+							<div class="modal-body">
+								<div class="ad-modal-contentgap">
+									<b>상품주문 선택</b>(주문번호: <span id="odno"></span>)
+								</div>
+								<table cellspacing="0" border="1" summary="명단관리  리스트"
+									class="frt_tbl_type" style="padding-right: 15px;">
+									<caption>명단관리 리스트</caption>
+									<colgroup>
+										<col width="30" />
+										<col width="60" />
+										<col width="60" />
+										<col width="60" />
+										<col width="10" />
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col"><input type="checkbox" name=""
+												id='chk_all' value="" onclick="CtlExecutor.doCheckAll();" /><label
+												for="chk_all">선택</label></th>
+											<th scope="cols">상품주문번호</th>
+											<th scope="cols">상품명</th>
+											<th scope="cols">가격</th>
+										</tr>
+									</thead>
+								</table>
+
+								<div
+									style="max-height: 100px; margin-bottom: 20px; overflow-x: hidden; overflow-y: scroll;">
+									<table cellspacing="0" border="1" summary="명단관리 리스트"
+										class="frt_tbl_type" style="border-top: 0px;">
+										<caption>명단관리 리스트</caption>
+										<colgroup>
+											<col width="30" />
+											<col width="*" />
+											<col width="*" />
+											<col width="*" />
+										</colgroup>
+										<tbody class="ad-claimReject-data">
+														
+										</tbody>	
+									</table>
+								</div>
+								<div class="ad-modal-contentgap">
+									<b>클레임 철회 사유 상세</b>
+								</div>
+								<textarea cols="50" rows="8" id="prdtl"></textarea>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">닫기</button>
+								<button type="button" id="updRejectBtn" class="ad-btn ad-btn-color1">클레임철회</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- orderDetailModal -->
+			<div class="modal fade" id="orderDetailModal" tabindex="-1"
+				role="dialog" aria-labelledby="orderDetailModalTitle"
+				aria-hidden="true" style="z-index: 10800;">
+				<div class="modal-dialog modal-lg " role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="orderDetailModalTitle">
+								<b>상품주문정보조회</b>
+							</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<form>
+														<div class="modal-body">
+								<div class="ad-modal-contentgap">
+									<b>주문상세정보</b>
+									<input id="odno" type="text" style="display:none;">
+									<div class="ad-modal-content-collapse ad-orderDetail">
+										<div class="ad-orderDetail-menu">
+											<div class="ad-modal-orderinfo">상품주문번호</div>
+											<div class="ad-modal-orderinfo">상품주문상태</div>
+											<div class="ad-modal-orderinfo">구매자명</div>
+											<div class="ad-modal-orderinfo">주문수량</div>
+										</div>
+										<div class="ad-modal-info-data">
+											<div class="ad-modal-orderinfo">
+												<input type="text" 
+													id="wono" class="ad-order-form-input">
+											</div>
+											<div class="ad-modal-orderinfo">
+												<select 
+													id="odstt">
+													<option value="결제완료">결제완료</option>
+													<option value="배송준비중">배송준비중</option>
+													<option value="배송중">배송중</option>
+													<option value="배송완료">배송완료</option>
+												</select>
+											</div>
+											<div class="ad-modal-orderinfo">
+												<input type="text" 
+													id="orname" class="ad-order-form-input">
+											</div>
+											<div class="ad-modal-orderinfo">
+												<input type="text" 
+													id="ostor" class="ad-order-form-input">
+											</div>
+
+										</div>
+										<div class="ad-orderDetail-menu">
+											<div class="ad-modal-orderinfo">상품명</div>
+											<div class="ad-modal-orderinfo">클레임</div>
+											<div class="ad-modal-orderinfo">구매자ID</div>
+											<div class="ad-modal-orderinfo">금액</div>
+										</div>
+										<div class="ad-modal-info-data">
+											<div class="ad-modal-orderinfo">
+												<input type="text" 
+												id="wtitl" class="ad-order-form-input">
+											</div>
+											<div class="ad-modal-orderinfo">
+												<input type="text" 
+												id="crqst" class="ad-order-form-input">
+											</div>
+											<div class="ad-modal-orderinfo">
+												<input type="text" 
+												id="orid" class="ad-order-form-input">
+											</div>
+											<div class="ad-modal-orderinfo">
+												<input type="text" 
+												id="ptPrice" class="ad-order-form-input">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div style="display:flex; margin-left: 48px; margin-bottom:15px;">
+								<div class="ad-orderDetail-menu" style=" width:110px;">
+									<div class="ad-modal-orderinfo">클레임 사유</div>
+								</div>
+								<div class="ad-modal-info-data">
+									<div class="ad-modal-orderinfo">
+										<textarea id="cndtl" class="ad-order-optView"></textarea>
+									</div>
+								</div>
+								</div>
+								<div class="ad-modal-contentgap">
+									<b>배송정보</b>
+									<div class="ad-modal-content-collapse ad-orderDetail">
+										<div class="ad-orderDetail-menu">
+											<div class="ad-modal-orderinfo">상품발송일</div>
+											<div class="ad-modal-orderinfo">택배사</div>
+											<div class="ad-modal-orderinfo">송장번호</div>
+										</div>
+										<div class="ad-modal-info-data" style="width:80%;">
+											<div class="ad-modal-orderinfo">
+												<input type="date" 
+												id="deldt" class="ad-order-form-input">
+											</div>
+											<div class="ad-modal-orderinfo">
+												<input type="text" 
+												id="curir" class="ad-order-form-input">
+											</div>
+											<div class="ad-modal-orderinfo">
+												<input type="text" 
+												id="ivno" class="ad-order-form-input">
+											</div>
+
+										</div>
+									</div>
+
+								</div>
+								<div class="ad-modal-contentgap">
+									<b>배송지 정보</b>
+									<div class="ad-modal-content-collapse ad-orderDetail">
+										<div class="ad-orderDetail-menu">
+											<div class="ad-modal-orderinfo">수취인명</div>
+											<div class="ad-modal-orderinfo">배송지</div>
+											<div class="ad-modal-orderinfo">배송메모</div>
+										</div>
+										<div class="ad-modal-info-data">
+											<div class="ad-modal-orderinfo">
+												<input type="text" 
+												id="reicv" class="ad-order-form-input">
+											</div>
+											<div class="ad-modal-orderinfo">
+												<input type="text" 
+												id="addr" class="ad-order-form-input">
+											</div>
+											<div class="ad-modal-orderinfo">
+												<input type="text" 
+												id="dlmemo" class="ad-order-form-input">
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">닫기</button>
+								<button type="button" id="updBtn" class="ad-btn ad-btn-color1">정보
+									수정하기</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- ad-main-content-->
+	</div>
+	<!--ad-main-wrapper-->
+	<script id="ad-return-template" type="text/x-handlebars-template">
+{{#each list}}
+ <tr>
+     <td class="frm"><input type="checkbox" id="chk{memno}}" name="chk" value="{{wono}}" /></td>
+      <td class="num ad-order-update" data-wono="{{wono}}" data-toggle="modal"
+		data-target="#orderDetailModal">{{wono}}</td>
+      <td class="title">{{odno}}</td>
+      <td class="date">{{oyear}}-{{omonth}}-{{oday}}</td>
+      <td class="writer">{{odstt}}</td>
+      <td class="writer">{{prstt}}</td>
+      <td class="writer">{{cyear}}-{{cmonth}}-{{cday}}</td>
+      <td class="writer">{{wtitl}}</td>
+      <td class="writer">{{nknm}}</td>
+
+</tr>
+{{/each}}
+</script>
+
+	<script id="ad-claimReject-template" type="text/x-handlebars-template">
+{{#each list}}
+<tr>
+	<td class="frm"><input type="checkbox" class="chk"
+		name="mchk" value="{{wono}}" /></td>
+	<td class="num">{{wono}}</td>
+	<td class="title">{{wtitl}}</td>
+	<td class="date">{{ptPrice}}</td>
+</tr>	
+{{/each}}
+</script>
+
+
+	<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+	<script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script src="../../js/common.js"></script>
+	<script src="../../js/ad_header.js"></script>
+	<script src="../../js/ad_admin.js"></script>
+	<script src="../../js/ad_return.js"></script>
+</body>
+
+</html>

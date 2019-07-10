@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>판매작품</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/product_list.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+<header id="header">
+
+</header>
+<section>
+
+</section>
+<div class="sp-banner">
+</div><!-- ib-banner -->
+
+<div class="sp-nav">
+<div class="sp-nav-category">
+    <div class="sp-nc-dist">
+        <select id="ma-category" class="custom-select custom-select-lg" >
+            <option value="">선택</option>
+            <option value="f1">One</option>
+            <option value="f2">Two</option>
+            <option value="f3">Three</option>
+        </select><!-- ma-category -->
+        <select id="mid-category" class="custom-select custom-select-lg">
+            <option value="">선택</option>
+            <option class="f1" value="m1">One</option>
+            <option class="f1" value="m2">Two</option>
+            <option class="f1" value="m3">Three</option>
+            <option class="f2" value="m4">One</option>
+            <option class="f2" value="m4">Two</option>
+            <option class="f2" value="m5">Three</option>
+        </select><!-- mid-category -->
+        <select id="sm-category" class="custom-select custom-select-lg">
+          <option value="">선택</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select><!-- sm-category -->
+    </div><!-- sp-nc-dist -->
+    <div class="sp-nc-search">
+        <form class="form-inline">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light sp-btn-search" type="submit">검색</button>
+        </form>
+        
+    </div><!-- sp-nc-search -->
+</div><!-- sp-nav-category -->
+</div><!-- sp-nav-->    
+<div class="ib-container ib-sp-container">
+    <div class="sp-main-content">
+        <div class="sp-mc-header">
+            <div class="sp-mc-name">
+                <p>사이드 테이블</p>
+            </div><!-- sp-mc-name -->
+            <div class="sp-mc-sort">
+                <a href="#">인기순</a>
+                &ensp; | &ensp; 
+                <a href="#">최신순</a>
+                &ensp; | &ensp;
+                <a href="#">높은 가격순</a>
+                &ensp; | &ensp;
+                <a href="#">낮은 가격순</a>
+            </div><!-- sp-mc-sort -->
+        </div> <!-- sp-mc-header -->
+        <div class="sp-mc-product" id="productlist">
+            <!-- <div class="card">
+                <div class="sp-card-img">
+                    <img src="images/product_list/dzyqbk1u_Revive-table-800x600-540x405-290x280.jpg">
+                </div>
+                <div class="sp-card-content">
+                    <div class="sp-cc1">
+                        <p>비트 가구공방</p>
+                    </div>
+                    <div class="sp-cc2">
+                        <p>Flence side Table_2color</p>
+                    </div>
+                    <div class="sp-cc3">
+                        <p>159000원</p>
+                    </div>
+                    <div class="sp-cc4">
+                        
+                    </div>
+                </div>sp-card-content
+            </div>card -->
+            
+        </div><!-- sp-mc-product -->
+    </div><!-- sp-main-content -->
+</div><!-- ib-container -->
+<div class="sp-seemore">
+    <div>
+    <button type="button" class="btn btn-primary btn-lg btn-block sp-btn-seemore">더보기</button>
+    </div>
+</div>
+<footer id="footer">
+
+</footer>
+
+
+<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../js/common.js"></script>
+<script src="../header.js"></script>
+<script src="../footer.js"></script>
+<script id ="tr-template" type="text/x-handlebars-template">
+{{#each list}}
+<div class="card">
+                <div class="sp-card-img">
+                    <img src="images/product_list/{{path}}">
+                </div>
+                <div class="sp-card-content">
+                    <div class="sp-cc1">
+                        <p>{{wsnm}}</p>
+                    </div>
+                    <div class="sp-cc2">
+                        <p>{{wtitl}}</p>
+                    </div>
+                    <div class="sp-cc3">
+                        <p>{{price}} 원</p>
+                    </div>
+                    <div class="sp-cc4">
+                        
+                    </div>
+                </div><!-- sp-card-content -->
+            </div><!-- card -->
+{{/each}}
+
+</script>
+<script>
+var trTemplateSrc=$('#tr-template').html();
+//위에서 준비한 템플릿 데이터를 가지고 HTML을 생성할 템플릿 엔진 준비
+var templateFn = Handlebars.compile(trTemplateSrc)
+$.getJSON("../../json/works/list", (data) => {
+    console.log(data);
+    $(productlist).html(templateFn({list:data}))
+});
+</script>
+</body>
+</html>

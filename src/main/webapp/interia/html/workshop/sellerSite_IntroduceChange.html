@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>INTERIA</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/header_move.css">
+    <link rel="stylesheet" type="text/css" href="../../css/workshop/workshop_sellerSite.css">
+    <link rel="stylesheet" href="../../node_modules/blueimp-file-upload/css/jquery.fileupload.css">
+    <link rel="stylesheet" href="../../node_modules/blueimp-file-upload/css/jquery.fileupload-ui.css">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+
+
+<body>
+    <header id="header">
+    </header>
+    <section style="height: 1300px;">
+	    <div class="workshop_sellerSite_bg" style="height: 1300px;">
+	        <div class="workshop_sellerSite_sidemenu">
+	            <div class="workshop_sellerSite_sidemenu_edit">
+	                <button type="button" onClick="location.href='./workshop_profileChange.html'">Edit</button>
+	                <button type="button" onClick="location.href='./workshop_profileChange.html'">Key</button>
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_img">
+
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_imgtext">
+
+
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_snsbtn">
+	                <div class="workshop_sellerSite_sidemenu_snsbtn_bg">
+
+
+
+	                </div>
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_line_bg">
+	                <div class="workshop_sellerSite_sidemenu_line"></div>
+	            </div>
+	            <div id="ib_wrk_btn">
+                    <!-- <div class="workshop_sellerSite_sidemenu_btn00">
+                        <button style="color: #e67e22;">♥ 스토어 찜하기</button>
+                    </div> -->
+                    <!-- <div class="workshop_sellerSite_sidemenu_btn00">
+                        <button type="button" onClick="location.href='./workshop_sellerSite.html'">홈</button>
+                    </div>
+                    <div class="workshop_sellerSite_sidemenu_btn00">
+                        <button type="button" onClick="location.href='./sellerSite_Introduce.html'">공방소개</button>
+                    </div>
+                    <div class="workshop_sellerSite_sidemenu_btn00">
+                        <button type="button" onClick="location.href='./sellerSite_product.html'">공방작품</button>
+                    </div>
+                    <div class="workshop_sellerSite_sidemenu_btn00">
+                        <button type="button" onClick="location.href='./sellerSite_News.html'">공방소식</button>
+                    </div>
+                    <div class="workshop_sellerSite_sidemenu_btn00">
+                        <button type="button" onClick="location.href='./sellerSite_ex.html'">공방체험</button>
+                    </div>
+                    <div class="workshop_sellerSite_sidemenu_btn00">
+                        <button type="button" onClick="location.href='./sellerSite_Review.html'">구매후기</button>
+                    </div> -->
+                </div>
+	            <!-- <div class="workshop_sellerSite_sidemenu_line_bg">
+	                <div class="workshop_sellerSite_sidemenu_line"></div>
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_info">
+	                <div class="workshop_sellerSite_sidemenu_info_title">
+	                    <p>활동정보</p>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_info_sub01">
+	                    <p>좋아하는 사람</p>
+	                    <p>0명</p>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_info_sub01">
+	                    <p>판매중인 제품</p>
+	                    <p>0개</p>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_info_sub01">
+	                    <p>구매후기</p>
+	                    <p>0개</p>
+	                </div>
+	            </div> -->
+	        </div>
+	        <div class="workshop_sellerSite_content">
+	            <div class="sellerSite_intro_title">
+	                <p>공방소개 수정</p>
+	            </div>
+	            <div class="sellerSite_intro_Change">
+	                <div id="sellerSite_intro_Change_box1">
+	                    <input id="fileupload00" type="file" name="files" multiple>
+                        <input id="fileupload00_hidden" type="hidden">
+	                </div>
+	                <div class="sellerSite_intro_Change_box2">
+	                    <form name="insertFrm"> 
+	                        <textarea id="introduce_text" name="test" onkeyup="len_chk()" style="resize: none;"></textarea>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="sellerSite_intro_btn">
+	                <button type="button" onClick="location.href='./sellerSite_Introduce.html'">취소하기</button>
+	                <button type="button" id="introduce_btn">적용하기</button>
+	            </div>
+	        </div>
+	    </div><!--************-->
+	    
+	    
+	    
+	</section>
+
+    <footer id="footer">
+    </footer>
+    <script src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="../../node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
+    <script src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+    <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="../../js/sellerSite_IntroduceChange.js"></script>
+    <script src="../../js/workshop_sellerSite_sidemenu.js"></script>
+    <script>
+    $('#fileupload00').fileupload({
+        url: '../../../json/workshop/addfile',        // 서버에 요청할 URL
+        dataType: 'json',
+        autoUpload: true,
+        done: function (e, data) { 
+          console.log('done()...');
+          console.log(data.result); // 서버가 보낸 JSON 객체는 data.result 에 보관되어 있다.
+          $('#fileupload00_hidden').val(data.result.filename);
+        }
+    });
+	
+    var no = location.href.split("=")[1];
+    $("#introduce_btn").click(() => {
+    	$.getJSON(serverRoot + "/json/auth/loginUser", (data) => {
+    		console.log(data.no);
+	        $.post(serverRoot + "/json/workshop/updateIntro", {
+	        	wno : data.no,
+                wsContent : $("#introduce_text").val()
+	        });
+	        $.post(serverRoot + "/json/workshop/addIntro", {
+	            wno : data.no,
+	            filenametwo : $("#fileupload00_hidden").val()
+	        }, () => {
+                location.href = 'sellerSite_Introduce.html?no='+ no +'';
+            });
+    	});
+    });
+    
+    
+    /* $("#introduce_btn").click(() => {
+        $.getJSON(serverRoot + "/json/auth/loginUser", (data) => {
+            console.log(data.no);
+            $.post(serverRoot + "/json/workshop/update", {
+                wno : data.no,
+                studioName : $("#profile_input").val(),
+                introduction : $("#profile_textarea").val()
+            });
+            $.post(serverRoot + "/json/workshop/addwspho", {
+                wno : data.no,
+                filename : $("#fileupload00_hidden").val(),
+                filenametwo : $("#fileupload01_hidden").val()
+            }, () => {
+                location.href = "workshop_sellerSite.html";
+            });
+        });
+    }); */
+    
+    $('#ib_wrk_btn').html(`<div class="workshop_sellerSite_sidemenu_btn00">
+            <button type="button" onClick="location.href='./workshop_sellerSite.html?no=`+ no +`'">홈</button>
+            </div>
+            <div class="workshop_sellerSite_sidemenu_btn00">
+                <button type="button" onClick="location.href='./sellerSite_Introduce.html?no=`+ no +`'" style="background-color: #ffc001; border: 1px solid #ffc001;">공방소개</button>
+            </div>
+            <div class="workshop_sellerSite_sidemenu_btn00">
+                <button type="button" onClick="location.href='./sellerSite_product.html?no=`+ no +`'">공방작품</button>
+            </div>
+            <div class="workshop_sellerSite_sidemenu_btn00">
+                <button type="button" onClick="location.href='./sellerSite_News.html?no=`+ no +`'">공방소식</button>
+            </div>
+            <div class="workshop_sellerSite_sidemenu_btn00">
+                <button type="button" onClick="location.href='./sellerSite_ex.html?no=`+ no +`'">공방체험</button>
+            </div>
+            <div class="workshop_sellerSite_sidemenu_btn00">
+                <button type="button" onClick="location.href='./sellerSite_Review.html?no=`+ no +`'">구매후기</button>
+            </div>`);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 이름은 SQL을 찾을 때 사용하는 그룹명이다.
+     따라서 SQL 문을 사용하는 DAO 클래스 이름과 같게 하면
+     유지보수할 때 알아보기 쉽다.
+     단순히 알아보기 쉬울 뿐만 아니라 
+     스프링 프레임워크와 연동할 때 DAO 객체를 자동 생성할 수 있다. 
+-->
+<mapper namespace="bitcamp.java106.pms.dao.TagDao">
+
+  <resultMap type="Tag" id="TagMap">
+    <id column="htno" property="hashTagNo"/>
+    <result column="tname" property="tagName"/>
+  </resultMap>
+  
+  <!-- 태그 삽입(중복방지) -->
+  <insert id="insert" parameterType="Tag"
+          useGeneratedKeys="true" keyColumn="htno" keyProperty="htno">
+          INSERT INTO INTR_HASHTAG (tname)  
+			SELECT #{tagName} FROM DUAL  
+			WHERE NOT EXISTS (SELECT * FROM INTR_HASHTAG WHERE tname=#{tagName});
+  </insert>
+  
+    <!-- 매치된 태그 개수 구하기 -->
+  <select id="countTags" parameterType="int" resultType="int">
+  	SELECT COUNT(*) FROM INTR_WTMACH where wno=#{value};
+  </select>
+  
+   <select id="selectMatchTags" parameterType="int" resultMap="TagMap">
+  	SELECT hs.htno, hs.tname 
+  	from INTR_HASHTAG hs 
+  	inner join INTR_WTMACH wt 
+  	on hs.HTNO = wt.HTNO 
+  	where wt.wno=#{value};
+  </select>
+  
+  <!-- 삽입된 태그중 일치하는 태그 가져오기 -->
+  <select id="getTag" parameterType="String" resultMap="TagMap">
+  	select * from INTR_HASHTAG where tname= #{value};
+  </select>
+  
+<!-- 작품번호 및 해시 태그 매칭 -->
+  <insert id="matchInsert" parameterType="Tag"
+          useGeneratedKeys="true" keyColumn="htno" keyProperty="htno">
+	    insert into INTR_WTMACH(htno, wno) 
+	    values(#{hashTagNo},#{worksMatchNo});
+  </insert>
+  
+  <!-- 게시판 및 해시 태그 매칭 -->
+    <insert id="boardMatchInsert" parameterType="Tag"
+          useGeneratedKeys="true" keyColumn="htno" keyProperty="htno">
+        insert into INTR_BTMACH(htno, bno) 
+        values(#{hashTagNo},#{boardMatchNo});
+        
+  </insert>
+<!-- 매칭 테이블에서 row 삭제 -->
+<delete id="deleteRelation" parameterType="int">
+    delete from INTR_WTMACH WHERE wno=#{value};
+ </delete>
+  
+<!--   
+  옵션 전체 출력
+  <select id="selectList" parameterType="int" resultMap="WorksOptionMap">
+        select * from INTR_WKOT where wno=#{no}
+  </select>
+  
+  옵션 수정
+  <update id="update" parameterType="WorksOption">
+  </update>
+  
+  옵션 삭제
+  <delete id="delete" parameterType="map">
+    delete from INTR_ACRGTT WHERE memno=#{memno} and wsano=#{wsano}
+  </delete> -->
+</mapper>
+
+
+
+
+
+
+

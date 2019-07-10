@@ -1,0 +1,95 @@
+section {height: 2000px;margin: 0 auto;}
+h1,h2,h3,h4,h5,h6,p {margin: 0;padding: 0;}
+a {color:#333;text-decoration:none}
+a:active, a:hover {text-decoration:none;}
+.main_visual0 {
+    display: flex;
+    align-items: center;
+	width: 100%;
+	height: 750px;
+	margin: 0 auto;
+	margin-top: 7.5em;
+	background: url('../../images/introduce/visual01.png') no-repeat 50% 50%;
+}
+.intro_visual_00 {
+    width: 700px;
+    height: 350px;
+    margin: 0 auto;
+    background-color: #000;
+    opacity: 0.7;
+}
+.intro_visual_00 h1{
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 2.3em;
+}
+.intro_visual_00 p{
+    text-align: center;
+    color: #fff;
+    margin-top: 1.2em;
+}
+.main_visual1 {
+    display: flex;
+    align-items: center;
+	width: 100%;
+	height: 750px;
+	margin: 0 auto;
+	background: url('../../images/introduce/visual02.png') no-repeat 50% 50%;
+}
+.intro_visual_01 {
+    display: flex;
+    align-items: center;
+    width: 1200px;
+    height: 750px;
+    margin: 0 auto;
+}
+.intro_visual_01_00 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    height: 350px;
+    background-color: #000;
+    opacity: 0.7;
+}
+.intro_visual_01_00 h1{
+    font-weight: bold;
+    color: #fff;
+    margin-left: 1em;
+}
+.intro_visual_01_00 p{
+    color: #fff;
+    margin-top: 1em;
+    margin-left: 2.5em;
+}
+.introduce_people {
+    width: 1200px;
+    height: 600px;
+    margin: 0 auto;
+}
+.introduce_people h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    padding-top: 1em;
+}
+.introduce_people_00 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 400px;
+    float: left;
+}
+.introduce_people_00 h3{
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 0.5em;
+}
+.introduce_people_00 p{
+    font-weight: bold;
+    font-size: 0.825rem;
+    margin-top: 0.25em;
+}

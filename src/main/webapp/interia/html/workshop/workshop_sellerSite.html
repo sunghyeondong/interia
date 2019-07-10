@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>INTERIA</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/header_move.css">
+    <link rel="stylesheet" type="text/css" href="../../css/workshop/workshop_sellerSite.css">
+    <link rel="stylesheet" href="../../node_modules/bxslider/dist/jquery.bxslider.min.css">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/bxslider/dist/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=PbgSjAwHcLlAqc14BbYS&submodules=geocoder"></script>
+</head>
+
+<body>
+    <header id="header">
+        
+    </header>
+    <section style="height: 3100px;">
+	    <div class="workshop_sellerSite_bg">
+	        <div class="workshop_sellerSite_sidemenu">
+	            <div class="workshop_sellerSite_sidemenu_edit">
+	                <button type="button" onClick="location.href='./workshop_profileChange.html'">Edit</button>
+	                <button type="button" onClick="location.href='../admin/store_admin_index.html'">Key</button>
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_img">
+	                
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_imgtext">
+	                
+	                
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_snsbtn">
+	                <div class="workshop_sellerSite_sidemenu_snsbtn_bg">
+
+
+
+	                </div>
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_line_bg">
+	                <div class="workshop_sellerSite_sidemenu_line"></div>
+	            </div>
+	            <div id="ib_wrk_btn">
+	                <!-- <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button style="color: #e67e22;">♥ 스토어 찜하기</button>
+	                </div> -->
+	                <!-- <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button type="button" onClick="location.href='./workshop_sellerSite.html'">홈</button>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button type="button" onClick="location.href='./sellerSite_Introduce.html'">공방소개</button>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button type="button" onClick="location.href='./sellerSite_product.html'">공방작품</button>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button type="button" onClick="location.href='./sellerSite_News.html'">공방소식</button>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button type="button" onClick="location.href='./sellerSite_ex.html'">공방체험</button>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button type="button" onClick="location.href='./sellerSite_Review.html'">구매후기</button>
+	                </div> -->
+	            </div>
+	            <!-- <div class="workshop_sellerSite_sidemenu_line_bg">
+	                <div class="workshop_sellerSite_sidemenu_line"></div>
+	            </div> -->
+	            <!-- <div class="workshop_sellerSite_sidemenu_info">
+	                <div class="workshop_sellerSite_sidemenu_info_title">
+	                    <p>활동정보</p>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_info_sub01">
+	                    <p>좋아하는 사람</p>
+	                    <p>0명</p>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_info_sub01">
+	                    <p>판매중인 제품</p>
+	                    <p>0개</p>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_info_sub01">
+	                    <p>구매후기</p>
+	                    <p>0개</p>
+	                </div>
+	            </div> -->
+	        </div>
+	
+	        <div class="workshop_sellerSite_content">
+	            <div class="workshop_sellerSite_content_visual">
+	                
+	            </div>
+	            <div class="workshop_sellerSite_content_subContent">
+	                <div class="workshop_sellerSite_content_subContent_banner">
+	                    <ul class="subContent_banner_bg">
+	                        <li><img src="../../images/workshop/storeEventbanner.png"></li>
+                            <li><img src="../../images/workshop/storeEventbanner01.png"></li>
+                            <li><img src="../../images/workshop/storeEventbanner02.png"></li>
+	                    </ul>
+	                </div>
+	                
+	                <div class="workshop_sellerSite_content_subContent_snsbanner">
+	                    <div class="workshop_sellerSite_content_subContent_snsbanner00">
+	                        <div class="workshop_sellerSite_content_subContent_snsbanner00_title">
+	                            <div class="snsbanner00_title_00">
+ 
+	                            </div>
+	                            <div class="snsbanner00_title_01">
+	                            
+	                            </div>
+	                        </div>
+	                    </div>
+	                    
+	                    <div id="snsbanner00_img">
+		                    <div id="instafeed">
+		                        <!-- <img src="../../images/workshop/storeSnsImg.png"> -->
+		                    </div>
+	                    </div>
+	                </div>
+	
+	                <div class="sellerSite_ex">
+	                    <div class="sellerSite_ex_img">
+
+	                    </div>
+	                    <div class="sellerSite_ex_text">
+	                        <div class="sellerSite_ex_text_bg">
+                                <div class="sellerSite_ex_text_title">
+                                
+                                </div>
+
+	                            <div class="sellerSite_ex_text_sub">
+
+
+
+
+
+
+
+	                            </div>
+	                            <div class="sellerSite_ex_text_bg01">
+
+
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	                <div class="sellerSite_product">
+	                    <p>공방작품</p>
+	                    <a href="./sellerSite_product.html"><p>+더보기</p></a>
+	                </div>
+	
+	                <div class="sellerSite_product_img">
+	                    <div class="sellerSite_product_img_00">
+
+	                    </div>
+	                </div>
+	                
+	                <div class="sellerSite_review">
+	                    <div class="sellerSite_review_bg">
+	                        <div class="sellerSite_review_bg_title">
+	                            <p>구매후기</p>
+	                            <a href="./sellerSite_Review.html"><p>+더보기</p></a>
+	                        </div>
+	                        
+	                        
+	                        
+	                        
+	                    </div>
+	                </div>
+	                
+	                
+	                <div class="sellerSite_notice">
+	                    <div class="sellerSite_notice_bg">
+	                        <div class="sellerSite_notice_content">
+	                            <div class="sellerSite_review_bg_title">
+	                                <p>공지사항</p>
+	                            </div>
+	                            <p>[공지] INTERIA 공지사항입니다.</p>
+	                            <p>[공지] 초특가 할인 이벤트!!!</p>
+	                            <p>[공지] INTERIA 8월 이벤트</p>
+	                            <!-- <p>[공지] 판매자 사이트 공지사항입니다.</p>
+	                            <p>[공지] 판매자 사이트 공지사항입니다.</p>
+	                            <p>[공지] 판매자 사이트 공지사항입니다.</p>
+	                            <p>[공지] 판매자 사이트 공지사항입니다.</p> -->
+	                        </div>
+	                        <div class="sellerSite_callcenter">
+	                            <div class="sellerSite_review_bg_title">
+	                                <p>상담시간</p>
+	                            </div>
+	                            <div class="sellerSite_callcenter_text">
+	                                <div class="sellerSite_callcenter_text01">
+	                                    <p>평일</p>
+	                                    <p>am 09:00 ~ pm 18:00</p>
+	                                </div>
+	                                <div class="sellerSite_callcenter_text02">
+	                                    <p>점심시간</p>
+	                                    <p>am 11:30 ~ pm 12:30</p>
+	                                </div>
+	                                <h5>주말 및 공휴일은 챗봇을 이용하세요.</h5>
+	                                <h4>010-5254-5487</h4>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	                <div class="sellerSite_map_title">
+	                    <p>찾아오시는 길</p>
+	                </div>
+	                
+	                <div id="sellerSite_map_bg">
+	                    
+	                </div>
+	                
+	        </div>
+	    </div><!-- ***************** -->
+	    </div>
+	</section>
+
+
+    <footer id="footer">
+    </footer>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="../../js/workshop_sellerSite_Map.js"></script>
+    <script src="../../js/instafeed.min.js"></script>
+    <script src="../../js/workshop_sellerSite_slider.js"></script>
+    <script src="../../js/workshop_sellerSite_sidemenu.js"></script>
+    <script src="../../js/workshop_sellerSite_instagram.js"></script>
+    <script src="../../js/workshop_sellerSite_ex.js"></script>
+    <script src="../../js/workshop_sellerSite_product_main.js"></script>
+    
+    <script>
+    var no = location.href.split("=")[1];
+    $.getJSON(serverRoot + "/json/odnwk/listSellerSite",{"no":no} , (data) => {
+        console.log(data);
+        for (var i = 0; i < data.length; i++) {
+            console.log(i);
+            $("<div class='sellerSite_review_bg_content'>" +
+                  "<div class='sellerSite_review_bg_content_img'>" +
+                      "<a href='./sellerSite_Review.html'>" +
+                          "<img src='../../../files/mypage/review/" + data[i].path + "' style='width: 100%; height:100%;'>" +
+                      "</a>" +
+                  "</div>" +
+                  "<div class='sellerSite_review_bg_content_text'>" +
+                      "<p>" + data[i].wtitl + "<p>" +
+                      "<p>" + data[i].nknm + "<p>" +
+                      "<p>" + data[i].qctt + "<p>" +
+                  "</div>" +
+              "</div>"
+            ).appendTo(".sellerSite_review_bg");
+            if (i == 2) {
+            	break;
+            }
+        }
+    });
+    
+    $('#ib_wrk_btn').html(`<div class="workshop_sellerSite_sidemenu_btn00">
+            <button type="button" onClick="location.href='./workshop_sellerSite.html?no=`+ no +`'">홈</button>
+            </div>
+            <div class="workshop_sellerSite_sidemenu_btn00">
+                <button type="button" onClick="location.href='./sellerSite_Introduce.html?no=`+ no +`'">공방소개</button>
+            </div>
+            <div class="workshop_sellerSite_sidemenu_btn00">
+                <button type="button" onClick="location.href='./sellerSite_product.html?no=`+ no +`'">공방작품</button>
+            </div>
+            <div class="workshop_sellerSite_sidemenu_btn00">
+                <button type="button" onClick="location.href='./sellerSite_News.html?no=`+ no +`'">공방소식</button>
+            </div>
+            <div class="workshop_sellerSite_sidemenu_btn00">
+                <button type="button" onClick="location.href='./sellerSite_ex.html?no=`+ no +`'">공방체험</button>
+            </div>
+            <div class="workshop_sellerSite_sidemenu_btn00">
+                <button type="button" onClick="location.href='./sellerSite_Review.html?no=`+ no +`'">구매후기</button>
+            </div>`);
+    </script>
+    
+</body>
+
+</html>

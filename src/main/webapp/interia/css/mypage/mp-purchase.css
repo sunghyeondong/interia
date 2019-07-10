@@ -1,0 +1,162 @@
+h4 {font-weight: bold; margin-right: 1.5em;}
+p{margin: 0;}
+a,a:hover {color: #000; text-decoration: none}
+
+/* 타이틀 */
+.ib-mp-orange>a {
+	color: rgb(230, 126, 34);
+}
+
+.ib-mp-hbox {
+    padding: 0 1em .5em 1em;
+	border-bottom: 3px solid #000;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ib-mp-hbox div {
+	display: flex;
+	align-items: center;
+}
+
+.ib-mp-hbox>div>h3:last-child {
+	margin-left: 1em;
+}
+
+.ib-mp-hbox div select {margin-right: 1em; width: 100px;}
+
+.ib-mp-hbox div select:last-child {margin-right: 0;}
+
+/* 작성한 구매후기 */
+.ib-mp-pur-tbox {
+	display: flex;
+	padding: 1.2em;
+	border-bottom: 1px solid #ccc;
+}
+
+.ib-mp-pur-imgbox {
+	flex-basis: 160px;
+	height: 160px;
+    overflow: hidden;
+}
+
+.ib-mp-pur-imgbox img {
+	width: 100%;
+}
+
+.ib-mp-pur-tbox ul {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex: 7;
+}
+
+.ib-mp-pur-btnbox {
+	flex: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ib-mp-pur-btnbox button {
+	width: 50%;
+	margin: 0 0.5em;
+}
+
+.ib-mp-pur-bbox {
+	padding: 1.2em;
+	border-bottom: 3px solid #ccc;
+	display: flex;
+}
+
+.ib-mp-pur-bbox-left {
+	flex: 1;
+	padding-right: 3em; 
+}
+
+.ib-mp-pur-bbox-right {
+	flex-basis: 100px;
+	height: 100px;
+	overflow: hidden;
+}
+
+.ib-mp-pur-bbox-right img {
+	width: 100%;
+}
+
+.ib-mp-pur-star {
+	display: flex;
+	align-items: center;
+}
+
+.ib-mp-pur-star div i {
+	font-size: 1.875rem;
+	color: rgb(255, 192, 1);
+}
+
+.ib-mp-pur-star p {
+	padding-left: 2em;
+}
+
+.ib-mp-pur-bbox-leftText {
+	padding-top: 1em;
+}
+
+/* 모달창 */
+.modal-backdrop {
+	z-index: 10000;
+}
+
+.modal {
+	z-index: 10001;
+}
+
+.modal-body {
+	padding: 0;
+}
+
+.ib-rev-cont-modal {
+	max-width: 650px !important;
+}
+
+.modal-body>p {
+	text-align: center;
+}
+
+.modal-footer {
+	justify-content: center;
+}
+
+.delconfirmbtn {
+	background: rgb(52, 56, 85);
+	color: #fff;
+	width: 140px;
+}
+
+.sp-rev-imgBox {
+	width: 115px;
+	height: 115px;
+}
+
+.sp-rev-imgBox>img {
+	width: 100%;
+}
+
+.texResize {
+	resize: none;
+}
+
+/*#imgBox>img {
+	width: 100%;
+}*/
+
+#purchaseList, #pur_content {
+	padding-bottom: 3em;
+}
+
+.mp-pur-link {
+	flex: 6;
+	display: flex;
+}

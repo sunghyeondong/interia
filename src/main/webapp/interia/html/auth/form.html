@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>INTERIA</title>
+	<meta charset="utf-8">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"> 
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/header_move.css">
+	<link rel="stylesheet" type="text/css" href="../../css/auth/form.css">
+	<link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+<header id="header">
+</header>
+<section>
+	<div class="main_visual0">
+	</div>
+	<div class="form_mainText">
+		<h1>회원가입</h1>
+		<h1>다양한 정보를 제공받으세요.</h1>
+	</div>
+	<div class="form_subText">
+		<h1>개인정보 입력</h1>
+		<p>('*'은 필수 항목입니다.)</p>
+	</div>
+
+	<div class="form_mainForm">
+		<form>
+			<div>
+				<div class="form_mainForm_Id00">
+					<label>아이디(이메일) *</label>
+				</div>
+				<div class="form_mainForm_Id01">
+					<input type="email" id="fId" placeholder="아이디를 입력하세요">
+				</div>
+			</div>
+			<div>
+				<div class="form_mainForm_Id00">
+					<label>비밀번호 *</label>
+				</div>
+				<div class="form_mainForm_Id01">
+					<input type="password" id="fPassword" placeholder="비밀번호를 입력하세요">
+				</div>
+			</div>
+			<div>
+				<div class="form_mainForm_Id00">
+					<label>이름 *</label>
+				</div>
+				<div class="form_mainForm_Id01">
+					<input type="text" id="fName" placeholder="이름을 입력하세요">
+				</div>
+			</div>
+			<div>
+				<div class="form_mainForm_Id00">
+					<label>전화번호 *</label>
+				</div>
+				<div class="form_mainForm_Id02" id="fPhoneNumber">
+					<select id="fFirstNumber">
+						<option selected>010</option>
+						<option>011</option>
+						<option>016</option>
+						<option>017</option>
+						<option>018</option>
+						<option>019</option>
+					</select>
+					<input type="text" id="fSecondNumber" style="width: 100px;">
+					<input type="text" id="fThirdNumber" style="width: 100px;">
+				</div>
+			</div>
+			<div>
+				<div class="form_mainForm_Id00">
+					<label>닉네임 *</label>
+				</div>
+				<div class="form_mainForm_Id01">
+					<input type="text" id="fNickname" placeholder="별명을 입력하세요">
+				</div>
+			</div>
+			
+			<!-- 항상 폼 안에 둘것! 데이터 넣을 때 -->
+			<div class="form_mainButton">
+				<div class="form_mainButton01">
+					<button id="addBtn" type="button" style="margin-top:3.125em">가입하기</button>
+					<button id="" type="button" style="margin-top:3.125em" onClick="history.back()">취소하기</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	
+	
+</section>
+
+
+
+<footer id="footer">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../js/sign-up-form.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+</footer>
+</body>
+</html>

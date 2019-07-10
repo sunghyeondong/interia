@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 이름은 SQL을 찾을 때 사용하는 그룹명이다.
+     따라서 SQL 문을 사용하는 DAO 클래스 이름과 같게 하면
+     유지보수할 때 알아보기 쉽다.
+     단순히 알아보기 쉬울 뿐만 아니라 
+     스프링 프레임워크와 연동할 때 DAO 객체를 자동 생성할 수 있다. 
+-->
+<mapper namespace="bitcamp.java106.pms.dao.SearchDao">
+
+  <resultMap type="Works" id="WorksMap">
+    <id column="wno" property="no"/> <!-- 작품번호 -->
+    <result column="memno" property="wno"/> <!-- 공방번호 -->
+    <result column="wtitl" property="title"/> <!-- 작품명 -->
+    <result column="price" property="price"/> <!-- 가격 -->
+    <result column="wrtdt" property="registeredDate"/> <!-- 등록날짜 -->
+    <result column="alstk" property="capacity" /> <!-- 재고수량 -->
+    <result column="slst" property="salesStatus" /> <!-- 판매 상태 -->
+    <result column="pddt" property="productDetail" /> <!-- 제품 상세 -->
+    <result column="spcs" property="deliveryPrice" /> <!-- 배송비 여부 -->
+    <result column="pdrd" property="requestDetail" /> <!-- 의뢰내용 -->
+    
+  </resultMap>
+  
+  <!-- SQL 문 id를 설정할 때 SQL문을 사용하는 메서드 이름과 같게하면
+       유지보수할 때 알아보기 쉽다. 
+       알아보기 쉬울 뿐만 아니라
+       스프링 프레임워크와 연동할 때 DAO객체를 자동생성하고 
+       그 메서드를 자동생성할 때 사용할 수 있다.
+  -->
+  <select id="selectList" 
+          resultType="Map" 
+          parameterType="map">
+select distinct wks.wno, wks.wtitl, wks.price, wph.path from INTR_WTMACH wtch
+inner join INTR_HASHTAG htag on wtch.htno = htag.htno
+inner join INTR_WORKS wks on wtch.wno = wks.wno
+inner join INTR_WPHO wph on wks.wno = wph.wno
+where wtitl like concat('%',#{title},'%') or tname like concat('%',#{title},'%')
+GROUP BY wtitl, tname
+  </select>
+  
+  <select id="storeList" 
+          resultType="Map" 
+          parameterType="map">
+SELECT ws.wsnm, wspho.path FROM INTR_STMACH stch
+inner join INTR_HASHTAG htag on stch.htno = htag.htno
+inner join INTR_WRKSHP ws on stch.memno = ws.memno
+inner join INTR_WSPHO wspho on ws.memno = wspho.memno
+where wsnm like concat('%',#{title},'%') or tname like concat('%',#{title},'%')
+  </select>
+  
+  <select id="worksList" 
+          resultType="Map" 
+          parameterType="map">
+select distinct wks.wtitl, wks.price, wph.path, ws.mutua, wks.wno from INTR_WTMACH wtch
+inner join INTR_HASHTAG htag on wtch.htno = htag.htno
+inner join INTR_WORKS wks on wtch.wno = wks.wno
+inner join INTR_WPHO wph on wks.wno = wph.wno
+inner join INTR_WRKSHP ws on wks.memno = ws.memno
+where wtitl like concat('%',#{title},'%') or tname like concat('%',#{title},'%')
+group by wtitl, tname
+limit #{startNo}, #{pageNo}
+  </select>
+  
+  <!-- 파라미터의 타입이 primitive type이나 wrapper 클래스, String 클래스인 경우
+       값을 꺼낼 때 프로퍼티 이름을 마음대로 해도 된다.
+  -->
+  <select id="selectOne" parameterType="int" resultMap="WorksMap">
+<!--     select bno,titl,cont,cdt 
+    from pms2_board 
+    where bno=#{value} -->
+  </select>
+
+</mapper>

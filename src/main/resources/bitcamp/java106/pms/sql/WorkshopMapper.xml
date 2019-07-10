@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- MemberDao.class 파일에서 불러온다! -->
+<mapper namespace="bitcamp.java106.pms.dao.WorkshopDao">
+
+<!-- 여기는 DB 컬럼을 Java에서 지정한 함수명을 저장하는 것 -->
+<!-- Member 클래스 -->
+  <resultMap type="Workshop" id="WorkshopMap">
+    <id column="memno" property="wno"/>
+    <result column="bsno" property="bno"/>
+    <result column="mutua" property="mutual"/>
+    <result column="rname" property="rpstName"/>
+    <result column="indst" property="industry"/>
+    <result column="items" property="items"/>
+    <result column="zcode" property="zcode"/>
+    <result column="baddr" property="baddr"/>
+    <result column="daadr" property="daddr"/>
+    <result column="wsnm" property="studioName"/>
+    <result column="itrod" property="introduction"/>
+    <result column="wsctt" property="wsContent"/>
+    <result column="fcbk" property="facebook"/>
+    <result column="twit" property="twitter"/>
+    <result column="istag" property="instagram"/>
+  </resultMap>
+  
+  <!-- 각 회원마다 판매자 등록이 되어있는지 안되어 있는지 검사! -->
+  <select id="selectOneNumber" resultType="int" parameterType="int">
+    select count(*)
+    from INTR_WRKSHP where memno=#{no}
+  </select>
+  
+  <!-- 판매자 등록 관련 SQL문 -->
+  <insert id="insert" parameterType="Workshop">
+    insert into INTR_WRKSHP(
+      memno, bsno, mutua, rname, indst, items, zcode, baddr, daddr)
+    values(#{wno}, #{bno}, #{mutual}, #{rpstName}, #{industry}, #{items},
+          #{zcode}, #{baddr}, #{daddr})
+  </insert>
+  
+    <!-- workshop_main tap menu -->
+  <select id="selectList" 
+          resultType="Map" 
+          parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    limit 0, #{value}
+  </select>
+  
+  <select id="selectListtwo" 
+          resultType="Map" 
+          parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.PCLSF = "profile"
+    limit #{startRowNo}, #{pageSize}
+  </select>
+  
+  <!-- workshop_main tap menu -->
+  <select id="selectfur" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '가구'
+    limit 0, #{value}
+  </select>
+  
+  <select id="selectfurtwo" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '가구'
+    limit #{startRowNo}, #{pageSize}
+  </select>
+
+  <!-- workshop_main tap menu -->
+  <select id="selectfab" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '패브릭'
+    limit 0, #{value}
+  </select>
+
+  <select id="selectfabtwo" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '패브릭'
+    limit #{startRowNo}, #{pageSize}
+  </select>
+  
+  <!-- workshop_main tap menu -->
+  <select id="selectdeco" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '데코'
+    limit 0, #{value}
+  </select>
+
+  <select id="selectdecotwo" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '데코'
+    limit #{startRowNo}, #{pageSize}
+  </select>
+  
+  <!-- workshop_main tap menu -->
+  <select id="selectapp" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '가전'
+    limit 0, #{value}
+  </select>
+
+  <select id="selectapptwo" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '가전'
+    limit #{startRowNo}, #{pageSize}
+  </select>
+  
+  <!-- workshop_main tap menu -->
+  <select id="selectlife" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '생활'
+    limit 0, #{value}
+  </select>
+
+  <select id="selectlifetwo" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '생활'
+    limit #{startRowNo}, #{pageSize}
+  </select>
+  
+  <!-- workshop_main tap menu -->
+  <select id="selectkit" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '주방'
+    limit 0, #{value}
+  </select>
+
+  <select id="selectkittwo" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '주방'
+    limit #{startRowNo}, #{pageSize}
+  </select>
+  
+  <!-- workshop_main tap menu -->
+  <select id="selectbath" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '욕실'
+    limit 0, #{value}
+  </select>
+
+  <select id="selectbathtwo" resultType="Map" parameterType="map">
+    select wsnm, itrod, path, lpath, wrk.memno as wkmem
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = '욕실'
+    limit #{startRowNo}, #{pageSize}
+  </select>
+  
+  
+  
+  
+  
+  
+  <select id="selectListSellerSite" resultType="Map" parameterType="map">
+    select wsnm, itrod, fcbk, twit, istag, path, lpath
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = 'profile' and wrk.memno = #{value}
+  </select>
+  
+  <select id="selectListSellerSiteBanner" resultType="Map" parameterType="map">
+    select path
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = 'banner' and wrk.memno = #{value}
+  </select>
+  
+  <select id="selectListIntroduce" resultType="Map" parameterType="map">
+    select wsctt, path
+    from INTR_WRKSHP wrk
+    inner join INTR_WSPHO ws on wrk.memno = ws.memno
+    where ws.pclsf = 'introduce'
+  </select>
+  
+  <update id="update" parameterType="Workshop">
+    update INTR_WRKSHP set 
+        wsnm=#{studioName}, 
+        itrod=#{introduction}
+    where memno=#{wno}
+  </update>
+  
+  <update id="updateIntroduce" parameterType="Workshop">
+    update INTR_WRKSHP set 
+        wsctt=#{wsContent}
+    where memno=#{wno}
+  </update>
+  
+   <update id="updTwit" parameterType="Workshop">
+    update INTR_WRKSHP set 
+        twit=#{twitter}
+    where memno=#{wno}
+  </update>
+  
+    <update id="updFacbook" parameterType="Workshop">
+    update INTR_WRKSHP set 
+        fcbk=#{facebook}
+    where memno=#{wno}
+  </update>
+  
+    <update id="updInsta" parameterType="Workshop">
+    update INTR_WRKSHP set 
+        istag=#{instagram}
+    where memno=#{wno}
+  </update>
+  
+    <select id="getInfo" resultType="map" parameterType="int">
+select wsnm, lpath 
+from INTR_WRKSHP wrk 
+inner join INTR_WSPHO ws 
+on wrk.memno = ws.memno 
+where wrk.memno=#{value}
+AND ws.PCLSF='profile'
+  </select>
+
+  <!-- 해당 공방의 대해 정보 출력 -->
+  <select id="selectOne" parameterType="int" resultMap="WorkshopMap">
+    select * from INTR_WRKSHP where memno=#{value}
+  </select>
+
+  <!-- 회원 전체 리스트 출력 -->
+ <!--  <select id="selectList" 
+          resultMap="MemberMap" parameterType="map">
+    select *
+    from INTR_MEMBER
+    order by memno asc
+    limit #{startRowNo}, #{pageSize}
+  </select>
+  --> 
+  <!-- 회원가입 폼에서 작업을 하기 위한 문법 -->
+<!--   <insert id="insert" parameterType="Member">
+    insert into INTR_MEMBER(id, pwd, name, nknm, phno) 
+    values(#{id}, password(#{password}), 
+           #{name}, #{nickname}, #{phoneNumber})
+  </insert>
+ -->  
+  <!-- 아이디와 비밀번호 둘다 일치하면 로그인! -->
+<!--   <select id="selectOneWithPassword" parameterType="map" resultMap="MemberMap">
+    select memno, id, pwd
+    from INTR_MEMBER 
+    where id=#{id} and pwd=password(#{password})
+  </select>
+ -->  
+  <!-- count : 로그인 할 조건 검사 (id와 password가 일치할 시에) -->
+<!--   <select id="count" parameterType="map" resultType="int">
+    select count(*) 
+    from INTR_MEMBER 
+    where id=#{id} and pwd=password(#{password})
+  </select>
+ -->  
+<!--   <update id="update" parameterType="Member">
+    update INTR_MEMBER set 
+        pwd=password(#{password}), 
+        name=#{name},
+        nknm=#{nickname},
+        phno=#{phoneNumber},
+        zcode=#{zipCode},
+        baddr=#{baseAdd},
+        daddr=#{detailAdd}
+    where memno=#{no}
+  </update>
+   -->
+  <!-- 회원 탈퇴용(바로 집어 넣고 보자) -->
+<!--   <delete id="delete" parameterType="String">
+    delete from INTR_MEMBER where memno=#{value}
+  </delete>
+ -->  
+   <!-- 아이디 찾기 검색 -->
+<!--  <select id="selectSearchOne" parameterType="map" resultType="String">
+    select id
+    from INTR_MEMBER 
+    where name=#{name} and phno=#{phoneNumber}
+  </select>
+ -->  
+  <!-- 비밀번호 찾기 (service에서 boolean용으로 쓰이기) -->
+<!--   <select id="selectSearchPassword" parameterType="String" resultType="int">
+    select count(*)
+    from INTR_MEMBER 
+    where id=#{id} 
+  </select>
+ -->  
+  <!-- 비밀번호 변경 관련 문법 -->
+<!--   <update id="updatePassword" parameterType="map">
+    update INTR_MEMBER set 
+        pwd=password(#{password})
+    where id=#{id}
+  </update>
+  
+ -->
+</mapper>
+
+
+
+
+
+
+

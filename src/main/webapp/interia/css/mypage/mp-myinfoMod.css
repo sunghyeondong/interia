@@ -1,0 +1,121 @@
+h4 {font-weight: bold;}
+p{margin: 0;}
+a,a:hover {color: #000; text-decoration: none}
+
+.ib-container {
+    margin-top: 4em;
+}
+
+/* 타이틀 */
+.ib-mp-orange {
+	color: rgb(255, 192, 1);
+}
+
+.ib-mp-infoTitle {
+    padding: 0 1em .5em 1em;
+	border-bottom: 3px solid #000;
+}
+
+.ib_mp_form_row {
+	border-bottom: 1px solid #ccc;
+	display: flex;
+	padding: 1em;
+}
+
+.ib_mp_form_row>p {
+	font-weight: bold;
+	flex: 1;
+}
+
+.ib_mp_form_row>div {
+	flex: 4;
+	font-size: 0.875rem;
+}
+
+.ib_mp_form_right div:first-child {
+	display: flex;	
+	align-items: center;
+	margin-bottom: 1em;
+}
+
+.ib_mp_form_right div:first-child p, .ib_mp_form_right div:last-child input {
+	margin-right: 2em;
+}
+
+.ib_mp_emailForm_btn {
+	display: none;
+}
+
+.mp_email_form {
+	display: none;	
+	align-items: center;
+}
+
+.mp_btn_width {
+	width: 250px;
+}
+
+.ib_mp_formNic,
+.ib_mp_formPhone {
+	display: flex;
+}
+
+.ib_mp_formNic button {
+	margin-left: 2em;
+}
+
+.mp_phone_input {
+	width: 100px;
+}
+
+.ib_mp_formPhone span {
+	padding: 0 1em;
+	line-height: 2em;
+}
+
+.ib_mp_formPasswd p {
+	padding-bottom: 1em;
+}
+
+.ib-mp-addrBox {
+	padding-bottom: 1em;
+}
+
+.ib-mp-addrNum {
+	display: inline-block;
+	width: 15%;
+}
+
+.ib-mp-addrInput {
+	width: 50%;
+	margin-bottom: 1em;
+}
+
+.ib_mp_form_bottom {
+	/*display: flex;*/
+	padding: 1em;
+}
+
+.ib_mp_form_bottom:after {
+	display: block;
+	clear: both;
+	content: '';
+}
+
+.ib_mp_exitBtn {
+	display: block;
+	text-align: center;
+	width: 10%;
+	float: right;
+}
+
+.ib_mp_cbtn {
+	width: 20%;
+	background: rgb(52, 56, 85);
+	color: #fff;
+	margin: 0 auto;
+}
+
+.mp_info_bth {
+	margin-bottom: 5em;
+}

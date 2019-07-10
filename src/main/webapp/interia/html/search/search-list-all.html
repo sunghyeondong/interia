@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/header_move.css">
+    <link href="../../css/search/search-list-common.css" rel="stylesheet">
+    <title>INTERIA</title>
+</head>
+
+<body>
+
+    <header id="header">
+    </header>
+
+    <br><br>
+
+    <div class="sp-container">
+        <div class="search-table">
+            <form class="search-form">
+                <select id="search-select" class="form-control">
+                    <option value="0">전체</option>
+                    <option value="1">작품</option>
+                    <option value="2">공방</option>
+                </select>
+                <input id="search_text" type="text" name="searchInput">
+                <img id="search_btn" src="../../images/header_serach.png">
+            </form>
+        </div>
+
+        
+        <section id="search_list_box" class="form-horizontal sl-form-style">
+            <section id="search_No">
+                <!-- <h3>''값은 없습니다. 다시 입력해주세요.</h3> -->
+            </section>
+            <!-- 제품 -->
+            <div id="work_title"></div>
+
+            <!-- 이부분 그리드(격자 부분 추가) 혹은 flex로 이용하여 맞추기 -->
+            <div id="work_list" class="sl-wrapper">
+                <!-- 여기 부분은 부조건 반복문 사용 -->
+                
+                <!-- 반복문 끝 -->
+            </div>
+
+            <!-- 공방 -->
+            <div id="store_title"></div>
+
+            <!-- 이부분 그리드(격자 부분 추가) 혹은 flex로 이용하여 맞추기 -->
+            <div id="store_list" class="sl-wrapper">
+                <!-- 여기 부분은 부조건 반복문 사용 -->
+                
+                <!-- 반복문 끝 -->
+            </div>
+            
+        </section>
+    </div>
+
+
+    <footer id="footer">
+    </footer>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="../../js/search.js"></script>
+</body>
+
+</html>

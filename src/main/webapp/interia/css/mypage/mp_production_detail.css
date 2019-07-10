@@ -1,0 +1,136 @@
+h4 {font-weight: bold;}
+.ib-mp-pnum {
+	color: #ffc001;
+	font-weight: bold;
+}
+.ib-mp-a:hover {
+	color: black;
+}
+.ib-mp-big {
+	font-size: 1.125em;
+	font-weight: bold;
+}
+.ib-mp-small {
+	font-size: 0.875em;
+	font-weight: bold;
+}
+.ib-mp-dbox {
+    margin-bottom: 2em;
+    font-size: .9em;
+}
+.ib-mp-red {
+	color: red;
+}
+.mp-nav>ul>li>p {
+    margin: 0;
+}
+
+
+/**** 리뷰 모달 ****/
+.ib-rev-cont-modal {
+    max-width: 650px !important;
+}
+
+
+/**** 제목 ***/
+.ib-mp-titl {
+	padding: 0 1em .5em 1em;
+}
+
+
+/**** 전체 틀 ****/
+.ib-mp-whole {
+	margin-bottom: 10em;
+}
+
+
+/**** 신청 정보 ****/
+.ib-mp-dsubtitl {
+	padding-bottom: 0.3125em;
+	border-bottom: 2px solid #000;
+}
+.ib-mp-dsubtitl > p {
+	margin-bottom: 0;
+}
+.ib-mp-warning {
+	text-align: right;	
+}
+.ib-mp-dlist {
+	display: flex;
+	padding: 1.25em 1.5625em;
+	margin: 1.25em 0;
+	align-items: center;
+	border-top: #D5D5D5 solid 1px;
+}
+.ib-mp-dimg {
+	width: 130px; height: 130px;
+	margin-right: 2.5em;
+	overflow: hidden;
+}
+.ib-mp-dimg img {
+	width: 100%;
+	height: 100%;
+}
+.ib-mp-dpdt {
+	flex: 6;
+	border-right: #D5D5D5 solid 1px;
+}
+.ib-mp-dpdt > p {
+	margin-bottom: 3px;
+    font-size: .9em;
+}
+.ib-mp-dpdt > p:nth-child(2) {
+	margin-bottom: 0.625em;
+}
+.ib-mp-cancel {
+	flex: 1;
+	padding-left: 3.125em;
+}
+.btn-outline-dark {
+    font-size: 1em;
+    padding: .35em .45em;
+}
+.btn-outline-dark:hover {
+	background: #fff;
+	color: #000;
+}
+
+
+/**** 받는 사람 정보 ****/
+.ib-mp-dsubtit {
+	font-size: 1.125em;
+	padding-bottom: 0.3125em;
+	border-bottom: 3px solid #000;
+}
+.ib-mp-receive table th {
+	width: 180px;
+	font-weight: normal;
+	text-align: center;
+	background: #FAFAFA;
+}
+.ib-mp-receive table tr:last-child {
+	border-bottom: 1px solid #dee2e6;
+}
+
+
+/**** 결재 정보 ****/
+.ib-mp-payment table tr:last-child {
+	border-bottom: 1px solid #dee2e6;
+}
+.ib-mp-payment table tr td:last-child {
+	background: #FAFAFA;
+}
+.ib-mp-payment table div {
+	display: inline-block; 
+	margin: 0.3125em 0;
+}
+.ib-mp-div1 {
+	width: 150px;
+	text-align: center;
+}
+.ib-mp-div2 {
+	width: 320px;
+}
+.ib-mp-div3 {
+	text-align: right;
+}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>INTERIA</title>
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/header_move.css">
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.css">
+
+    <link rel="stylesheet" type="text/css" href="../../css/mypage/mp_mypage.css">
+    <link rel="stylesheet" type="text/css" href="../../css/mypage/mp-exstore.css">
+    <link rel="stylesheet" href="../../css/mypage/mp_follow_popup.css">
+
+    
+</head>
+<body>
+    <!--헤더-->
+    <header id="header">
+        
+    </header>
+    
+    <section class="mp-main">
+        <div class="mp-banner">
+            
+        </div><!--배너-->
+        
+        <!-- following modal -->
+    <div class="modal fade" id="followingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="mp-follow-popup">
+                <p>팔로잉</p>
+                <div class="mp-follow-box1">
+                    <ul>
+                        <div>
+                            <li class="mp-follow-list">
+                                <div>
+                                    <div class="mp-follow-img"><a><img src="../../images/mypage/follow_img1.jpg"></a></div>
+                                    <div class="mp-follow-name"><a>sobbi947</a></div>
+                                    <div class="mp-follow-btn"><button type="button" id="follow-btn" class="btn btn-primary btn-sm">팔로잉</button></div>
+                                </div>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- following modal -->
+    
+    <!-- follower modal -->
+    <div class="modal fade" id="followerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="mp-follow-popup">
+                <p>팔로우</p>
+                <div class="mp-follow-box1">
+                    <ul>
+                        <div>
+                            <li class="mp-follow-list">
+                                <div>
+                                    <div class="mp-follow-img"><a><img src="../../images/mypage/follow_img1.jpg"></a></div>
+                                    <div class="mp-follow-name"><a>sobbi947</a></div>
+                                    <div class="mp-follow-btn"><button type="button" id="follow" class="btn btn-outline-dark btn-sm">팔로우</button></div>
+                                </div>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- follower modal -->
+    
+        <!-- iamge cropit -->
+        <div class="mp-banner-image">
+            <div class="image-editor">
+                <div class="cropit-preview"></div>
+                <div class="mp-slider">
+                    <div class="mp-slider-inner1">
+                        <div class="mp-zoom-box">
+                            <span class="mp-min-box"></span>
+                            <input type="range" class="cropit-image-zoom-input"/>
+                            <span class="mp-max-box"></span>
+         <!-- fileUpload --><input id="fileupload-banner" type="file" class="cropit-image-input">
+                        </div>    
+                        <div class="mp-crop-btns">
+                            <button type="button" class="mp-cropit-cancel">취소</button>
+                            <button type="submit" class="mp-cropit-apply">적용</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav id="mainMenu">
+            <nav class="mp-nav mp-bar1">
+                <ul>
+                    <li id="promenus">
+                        <a href="mp_post.html">프로필</a>
+                        <nav class="mp-bar3" id="submenus">
+                            <ul>
+                                <li><a href="mp_post.html">사진</a></li>
+                                <li><a href="mp_like.html">좋아요</a></li>
+                            </ul>
+                        </nav>
+                    </li>
+                    <li id="promenus">
+                        <a href="mp_delivery_list.html">쇼핑</a>
+                        <nav class="mp-bar3" id="submenus">
+                            <ul>
+                                <li><a href="mp_delivery_list.html">주문/배송 내용</a></li>
+                                <li><a href="mp_cancel_list.html">취소/환불 내역</a></li>
+                            </ul>
+                        </nav>
+                    </li>
+                    <li class="mp-on" id="promenus">
+                        <a href="mp-exstore.html" class="mp-current1">나의 활동</a>
+                        <nav class="mp-bar3" id="submenus">
+                            <ul>
+                                <li class="mp-current2"><a href="mp-exstore.html">공방체험</a></li>
+                                <li><a href="mp-qna.html">문의 내역</a></li>
+                                <li><a href="mp-purchase.html">구매 후기</a></li>
+                            </ul>
+                        </nav>
+                    </li>
+                    <li id="promenus">
+                        <a href="mp-myinfo.html">내 정보</a>
+                        <nav class="mp-bar3" id="submenus">
+                            <ul>
+                                <li><a href="mp-myinfo.html">회원 정보 관리</a></li>
+                                <li><a href="../workshop/workshop_request.html">스토어 신청</a></li>
+                            </ul>
+                        </nav>
+                    </li>
+                </ul>
+            </nav>
+        </nav>
+    </section><!--고정 메뉴-->
+    
+    <div class="ib-container mp_side">
+        <div class="ib-conbox">
+        <div class="ib-mp-hbox">
+            <h4>내가 참여한 수업</h4>
+            <div>
+                <select class="form-control form-control-sm">
+                    <option>전체</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+                <select class="form-control form-control-sm">
+                    <option>2018</option>
+                    <option>2017</option>
+                    <option>2016</option>
+                </select>
+            </div>
+        </div><!-- 참여수업 타이틀 -->
+
+        <section>
+            <div id="exstorelist">
+                
+            </div>
+
+            <!-- 예약 Modal -->
+            <div class="modal fade" id="reservCBtn" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>예약을 취소하면 예약금을 돌려 받을 수 없습니다.</p>
+                    <p>정말 취소하시겠습니까?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn reservbtn">예약 취소</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </section>
+        </div>
+        <!-- scrollerbar_underMenu -->
+        <section id="mp_underBar"></section>
+    </div>
+
+<footer id="footer">
+    
+</footer>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="../../node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
+    <script src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script> 
+    <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>  
+    <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../node_modules/cropit/dist/jquery.cropit.js"></script>
+    <script type="text/javascript" src="../../js/mypage.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="../../js/mp_pfHead.js"></script>
+    <script src="../../js/mp_banner.js"></script>
+    <script src="../../js/mp_profile.js"></script>
+    <!-- <script src="../../js/mp_exstore.js"></script> -->
+    <script>
+        $.getJSON(serverRoot + "/json/auth/loginUser", (data) => {
+            console.log(data);
+            console.log(data.no);
+            var uno = data.no;
+            $.getJSON("../../../json/wsav/list",{"no": uno}, (data) => {
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                var tsp = data[i].actdt;
+                var acDate = new Date(tsp);
+                var year = acDate.getFullYear();
+                var month = acDate.getMonth() + 1;
+                var date = acDate.getDate();
+                $("<div/>")
+                    .html("<div class='ib-mp-st'>" + 
+                    "<div class='ib-mp-st-imgbox'>" +
+                        "<img src='../../../files/mypage/" + data[i].path + "' width='100%'>" +
+                    "</div>" +
+                    "<div class='ib-mp-st-contbox'>" +
+                        "<h5>[" + data[i].wsnm + "] " + data[i].acnm + "</h5>" +
+                        "<div>" +
+                            "<i class='far fa-calendar'></i>" +
+                            "<p>"+ year +"년 "+ month +"월 "+ date +"일"+"</p>" +
+                        "</div>" +
+                        "<div>" +
+                            "<i class='far fa-clock'></i>" +
+                            "<p>"+ data[i].avst +" ~ "+ data[i].avet +" 예정</p>" +
+                        "</div>" +
+                        "<div>" +
+                            "<i class='fas fa-map-marker-alt'></i>" +
+                            "<p>" + data[i].baddr + "</p>" +
+                        "</div>" +
+                    "</div>" +
+                    "<div class='ib-mp-st-totalbox'>" +
+                        "<p>" + data[i].apric + " 원</p>" +
+                        "<p>("+ data[i].acpt +"인)</p>" +
+                        "<p>예약 완료</p>" +
+                    "</div>" +
+                    "<div id='black-fade' class='black_overlay'>" +
+                        "<button type='button' class='btn btn-light btn-sm' data-toggle='modal' data-target='#reservCBtn"+ i +"'>예약 취소</button>" +
+                    "</div>" +
+                "</div>"+
+
+                "<div class='modal fade' id='reservCBtn"+ i +"' tabindex='-1' role='dialog' aria-hidden='true'>" +
+                  "<div class='modal-dialog modal-dialog-centered' role='document'>" +
+                    "<div class='modal-content'>" +
+                      "<div class='modal-header'>" +
+                        "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
+                          "<span aria-hidden='true'>&times;</span>" +
+                        "</button>" +
+                      "</div>" +
+                      "<div class='modal-body'>" +
+                        "<p>예약을 취소하면 예약금을 돌려 받을 수 없습니다.</p>" +
+                        "<p>정말 취소하시겠습니까?</p>" +
+                      "</div>" +
+                      "<div class='modal-footer'>" +
+                        "<button type='button' id='reserDelbtn' class='btn reservbtn' onclick='listDel("+ data[i].wsano +")'>예약 취소</button>" +
+                      "</div>" +
+                    "</div>" +
+                  "</div>" +
+                "</div>").appendTo("#exstorelist");
+            }
+            });
+        });
+
+            function listDel(ino) {
+                $.getJSON(serverRoot + "/json/auth/loginUser", (data) => {
+                    var uno = data.no;
+                    $.getJSON("../../../json/wsav/delete",{"no": uno, "wsano": ino}, (data) => {
+                        
+                    });
+                });
+                location.reload();
+            }
+    </script>
+</body>
+</html>

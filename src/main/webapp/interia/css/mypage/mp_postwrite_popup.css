@@ -1,0 +1,130 @@
+/**** 전체 팝업 ****/
+.mp-postwrite-popup {
+	border: solid #D5D5D5 0.5px;
+	overflow: hidden;
+	border-radius: 5px;
+	width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+}
+
+
+/**** 팝업 내부 ****/
+h4 {
+	font-weight: bold;
+	padding: 0.9375em 0 0.625em 0;
+	border-bottom: #BDBDBD solid 0.5px;
+	text-align: center;
+}
+.mp-postwrite-box {
+	padding: 1.875em;
+}
+
+/**** 사진 ****/
+.mp-select-pic {
+	position: relative;
+	border: #D5D5D5 dashed 1px;
+	border-radius: 3px;
+	width: 440px; height: 350px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-bottom: 1.875em;
+	cursor: pointer;
+}
+.mp-inner-icon {
+	text-align: center;
+	vertical-align: middle;
+	color: #ffc001;
+	font-weight: bold;
+}
+.mp-inner-icon > i {
+	font-size: 4em;
+}
+#fileupload-post {
+	display: none;
+}
+.mp-postwrite-cover {
+	position: absolute;
+	background-color: rgba(0,0,0,0.3);
+    border-radius: 3px;
+	opacity: 0;
+	width: 100%; 
+	height: 100%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity .5s ease; 
+}
+.mp-select-pic:hover .mp-postwrite-cover {
+	opacity: 1;
+} 
+.mp-postwrite-cover > .mp-inner-icon {
+    color: #fff;
+}
+
+
+/**** 설명 ****/
+textarea {
+	resize: none;
+	margin-bottom: 1.25em;
+	overflow: hidden;
+}
+textarea::-webkit-input-placeholder {
+	-webkit-text-fill-color: #BDBDBD;
+	font-size: 1.125em;
+}
+textarea:-ms-input-placeholder {
+	-webkit-text-fill-color: #BDBDBD;
+	font-size: 1.125em;
+}
+textarea::placeholder {
+	-webkit-text-fill-color: #BDBDBD;
+	font-size: 1.125em;
+}
+
+/**** 해시태그 ****/
+/* .mp-post-put {
+	width: 110px; height: 32px;
+	line-height: 32px;
+	border-radius: 5px;
+	display: inline-block;
+	background: #F5F5F5;
+	padding-left: 0.625em;
+    margin-right: 0.625em;
+    outline: none;
+}
+.mp-post-put:before {
+	content: "# " attr(placeholder);
+    color: #CFCFCF;
+}
+.mp-post-put[contentEditable=true]:empty:focus:before {
+    content: attr(data-text);
+} */
+
+.tag-editor {
+	border: solid #EAEAEA 1px !important;
+	border-radius: 5px;
+	font-size: 1em !important;
+	line-height: 27px !important;
+	font-family: inherit !important;
+	white-space: nowrap;
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
+
+/**** 버튼 ****/
+.mp-post-regist {
+	text-align: center;
+}
+.mp-post-btn {
+	margin-top: 1.875em;
+	background: #343855;
+	border: #343855;
+	padding: 0.5em 0.9375em;
+}
+.mp-post-btn:hover {
+	background: #343855;
+}

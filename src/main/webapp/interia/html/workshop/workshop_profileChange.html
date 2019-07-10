@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>INTERIA</title>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/header_move.css">
+	<link rel="stylesheet" type="text/css" href="../../css/workshop/form.css">
+	<link rel="stylesheet" type="text/css" href="../../css/workshop/workshop_main.css">
+	<link rel="stylesheet" href="../../node_modules/blueimp-file-upload/css/jquery.fileupload.css">
+    <link rel="stylesheet" href="../../node_modules/blueimp-file-upload/css/jquery.fileupload-ui.css">
+	<link rel="stylesheet" href="../../node_modules/bxslider/dist/jquery.bxslider.min.css">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/bxslider/dist/jquery.bxslider.min.js"></script>
+</head>
+<body>
+<header id="header">
+</header>
+<section style="height: 1400px;">
+    <div class="main_visual0">
+        <ul class="workshop_visual_bg">
+            <li><img src="../../images/workshop/visual01.png"></li>
+            <li><img src="../../images/workshop/visual02.png"></li>
+            <li><img src="../../images/workshop/visual03.png"></li>
+        </ul>
+    </div>
+    
+    <div class="form_subText">
+        <h1>프로필 수정</h1>
+    </div>
+
+    <div class="workshop_form_mainForm">
+        <form>
+            <div>
+                <div class="workshop_form_mainForm_Id00">
+                    <label>공방명 *</label>
+                </div>
+                <div class="workshop_form_mainForm_Id01">
+                    <input type="text" id="profile_input">
+                    <p>한글,영문,숫자 혼용가능 (한글 기준 10자 이내)</p>
+                </div>
+            </div>
+            <div>
+                <div class="workshop_form_mainForm_Id00_textarea">
+                    <label>소개글 *</label>
+                </div>
+                <div class="workshop_form_mainForm_Id01_textarea">
+                    <textarea id="profile_textarea" name="testt" onkeyup="len_chkk()" style="resize: none;"></textarea>
+                    <p>사이트 프로필 영역의<br>업체 사진 아래에 반영됩니다.<br>(한글 기준 50자 이내)</p>
+                </div>
+            </div>
+            <div>
+                <div class="workshop_form_mainForm_Id00_img01">
+                    <label>로고 사진 *</label>
+                </div>
+                <div class="workshop_form_mainForm_Id01_img01">
+                    <input id="fileupload00" type="file" name="files" multiple>
+                    <input id="fileupload00_hidden">
+                    <p>- 업체 사진은 100x100 사이즈로 생성됩니다.</p>
+                    <p>- gif,png 이미지 사용을 권장합니다.</p>
+                    <p>- jpg는 화질이 저하될 수 있습니다.</p>
+                </div>
+            </div>
+            <div>
+                <div class="workshop_form_mainForm_Id00_img02">
+                    <label>커버 사진 *</label>
+                </div>
+                <div class="workshop_form_mainForm_Id01_img02">
+                    <input id="fileupload01" type="file" name="files" multiple>
+                    <input id="fileupload01_hidden">
+                    <p>- 커버 사진은 900x300 사이즈로 생성됩니다.</p>
+                    <p>- gif,png 이미지 사용을 권장합니다.</p>
+                    <p>- jpg는 화질이 저하될 수 있습니다.</p>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+    
+    <div class="form_mainButton" style="margin-top: 7em;">
+        <div class="form_mainButton01">
+            <button type="button" id="profile_btn">신청하기</button>
+            <button type="button">취소하기</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+<footer id="footer">
+</footer>
+    <script src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="../../node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
+    <script src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+    <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+    <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="../../js/workshop_profileChange.js"></script>
+    
+    <script>
+    /* $('#fileupload00').fileupload({
+        url: '../../../json/wspho/add',        // 서버에 요청할 URL
+        dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
+        autoUpload: true,
+        add: function (e, data) {
+          console.log('add()...');
+          $.each(data.files, function (index, file) {
+              console.log('Added file: ' + file.name);
+              //$('#fileupload00_hidden').val(file.name);
+          });
+          //data.submit();
+          //$('#profile_btn').click(function() {
+          //    data.submit();
+          //});
+        }, 
+        done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
+          console.log('done()...');
+          console.log(data.result);
+          $.each(data.result, function(index, file) {
+            $('<p/>').text(file.filename + " : " + file.filesize).appendTo(document.body);
+            console.log(file.filename);
+            $('#fileupload00_hidden').val(file.filename);
+          });
+        }
+      }); */
+
+    $('#fileupload00').fileupload({
+    	url: '../../../json/workshop/addfile',        // 서버에 요청할 URL
+        dataType: 'json',
+        autoUpload: true,
+        done: function (e, data) { 
+          console.log('done()...');
+          console.log(data.result); // 서버가 보낸 JSON 객체는 data.result 에 보관되어 있다.
+          $('#fileupload00_hidden').val(data.result.filename);
+        }
+    });
+    $('#fileupload01').fileupload({
+        url: '../../../json/workshop/addfile',        // 서버에 요청할 URL
+        dataType: 'json',
+        autoUpload: true,
+        done: function (e, data) { 
+          console.log('done()...');
+          console.log(data.result); // 서버가 보낸 JSON 객체는 data.result 에 보관되어 있다.
+          $('#fileupload01_hidden').val(data.result.filename);
+        }
+    });
+    
+    $("#profile_btn").click(() => {
+        $.getJSON(serverRoot + "/json/auth/loginUser", (data) => {
+            console.log(data.no);
+            $.post(serverRoot + "/json/workshop/update", {
+                wno : data.no,
+                studioName : $("#profile_input").val(),
+                introduction : $("#profile_textarea").val()
+            });
+            $.post(serverRoot + "/json/workshop/addwspho", {
+                wno : data.no,
+                filename : $("#fileupload00_hidden").val(),
+                filenametwo : $("#fileupload01_hidden").val()
+            }, () => {
+                location.href = "workshop_sellerSite.html";
+            });
+        });
+    });
+    </script>
+</body>
+</html>

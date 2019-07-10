@@ -1,0 +1,54 @@
+<!-- 유의사항!
+    : 여기서는 경로명이 interior로 되어져 있는 부분을 interior로
+    : 하다가 까먹고 수정을 못한 경우가 있을 수 있으므로....
+-->
+    	<div id="header_bg" class="header_bg">
+    		<div class="header_logo">
+    			<a href="/interior/interia/html/main/index.html"><img src="../../images/logo.png"></a>
+    		</div>
+    		
+    		<!-- id관련
+    		  - nav-link-1 : 로그인    / 글쓰기
+    		  - nav-link-2 : 회원가입 / 장바구니
+    		  - nav-link-3 :         알림
+    		  - nav-link-4 :         로그아웃
+    		  - nav-link-5 :         회원닉네임
+    		-->
+    		<div class="header_nav1">
+    			<a id="nav-link-1" href="/interior/interia/html/auth/login.html">로그인</a>
+    			<a id="nav-link-2" href="/interior/interia/html/auth/form.html">회원가입</a>
+    			<a id="nav-link-3" href="#"></a>
+    			<a id="nav-link-4" href="#"></a>
+				<!-- 여기는 로그인 상태에서만 보이도록 한다. -->
+				<span id="dropdown" class="dropdown">
+					<a id="nav-link-5" href="">여기는 마이페이입니다.</a>
+			
+					<!-- 여기는 드롭다운용 코드 -->
+					<span class="dropdown-content dropdown-menu dropdown-menu-right">
+						<b id="mypageName" class="dropdown-header">username(마이페이지)</b>
+						<hr class="header_hr_style_mypage">
+<!-- 						<p id="write" class="dropdown-item">글쓰기</p>
+						<p id="write-order" class="dropdown-item">주문제작 글쓰기</p>
+						<hr class="header_hr_style_mypage">
+						<p id="state-order" class="dropdown-item">주문제작상태</p> -->
+						<p id="state-apply-works" class="dropdown-item">공방신청or관리자</p>
+						<!-- <hr class="header_hr_style_mypage"> -->
+						<p id="setting-myprofile" class="dropdown-item">설정 및 개인정보</p>
+						<p id="logout" class="dropdown-item">로그아웃</p>
+					</span>
+					<!-- 드롭다운용 코드 끝 -->
+				</span>
+    		</div>
+    		<div class="header_nav2">
+    			<a href="/interior/interia/html/introduce/interia_introduce.html">소개</a>
+    			<a href="/interior/interia/html/works/works_list.html">판매작품</a>
+    			<a href="/interior/interia/html/workshop/workshop_main.html">공방</a>
+    			<a href="/interior/interia/html/sns/photo_main.html">자랑하기</a>
+    		</div>
+    		<div class="header_search">
+    			<!-- <input type="text" name="searchkeyword" placeholder="검색"> -->
+    			<button><a href="/interior/interia/html/search/search-list-all.html">
+    			<img src="../../images/header_serach.png"></a></button>
+    		</div>
+    	</div>
+

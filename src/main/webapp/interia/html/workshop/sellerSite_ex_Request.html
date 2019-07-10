@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>INTERIA</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/header_move.css">
+    <link rel="stylesheet" type="text/css" href="../../css/workshop/workshop_sellerSite.css">
+</head>
+
+<body>
+    <header id="header">
+    </header>
+    <section style="height: 1300px;">
+	    <div class="workshop_sellerSite_bg" style="height: 1300px;">
+	        <div class="workshop_sellerSite_sidemenu">
+	            <div class="workshop_sellerSite_sidemenu_edit">
+	                <button type="button" onClick="location.href='./workshop_profileChange.html'">Edit</button>
+	                <button type="button" onClick="location.href='./workshop_profileChange.html'">Key</button>
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_img">
+
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_imgtext">
+
+
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_snsbtn">
+	                <div class="workshop_sellerSite_sidemenu_snsbtn_bg">
+
+
+
+	                </div>
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_line_bg">
+	                <div class="workshop_sellerSite_sidemenu_line"></div>
+	            </div>
+	            <div>
+	                <!-- <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button style="color: #e67e22;">♥ 스토어 찜하기</button>
+	                </div> -->
+	                <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button type="button" onClick="location.href='./workshop_sellerSite.html'">홈</button>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button type="button" onClick="location.href='./sellerSite_Introduce.html'">공방소개</button>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button  type="button" onClick="location.href='./sellerSite_product.html'">공방작품</button>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button type="button" onClick="location.href='./sellerSite_News.html'">공방소식</button>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button type="button" onClick="location.href='./sellerSite_ex.html'" style="background-color: #ffc001; border: 1px solid #ffc001;">공방체험</button>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_btn00">
+	                    <button type="button" onClick="location.href='./sellerSite_Review.html'">구매후기</button>
+	                </div>
+	            </div>
+	            <!-- <div class="workshop_sellerSite_sidemenu_line_bg">
+	                <div class="workshop_sellerSite_sidemenu_line"></div>
+	            </div>
+	            <div class="workshop_sellerSite_sidemenu_info">
+	                <div class="workshop_sellerSite_sidemenu_info_title">
+	                    <p>활동정보</p>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_info_sub01">
+	                    <p>좋아하는 사람</p>
+	                    <p>0명</p>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_info_sub01">
+	                    <p>판매중인 제품</p>
+	                    <p>0개</p>
+	                </div>
+	                <div class="workshop_sellerSite_sidemenu_info_sub01">
+	                    <p>구매후기</p>
+	                    <p>0개</p>
+	                </div>
+	            </div> -->
+	        </div>
+	        <div class="workshop_sellerSite_content">
+	            <div class="sellerSite_ex_title">
+	                <p>체험 신청하기</p>
+	            </div>
+	            <div class="sellerSite_ex_contentMain">
+	                <div class="sellerSite_ex_content00">
+	                    
+	                </div>
+	                <div class="sellerSite_ex_content01">
+	                    
+	                    
+	                    
+	                </div>
+	                
+	                <div class="sellerSite_ex_subcontent_btn">
+	                    <button type="button" onClick="location.href='./workshop_sellerSite.html'">신청하기</button>
+	                </div>
+	            </div>
+	
+	        </div>
+	
+	
+	
+	    </div><!--************-->
+	</section>
+
+
+    <footer id="footer">
+    </footer>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="../../js/workshop_sellerSite_sidemenu.js"></script>
+    
+    <script>
+    $.getJSON(serverRoot + "/json/workshop/listSellerSite", (data) => {
+        $("<p>체험 스토어 : " + data[0].wsnm + "</p>"
+        ).appendTo(".sellerSite_ex_content00");
+    });
+    $.getJSON(serverRoot + "/json/wsav/sellerSiteList", (data) => {
+        $("<a href='#'>" +
+              "<img src='../../../files/workshop/" + data[0].path + "' style='width: 120px; height:95px;'>" +
+          "</a>" +
+          "<p>" + data[0].acnm + "</p>" +
+          "<p>인원:1명</p>"
+        ).appendTo(".sellerSite_ex_content01");
+    });
+    </script>
+</body>
+
+</html>

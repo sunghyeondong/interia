@@ -1,0 +1,124 @@
+h4 {font-weight: bold;}
+p{margin: 0;}
+a,a:hover {color: #000; text-decoration: none}
+
+.ib-mp-hbox {
+    padding: 0 1em .5em 1em;
+    border-bottom: 3px solid #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ib-mp-hbox div {
+    display: flex;
+    align-items: center;
+}
+
+.ib-mp-hbox div select {margin-right: 1em; width: 100px;}
+
+.ib-mp-hbox div select:last-child {margin-right: 0;}
+
+.ib-mp-st {
+    margin-top: 1.5em;
+    margin-bottom: 1em; 
+    border: 1px solid #999;
+    display: flex;
+    padding: 1em;
+    position: relative;
+}
+
+.ib-mp-st-imgbox {
+    flex-basis: 200px;
+}
+
+.ib-mp-st-contbox {
+    padding-left: 2.5em;
+    flex-grow: 2;
+}
+
+.ib-mp-st-contbox h5 {
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    line-height: 2em;
+}
+
+.ib-mp-st-contbox div {
+    display: flex;
+    align-items: center;
+    padding-top: 1em;
+}
+
+.ib-mp-st-contbox div i {
+    font-size: 1.57rem;
+    margin-right: 1em;
+    flex-basis: 50px;
+}
+
+.ib-mp-st-totalbox {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ib-mp-st-totalbox p:nth-child(1),.ib-mp-st-totalbox p:nth-child(3) {
+    font-weight: bold;
+}
+
+.ib-mp-st-totalbox p:nth-child(3) {
+    margin-top: 2em;
+    color: rgb(211, 84, 0);
+}
+
+.black_overlay{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index:12;
+    /*-moz-opacity: 0.6;
+    opacity:.60;
+    filter: alpha(opacity=60);*/
+}
+
+.ib-mp-st:hover .black_overlay{
+    display: flex;
+}
+
+.black_overlay>button {
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    width: 180px;
+    cursor: pointer;
+}
+
+.reservbtn {
+    background: rgb(52, 56, 85);
+    color: #fff;
+    width: 140px;
+}
+
+.modal {
+    z-index: 10001;
+}
+
+.modal-backdrop {
+    z-index: 10000;
+}
+
+.modal-footer {
+    justify-content: center;
+}
+
+.modal-body>p {
+    text-align: center;
+}

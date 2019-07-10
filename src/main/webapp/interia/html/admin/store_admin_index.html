@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>공방관리자</title>
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../css/admin/store_admin_common.css">
+<link rel="stylesheet"
+	href="../../node_modules/@fortawesome/fontawesome-free/css/all.css">
+<link rel="shortcut icon" href="../favicon.ico">
+
+</head>
+<body>
+	<div id="ad-header"></div>
+	<div class="ad-main-wrapper">
+		<div class="ad-main-content">
+			<!-- ad-breadcrumb -->
+			<ol class="ad-breadcrumb">
+				<li class="ad-breadcrumb-item"><a href="#">관리자</a></li>
+				<li class="ad-breadcrumb-item active">main</li>
+			</ol>
+
+			<!-- card contents(ad-row)-->
+			<div class="ad-row">
+				<div class="ad-card-wrapper">
+					<div class="ad-card ad-card-default ad-main-color1">
+						<div class="ad-card-body">
+							<div class="ad-card-body-icon">
+								<i class="fas fa-shopping-cart"></i>
+							</div>
+							<div class="ad-card-content">주문현황</div>
+							<div class="ad-card-data">
+								<div class="ad-card-data-value">
+									<p>오늘주문</p>
+									<p>26건</p>
+								</div>
+								<div class="ad-card-data-value">
+									<p>주간주문</p>
+									<p>26건</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ad-card-wrapper">
+					<div class="ad-card ad-card-default ad-main-color2">
+						<div class="ad-card-body">
+							<div class="ad-card-body-icon">
+								<i class="fas fa-exchange-alt"></i>
+							</div>
+							<div class="ad-card-content">클레임</div>
+							<div class="ad-card-data">
+								<div class="ad-card-data-value">
+									<p>요청</p>
+									<p>26건</p>
+								</div>
+								<div class="ad-card-data-value">
+									<p>취소</p>
+									<p>26건</p>
+								</div>
+								<div class="ad-card-data-value">
+									<p>완료</p>
+									<p>26건</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ad-card-wrapper">
+					<div class="ad-card ad-card-default ad-main-color3">
+						<div class="ad-card-body">
+							<div class="ad-card-body-icon">
+								<i class="fas fa-boxes"></i>
+							</div>
+							<div class="ad-card-content">상품 현황</div>
+							<div class="ad-card-data">
+								<div class="ad-card-data-value">
+									<p>판매중</p>
+									<p>26건</p>
+								</div>
+								<div class="ad-card-data-value">
+									<p>품절</p>
+									<p>2건</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+<!-- 				<div class="ad-card-wrapper">
+					<div class="ad-card ad-card-default ad-main-color4">
+						<div class="ad-card-body">
+							<div class="ad-card-body-icon">
+								<i class="fas fa-store"></i>
+							</div>
+							<div class="ad-card-content">스토어 현황</div>
+							<div class="ad-card-data">
+								<div class="ad-card-data-value">
+									<p>방문자 수(어제)</p>
+								</div>
+								<div class="ad-card-data-value">
+									<p>방문자 수(오늘)</p>
+								</div>
+								<div class="ad-card-data-value">
+									<p>팔로워 수</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> -->
+			</div>
+			<div style="display: flex; justify-content: space-around">
+				<div class="ad-card-wrap-custom">
+					<div class="ad-card-default">
+						<div class="ad-card-header">
+							<i class="fas fa-share-square"></i> SNS 등록
+						</div>
+						<div class="ad-card-body">
+							<div class="ad-sns-wrapper">
+								<div class="ad-sns">
+									<div class="ad-sns-img ad-sns01"></div>
+									<div class="ad-input">
+										<input
+											id="twit" 
+											type="text" class="form-control" placeholder="URL"
+											aria-label="Recipient's username"
+											aria-describedby="basic-addon2">
+										<div class="input-group-append">
+											<button 
+											id="snsTwiter" class="btn btn-outline-warning" type="button">저장</button>
+										</div>
+									</div>
+									<!--                             <label class="switch switch-flat"> <input
+								class="switch-input" type="checkbox" /> <span
+								class="switch-label" data-on="활성화" data-off="비활성화"></span> <span
+								class="switch-handle"></span>
+							</label> -->
+								</div>
+								<div class="ad-sns">
+									<div class="ad-sns-img ad-sns02"></div>
+									<div class="ad-input">
+										<input 
+											id="fcbk"
+											type="text" class="form-control" placeholder="URL"
+											aria-label="Recipient's username"
+											aria-describedby="basic-addon2">
+										<div class="input-group-append">
+											<button 
+											id="snsFacebook" 
+											class="btn btn-outline-warning" type="button">저장</button>
+										</div>
+									</div>
+									<!--                             <label class="switch switch-flat"> <input
+								class="switch-input" type="checkbox" /> <span
+								class="switch-label" data-on="활성화" data-off="비활성화"></span> <span
+								class="switch-handle"></span>
+							</label> -->
+								</div>
+								<div class="ad-sns">
+									<div class="ad-sns-img ad-sns03"></div>
+									<div class="ad-input">
+										<input
+											id="istag" 
+											type="text" class="form-control" placeholder="URL"
+											aria-label="Recipient's username"
+											aria-describedby="basic-addon2">
+										<div class="input-group-append">
+											<button 
+											id="snsInsta" 
+											class="btn btn-outline-warning" type="button">저장</button>
+										</div>
+									</div>
+									<!--                             <label class="switch switch-flat"> <input
+								class="switch-input" type="checkbox" /> <span
+								class="switch-label" data-on="활성화" data-off="비활성화"></span> <span
+								class="switch-handle"></span>
+							</label> -->
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="ad-card-wrap-custom">
+					<div class="ad-card-default">
+						<div class="ad-card-header">
+							<i class="fas fa-images"></i> 홍보 이미지 등록하기
+						</div>
+
+						<div class="ad-card-body">
+							<input id="fileupload" type="file" name="files" multiple>
+							<div id="ad-images-div"></div>
+							<button class="ad-btn ad-btn-color3" id='imgUpload' type='button'>파일첨부</button>
+							<button class="ad-btn ad-btn-color1" id='addBtn'
+								type='button'>등록</button>
+						</div>
+					</div>
+				</div>
+				<!--         <div class="ad-card-default">
+            <div class="ad-card-header">
+              <i class="fas fa-chart-area"></i> 현황그래프</div>
+                <div class="ad-card-body">
+                    <div class="ad-chart-dist">
+                    </div>
+
+                    <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                        <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                            <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                        </div>
+                        <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                            <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                        </div>
+                    </div>
+
+                  <canvas id="myAreaChart" width="1581" height="474" class="chartjs-render-monitor" style="display: block; width: 1581px; height: 474px;">
+                </canvas>
+
+            </div>
+        </div> -->
+			</div>
+			<!-- ad-main-content-->
+		</div>
+		<!--ad-main-wrapper-->
+	</div>
+	<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script
+	src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script
+	src="../../node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
+<script
+	src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script
+	src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+<script
+	src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script
+	src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+<script
+	src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+	<script src="../../js/common.js"></script>
+	<script src="../../js/ad_header.js"></script>
+	<script src="../../js/ad_main.js"></script>
+
+</body>
+</html>

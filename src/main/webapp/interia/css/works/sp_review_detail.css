@@ -1,0 +1,74 @@
+.sp-font-gray {color: #BDBDBD;}
+
+
+/****전체 팝업****/
+.sp-det-popup {
+	border: solid #D5D5D5 0.5px;
+	/*margin: 3.125em auto;*/
+	background: white;
+	overflow: hidden;
+	width: 500px;
+	padding: 1.875em;
+}
+
+
+/*****제품 정보*****/
+.sp-det-top > h6 {
+	margin: 0 0 0.3125em 0;
+}
+.sp-det-top > p {
+	margin: 0 0 0.1875em 0;
+	padding: 0;
+	font-size: 0.6875em;
+}
+.sp-likes {
+	display: inline-block;
+	margin: 0.3125em 0 0.625em 0;
+}
+.fas {
+	text-align: center;
+	font-size: 1.25em;
+}
+.sp-like-full {
+	color: #ffc001;
+}
+.sp-like-empty {
+	color: #D5D5D5;
+}
+.sp-det-cont {
+	font-size: 0.75em;
+}
+
+
+/****리뷰 내용****/
+.sp-det-img {
+	/*overflow: hidden;*/
+	/*height: 600px;*/
+	margin: 0.9375em 0 1.25em 0;
+}
+
+.sp-det-img img {
+	width: 100%;
+}
+
+/****도움 버튼****/
+.sp-det-help {
+	/*margin-top: 2em;*/
+}
+.sp-help-msg {
+	color: #ffc001;
+	display: inline-block;
+	font-size: 0.6875em;
+	font-weight: bold;
+	vertical-align: middle;
+}
+button.btn-light {
+	padding: 0.625em 0.9375em;
+	border: solid #D5D5D5 2px;
+	margin-right: 1.25em;
+	color: #4C4C4C;
+}
+button.btn-light:hover {
+	color: #747474;
+	background: white;
+}

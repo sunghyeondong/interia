@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 이름은 SQL을 찾을 때 사용하는 그룹명이다.
+     따라서 SQL 문을 사용하는 DAO 클래스 이름과 같게 하면
+     유지보수할 때 알아보기 쉽다.
+     단순히 알아보기 쉬울 뿐만 아니라 
+     스프링 프레임워크와 연동할 때 DAO 객체를 자동 생성할 수 있다. 
+-->
+<mapper namespace="bitcamp.java106.pms.dao.WorksDao">
+
+  <resultMap type="Works" id="WorksMap">
+    <id column="wno" property="worksNumber"/> <!-- 작품번호 -->
+    <result column="memno" property="workshopNumber"/> <!-- 공방번호 -->
+    <result column="wtitl" property="title"/> <!-- 작품명 -->
+    <result column="price" property="price"/> <!-- 가격 -->
+    <result column="wrtdt" property="registeredDate"/> <!-- 등록날짜 -->
+    <result column="wrmdt" property="modifiedDate"/> <!-- 등록날짜 -->
+    <result column="alstk" property="capacity" /> <!-- 재고수량 -->
+    <result column="slst" property="salesStatus" /> <!-- 판매 상태 -->
+    <result column="pddt" property="productDetail" /> <!-- 제품 상세 -->
+    <result column="spcs" property="deliveryPrice" /> <!-- 배송비 여부 -->
+    
+    <!-- 제품 사진  => 작품번호는 어차피 작품DB의 있는 작품번호로 이용하여 대입할 것이다. -->
+    <!-- 여기의 사진은 그냥 main 화면만 출력용으로 -->
+    <association property="photo" javaType="WorksPhoto"> 
+      <id column="wpno" property="photoNumber"/>
+      <result column="mipt" property="mainPhoto"/> 
+      <result column="path" property="path"/> 
+    </association>
+    
+     <!-- 제품 옵션 => 정의 사항 -->
+     <!-- 아직까지 생각해봄 -->
+    <association property="option" javaType="WorksOption"> 
+      <id column="opno" property="optionNumber"/> <!-- 옵션번호 -->
+      <result column="optyn" property="optionYn"/> <!-- 옵션여부 -->
+      <result column="abvl" property="attributeValue" /> <!-- 속성 명-->
+    </association>
+  </resultMap>
+  
+  <!-- 제품 리스트별로 출력하는 내용들  -->
+  <select id="selectList" 
+          resultType="map" 
+          parameterType="map">
+    select w.wno, ws.wsnm, wtitl, price, wp.path
+    from INTR_WORKS w 
+    inner join INTR_WPHO wp on w.wno = wp.wno 
+    inner join INTR_WRKSHP ws on w.memno = ws.memno
+    
+    where wp.mipt = "y" <!-- 메인 사진일 경우 -->
+    order by w.WNO desc
+    limit #{startNo}, #{pageNo}
+  </select>
+  
+  <!-- 제품 등록 -->
+  <insert id="insert" parameterType="Works"
+          useGeneratedKeys="true" keyColumn="wno" keyProperty="no">
+        INSERT INTO `INTR_WORKS`
+        (`MEMNO`, `WTITL`, `PRICE`, `WRTDT`, `ALSTK`, `SLST`, `PDDT`, `SPCS`) 
+        VALUES (#{workshopNumber},#{title},#{price},now(),#{capacity},#{salesStatus},#{productDetail},#{deliveryPrice})
+  </insert>
+  
+  
+  <!-- 제품 상세 보기 - INTR_WORKS 테이블만 해당, 나머지(옵션, 사진)은 다른 DAO로 통해 이용
+        
+  -->
+  <select id="selectOne" parameterType="int" resultMap="WorksMap">
+    select * from INTR_WORKS where wno = #{worksNumber}
+  </select>
+  
+  <!-- 옵션 내용 보기 -->
+<!--   <select id="optionName" parameterType="int" resultMap="WorksMap">
+    select * from INTR_WKOT where wno = #{no} 
+  </select> -->
+  
+  <!-- 관리자용 : 작품 수정 -->
+  <update id="update" parameterType="Works">
+UPDATE INTR_WORKS 
+SET MEMNO= #{workshopNumber},
+    WTITL= #{title},
+    PRICE= #{price},
+    WRTDT= #{registeredDate},
+    WRMDT= now(),
+    ALSTK= #{capacity},
+    SLST= #{salesStatus},
+    PDDT= #{productDetail},
+    SPCS= #{deliveryPrice} 
+    WHERE WNO= #{worksNumber};
+  </update>
+  
+  
+  <!-- 제품 삭제 -->
+  <delete id="delete" parameterType="int">
+    DELETE FROM `INTR_WORKS` WHERE wno=#{value};
+  </delete>
+  
+   <!-- 관리자페이지 제품 리스트별로 출력하는 내용들  -->
+  <select id="selectAdList" 
+          resultMap="WorksMap" 
+          parameterType="int">
+    select *
+    from INTR_WORKS
+    where memno=#{value}
+  </select>
+
+<!-- 관리자페이지 전체 제품상태  -->
+  <select id="getCurrentState" 
+          resultType="map" 
+          parameterType="int">
+    SELECT COUNT(*) as totalCnt, 
+    SUM(IF(SLST = '판매중', 1, 0)) as sellCnt,
+    sum(if(SLST = '판매대기',1,0)) as waitCnt, 
+    sum(if(SLST ='품절',1,0)) AS outCnt 
+    from INTR_WORKS where MEMNO = #{value}
+  </select>
+  
+  
+  <!-- 장바구니 담기 -->
+  <insert id="insertBuscket" parameterType="map">
+    insert into INTR_SPBK(wno, memno, BKOPT) 
+    values(#{worksNumber},#{memberNumber},
+    #{optionValue})
+  </insert>
+  
+  <!-- 장바구니 리스트 - 공방안에 담긴 제품 목록 -->
+  <select id="selectBuscketList" resultType="map" parameterType="int">
+    select sb.memno as buyerNumber, w.wno as worksNumber, ws.wsnm as studioName,
+           w.memno as workshopNumber, wp.path as path, w.wtitl as title, 
+           sb.bkopt as optionValue, w.spcs as deliveryPrice, 
+           w.alstk as capacity, w.price as price
+    from INTR_SPBK sb 
+    inner join INTR_WORKS w on sb.wno = w.wno
+    inner join INTR_WPHO wp on sb.wno = wp.wno 
+    inner join INTR_WRKSHP ws on w.memno = ws.memno
+    where sb.memno=#{buyerNumber} and wp.mipt="y"
+  </select>
+  
+  <!-- 장바구니 리스트 - 공방명 찾기모드 -->
+  <select id="searchBuscketWorkshop" resultType="map" parameterType="int">
+    select distinct ws.memno as workshopNumber, ws.wsnm as studioName from INTR_SPBK sb
+    inner join INTR_WORKS w on sb.wno = w.wno
+    inner join INTR_WRKSHP ws on w.memno = ws.memno
+    where sb.memno=#{buyerNumber}
+  </select>
+  
+  <select id="selectRecent" resultMap="WorksMap">
+    select wno from INTR_WORKS order by wno desc limit 1 
+  </select>
+  
+  <select id="selectListSellerSite" resultType="Map" parameterType="map">
+    select wtitl, price, path
+    from INTR_WORKS wor
+    inner join INTR_WRKSHP wrk on wor.memno = wrk.memno
+    inner join INTR_WPHO wp on wor.wno = wp.wno
+    where wrk.memno = #{value}
+    group by wtitl
+    order by wrtdt desc
+  </select>
+
+  <!-- 장바구니 선택 제거 -->
+  <delete id="buscketRemove" parameterType="int">
+    DELETE FROM `INTR_SPBK` WHERE memno=#{buyerNumber} and wno=#{worksNumber};
+  </delete>
+  
+  <!-- 장바구니 회원별로 전체 제거 -->
+  <delete id="buscketAllRemove" parameterType="int">
+    DELETE FROM `INTR_SPBK` WHERE memno=#{buyerNumber};
+  </delete>
+  
+  <!-- 재고 수량 조정 -->
+  <update id="capacityUpdate" parameterType="Map">
+    UPDATE INTR_WORKS SET ALSTK = (ALSTK - #{capacity}) WHERE WNO= #{worksNumber};
+  </update>
+</mapper>
+
+
+
+
+
+
+

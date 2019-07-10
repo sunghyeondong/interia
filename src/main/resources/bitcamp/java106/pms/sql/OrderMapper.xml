@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 이름은 SQL을 찾을 때 사용하는 그룹명이다.
+     따라서 SQL 문을 사용하는 DAO 클래스 이름과 같게 하면
+     유지보수할 때 알아보기 쉽다.
+     단순히 알아보기 쉬울 뿐만 아니라 
+     스프링 프레임워크와 연동할 때 DAO 객체를 자동 생성할 수 있다. 
+-->
+<mapper namespace="bitcamp.java106.pms.dao.OrderDao">
+
+  <resultMap type="Order" id="OrderMap">
+    <id column="odno" property="no"/>
+    <result column="memno" property="memberNo"/>
+    <result column="mopay" property="methodPay"/>
+    <result column="dcost" property="devCost"/>
+    <result column="tamnt" property="totalCost"/>
+    <result column="odate" property="orderDate"/>
+    <result column="odstt" property="orderState"/>
+    <result column="reicv" property="receiver"/>
+    <result column="dlmemo" property="devMemo"/>
+    <result column="curir" property="curir"/>
+    <result column="deldt" property="deliDate"/>
+    <result column="zcode" property="post"/>
+    <result column="baddr" property="abseAddr"/>
+    <result column="daddr" property="detailAddr"/>
+    <result column="ivno" property="ivno"/>
+    <result column="cldte" property="claimDate"/>
+    <result column="crqst" property="claimRequest"/>
+    <result column="cndtl" property="claimContext"/>
+    <result column="prstt" property="proState"/>
+    <result column="prdtl" property="proContext"/>
+    <association property="odnwk" javaType="Odnwk">
+        <result column="wono" property="no"/>
+    </association>
+    <association property="works" javaType="Works">
+        <result column="wno" property="no"/>
+    </association>
+  </resultMap>
+  
+  <!-- SQL 문 id를 설정할 때 SQL문을 사용하는 메서드 이름과 같게하면
+       유지보수할 때 알아보기 쉽다. 
+       알아보기 쉬울 뿐만 아니라
+       스프링 프레임워크와 연동할 때 DAO객체를 자동생성하고 
+       그 메서드를 자동생성할 때 사용할 수 있다.
+  -->
+ <select id="adList" 
+          resultType="Map" 
+          parameterType="int">
+SELECT odn.wono, odn.odno, ord.odate, ord.odstt, odn.crqst, odn.cldte, wo.wtitl, mem.nknm
+from INTR_ODNWK as odn
+inner join INTR_WORKS as wo
+on wo.wno = odn.WNO
+inner join INTR_ORDER as ord
+on ord.odno = odn.ODNO
+inner join INTR_MEMBER as mem
+on mem.MEMNO = ord.MEMNO
+where wo.MEMNO =#{value}
+</select>
+  
+ <select id="adGet" 
+          resultType="Map" 
+          parameterType="int">
+select ord.odno, odn.wono, ord.odstt, mem.name, odn.ostor, wo.wtitl, odn.crqst, mem.id, 
+	wo.price * odn.ostor as ptPrice, wk.abvl, odn.cndtl, ord.deldt, ord.curir, ord.ivno, 
+	ord.reicv, ord.baddr, ord.daddr, ord.zcode, ord.dlmemo 
+from INTR_ORDER as ord 
+inner JOIN INTR_MEMBER as mem 
+on ord.memno = mem.memno 
+inner join INTR_ODNWK as odn 
+on ord.odno = odn.odno 
+inner join INTR_WORKS as wo 
+on odn.wno = wo.wno 
+inner join INTR_WKOT as wk 
+on wo.wno = wk.wno 
+where odn.wono = #{value} 
+  </select>
+
+  <update id="adUpdate" parameterType="Order">
+    update INTR_ORDER 
+   	set curir= #{curir}, ivno= #{ivno}, deldt= #{deliDate}, odstt=#{orderState}
+   	WHERE odno = #{no}
+  </update>
+
+ <select id="returnList" 
+          resultType="Map" 
+          parameterType="int">
+SELECT odn.wono, odn.odno, ord.odate, ord.odstt, odn.prstt, odn.cldte, wo.wtitl, mem.nknm
+from INTR_ODNWK as odn
+inner join INTR_WORKS as wo
+on wo.wno = odn.WNO
+inner join INTR_ORDER as ord
+on ord.odno = odn.ODNO
+inner join INTR_MEMBER as mem
+on mem.MEMNO = ord.MEMNO
+where wo.MEMNO =#{value} and odn.CRQST ='교환' OR odn.CRQST ='환불'
+</select>
+
+ <select id="cancelList" 
+          resultType="Map" 
+          parameterType="int">
+SELECT odn.wono, odn.odno, ord.odate, ord.odstt, odn.prstt, odn.cldte, wo.wtitl, mem.nknm
+from INTR_ODNWK as odn
+inner join INTR_WORKS as wo
+on wo.wno = odn.WNO
+inner join INTR_ORDER as ord
+on ord.odno = odn.ODNO
+inner join INTR_MEMBER as mem
+on mem.MEMNO = ord.MEMNO
+where wo.MEMNO =#{value} and odn.CRQST ='취소'
+</select>
+
+<select id="getReturnState" 
+          resultType="Map" 
+          parameterType="int">
+select 
+SUM(if(odn.prstt='환불신청',1,0))+SUM(if(odn.prstt='교환신청',1,0)) as reqClaim,
+SUM(if(odn.prstt='환불완료',1,0))+SUM(if(odn.prstt='교환완료',1,0)) as finClaim,
+SUM(if(odn.prstt='환불철회',1,0))+SUM(if(odn.prstt='교환철회',1,0)) as rejClaim
+from INTR_ODNWK as odn
+inner join INTR_WORKS as wo
+on wo.wno = odn.WNO
+inner join INTR_ORDER as ord
+on ord.odno = odn.ODNO
+inner join INTR_MEMBER as mem
+on mem.MEMNO = ord.MEMNO
+where wo.MEMNO =#{value}
+  </select>
+  
+<select id="getCancelState" 
+          resultType="Map" 
+          parameterType="int">
+select 
+SUM(if(odn.prstt='취소신청',1,0)) as reqCancel,
+SUM(if(odn.prstt='취소완료',1,0)) as finCancel,
+SUM(if(odn.prstt='취소철회',1,0)) as rejCancel
+from INTR_ODNWK as odn
+inner join INTR_WORKS as wo
+on wo.wno = odn.WNO
+inner join INTR_ORDER as ord
+on ord.odno = odn.ODNO
+inner join INTR_MEMBER as mem
+on mem.MEMNO = ord.MEMNO
+where wo.MEMNO =#{value}
+  </select>
+  
+  <select id="selectStatus" parameterType="int" resultType="String">
+    select crqst 
+    from INTR_ODNWK 
+    where wono=#{value}
+  </select>
+  
+  <update id="finClaim" parameterType="map">
+    update INTR_ODNWK 
+   	set prstt= #{prstt}
+   	WHERE wono = #{wono}
+  </update>
+  
+  <update id="finCancel" parameterType="map">
+    update INTR_ODNWK 
+   	set prstt= #{prstt}
+   	WHERE wono = #{wono}
+  </update>
+  
+    <update id="chngExchange" parameterType="map">
+    update INTR_ODNWK 
+   	set prstt= #{prstt}, crqst= #{crqst}
+   	WHERE wono = #{wono}
+  </update>
+  
+<update id="chngReturn" parameterType="map">
+  update INTR_ODNWK 
+ 	set prstt= #{prstt}, crqst= #{crqst}
+ 	WHERE wono = #{wono}
+</update>
+
+<select id="rejSelectList" 
+         resultType="Map" 
+         parameterType="map">
+SELECT odn.wono, odn.odno, wo.wtitl, wo.price * odn.ostor as ptPrice
+from INTR_ODNWK as odn
+inner join INTR_WORKS as wo
+on wo.wno = odn.WNO
+inner join INTR_ORDER as ord
+on ord.odno = odn.ODNO
+inner join INTR_MEMBER as mem
+on mem.MEMNO = ord.MEMNO
+where wo.MEMNO =#{memno} and ord.ODNO=#{odno}  and (odn.CRQST ='교환' OR odn.CRQST ='환불')
+</select>
+
+<update id="updateClaimReject" parameterType="map">
+  update INTR_ODNWK 
+ 	set prstt= #{prstt}, prdtl= #{prdtl}
+ 	WHERE wono = #{wono}
+</update>
+
+<select id="getOrderNo" 
+         resultType="int" 
+         parameterType="int">
+SELECT odno
+from INTR_ODNWK
+where wono = #{value}
+</select>
+
+<update id="updateCancelReject" parameterType="map">
+ 	UPDATE INTR_ODNWK odn
+INNER JOIN INTR_ORDER ord ON ord.odno = odn.odno
+SET ord.curir= #{curir},
+    ord.ivno = #{ivno},
+    ord.deldt = #{deldt},
+    ord.odstt = #{odstt},
+    odn.prstt = #{prstt}
+WHERE odn.wono= #{wono};
+ 	
+</update>
+
+  <select id="selectOne" parameterType="int" resultMap="OrderMap">
+    select *
+    from INTR_ORDER 
+    where odno=#{value}
+  </select>
+  
+  <insert id="insert" parameterType="Order"
+          useGeneratedKeys="true" keyColumn="odno" keyProperty="no">
+    insert into INTR_ORDER(odno, memno, mopay, dcost, tamnt,
+            odate, odstt, dlmemo, zcode, baddr, daddr) 
+    values(#{no}, #{memberNo}, #{methodPay}, #{devCost}, #{totalCost},
+            now(), #{orderState}, #{devMemo}, #{post}, #{baseAddr}, #{detailAddr})
+  </insert>
+  
+  <select id="selectList" resultMap="OrderMap" parameterType="int">
+        SELECT * FROM INTR_ORDER where no = #{value}
+  </select>
+  
+  <!-- 여기는 주문번호만 전체 조회하는 용도 
+       <물론 이건 insert 작업 전 주문번호가 중복 되지 않기를 방지를 하기 위해>
+  -->
+  <select id="selectOrderNumberList" resultType="int">
+        SELECT odno FROM INTR_ORDER
+  </select>
+  
+ <!--  <select id="selectList" 
+          resultType="Map" 
+          parameterType="map">
+SELECT onk.wono, qctt, wks.wno, odr.odno, odr.memno, wtitl, abvl, path FROM INTR_ODNWK onk
+inner join INTR_WORKS wks on onk.wno = wks.wno
+inner join INTR_WKOT wkt on wks.wno = wkt.wno
+inner join INTR_WPHO wpho on wks.wno = wpho.wno
+inner join INTR_ORDER odr on onk.odno = odr.odno
+where odr.memno = #{value}
+  </select>
+  
+  <select id="selectRevList" 
+          resultType="Map" 
+          parameterType="map">
+SELECT onk.wono, qctt, wks.wno, odr.odno, odr.memno, wtitl, abvl, path, repath FROM INTR_ODNWK onk
+inner join INTR_WORKS wks on onk.wno = wks.wno
+inner join INTR_WKOT wkt on wks.wno = wkt.wno
+inner join INTR_WPHO wpho on wks.wno = wpho.wno
+inner join INTR_ORDER odr on onk.odno = odr.odno
+inner join INTR_RVPHO rpho on onk.wono = rpho.wono
+where odr.memno = #{value}
+  </select>
+  
+  <select id="selectRevOne"
+          resultType="Map" 
+          parameterType="map">
+select wtitl, mutua, path, qctt from INTR_ODNWK onk
+inner join INTR_WORKS wks on onk.wno = wks.wno
+inner join INTR_WRKSHP wkp on wks.memno = wkp.memno
+inner join INTR_WPHO wpho on wks.wno = wpho.wno
+inner join INTR_ORDER odr on onk.odno = odr.odno
+where onk.wono = #{value}
+  </select>
+  
+  <select id="selectRevListOne"
+          resultType="Map" 
+          parameterType="map">
+select wtitl, mutua, path, qctt, repath from INTR_ODNWK onk
+inner join INTR_WORKS wks on onk.wno = wks.wno
+inner join INTR_WRKSHP wkp on wks.memno = wkp.memno
+inner join INTR_WPHO wpho on wks.wno = wpho.wno
+inner join INTR_ORDER odr on onk.odno = odr.odno
+inner join INTR_RVPHO rpho on onk.wono = rpho.wono
+where onk.wono = #{value}
+  </select>
+  
+  <select id="selectSellerSite" resultType="Map" parameterType="map">
+select onk.qctt, nknm, wor.wtitl, wp.path
+from INTR_ODNWK onk
+inner join INTR_ORDER ord on onk.odno = ord.odno
+inner join INTR_MEMBER mem on ord.memno = mem.memno
+inner join INTR_WORKS wor on onk.wno = wor.wno
+inner join INTR_WPHO wp on onk.wno = wp.wno
+  </select>
+  
+  <insert id="insert" parameterType="Odnwk"
+          useGeneratedKeys="true" keyColumn="wono" keyProperty="no">
+    insert into pms2_board(titl,cont,cdt) 
+    values(#{title},#{content},now())
+  </insert>
+  
+  파라미터의 타입이 primitive type이나 wrapper 클래스, String 클래스인 경우
+       값을 꺼낼 때 프로퍼티 이름을 마음대로 해도 된다.
+ 
+  <select id="selectOne" parameterType="int" resultMap="OdnwkMap">
+    select bno,titl,cont,cdt 
+    from pms2_board 
+    where bno=#{value}
+  </select>
+  
+  <update id="update" parameterType="Odnwk">
+    update `INTR_ODNWK` set `qctt`= #{purchEpilo} WHERE `wono` = #{no}
+  </update>
+  
+    <update id="updateMod" parameterType="Odnwk">
+    update `INTR_ODNWK` set `qctt`= #{purchEpilo} WHERE `wono` = #{no}
+  </update>
+  
+  <delete id="delete" parameterType="map">
+    delete from INTR_ACRGTT WHERE memno=#{memno} and wsano=#{wsano}
+  </delete> -->
+</mapper>

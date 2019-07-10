@@ -1,0 +1,92 @@
+h4 {font-weight: bold;}
+.ib-mp-pnum {
+	color: #ffc001;
+	font-weight: bold;
+}
+.ib-mp-pnum:hover {
+	color: #ffc001;
+}
+.ib-mp-a:hover {
+	color: black;
+}
+.ib-mp-dhistory {
+	margin-bottom: 4.375em;
+}
+.ib-mp-big {
+	font-size: 1.125em;
+	font-weight: bold;
+}
+.ib-mp-small {
+	font-size: 0.875em;
+	font-weight: bold;
+}
+.ib-mp-red {
+	color: red;
+}
+.mp-nav>ul>li>p {
+    margin: 0;
+}
+
+
+/**** 제목 ***/
+.ib-mp-titl {
+	padding: 0 1em 1em 1em;
+	border-bottom: 3px solid #000;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+/**** 제작 신청 내역 ****/
+.ib-mp-hbox div select {
+	width: 100px;
+}
+.ib-mp-dtop {
+	border-bottom: #D5D5D5 solid 1px;
+	display: flex;
+	padding: 1.25em 0.9375em 0.3125em 0.9375em;
+	justify-content: space-between;
+}
+.ib-mp-dtop > p {
+	margin-bottom: 0;
+	font-size: .9em;
+}
+.ib-mp-warning {
+	text-align: right;	
+}
+.ib-mp-dlist {
+	display: flex;
+	padding: 0.9375em 1.25em;
+	align-items: center;
+}
+.ib-mp-dimg {
+	width: 110px; height: 110px;
+	margin-right: 2.5em;
+	overflow: hidden;
+}
+.ib-mp-dimg img {
+	width: 100%;
+	height: 100%;
+}
+.ib-mp-dpdt {
+	flex: 2;
+}
+.ib-mp-dpdt > p {
+	margin-bottom: 0;
+	font-size: .9em;
+}
+.ib-mp-dpdt p:hover {
+	color: black;
+}
+.ib-mp-dinfo {
+	flex: 3;
+	text-align: right;
+}
+.ib-mp-dinfo > p:last-child {
+	font-weight: bold;
+}
+.ib-mp-dinfo > p {
+	margin: 0.3125em 0;
+	font-size: .9em;
+}

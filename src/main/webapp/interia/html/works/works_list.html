@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>판매작품</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/works/sp_works_list.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../css/header_move.css">
+    <link rel="shortcut icon" href="../favicon.ico">
+</head>
+
+<body>
+    <header id=header>
+
+    </header>
+    <section>
+
+    </section>
+	<div class="sp-banner">
+	</div><!-- ib-banner -->
+	
+	<div class="sp-nav">
+	<div class="sp-nav-category">
+	    
+	    <div class="sp-nc-search">
+	        <form class="form-inline">
+	            <input id="works_search" class="form-control" type="text" placeholder="Search">
+	            <button id="works_seBtn" class="btn btn-outline-light sp-btn-search" type="button">검색</button>
+	        </form>
+	        
+	    </div><!-- sp-nc-search -->
+	</div><!-- sp-nav-category -->
+	</div><!-- sp-nav-->    
+	<div class="ib-container ib-sp-container">
+	    <div class="sp-main-content">
+	        <div class="sp-mc-header">
+	            <div class="sp-mc-name">
+	                <p>판매작품</p>
+	            </div><!-- sp-mc-name -->
+	            <div class="sp-mc-sort">
+	                <!-- <a href="#">최신순</a>
+	                &ensp; | &ensp;
+	                <a href="#">높은 가격순</a>
+	                &ensp; | &ensp;
+	                <a href="#">낮은 가격순</a> -->
+	            </div><!-- sp-mc-sort -->
+	        </div> <!-- sp-mc-header -->
+	        <div class="sp-mc-product" id="productlist">       
+	            
+	        </div><!-- sp-mc-product -->
+	    </div><!-- sp-main-content -->
+	</div><!-- ib-container -->
+	<div class="sp-seemore">
+	    <div>
+	    <button id="more_wbtn" type="button" class="btn btn-warning btn-lg btn-block sp-btn-seemore">더보기</button>
+	    <button id="more_sbtn" type="button" class="btn btn-warning btn-lg btn-block sp-btn-seemore">더보기</button>
+	    </div>
+	</div>
+    <footer id="footer">
+
+    </footer>
+    
+    <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../js/common.js"></script>
+	<script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+    
+	<script id ="tr-template" type="text/x-handlebars-template">
+{{#each list}}
+<a class="card" href="works_detail.html?{{wno}}">
+                <div class="sp-card-img">
+                    <img src="../../../files/works/{{path}}" style="width:100%;">
+                </div>
+                <div class="sp-card-content">
+                    <div class="sp-cc1">
+                        <p>{{wsnm}}</p>
+                    </div>
+                    <div class="sp-cc2">
+                        <p>{{wtitl}}</p>
+                    </div>
+                    <div class="sp-cc3">
+                        <p>{{price}} 원</p>
+                    </div>
+                    <div class="sp-cc4">
+                        
+                    </div>
+                </div><!-- sp-card-content -->
+            </a><!-- card -->
+{{/each}}
+
+	</script>
+	<script>
+	
+	var trTemplateSrc=$('#tr-template').html();
+	
+	//위에서 준비한 템플릿 데이터를 가지고 HTML을 생성할 템플릿 엔진 준비
+	var templateFn = Handlebars.compile(trTemplateSrc)
+	
+	var startNo = 1;
+	var pageNo = 10;
+	$.getJSON("../../../json/works/list",{"startNo": startNo,"pageNo": pageNo} , (data) => {
+	    $(productlist).html(templateFn({list:data}))
+	});
+	
+	$('#more_wbtn').click(function() {
+		startNo++;
+		$.getJSON("../../../json/works/list",{"startNo": startNo,"pageNo": pageNo} , (data) => {
+			for (var i = 0; i < data.length; i++) {
+				$(`<a class="card" href="works_detail.html?`+ data[i].wno +`">
+	                <div class="sp-card-img">
+	                    <img src="../../../files/works/`+ data[i].path +`" style="width:100%;">
+	                </div>
+	                <div class="sp-card-content">
+	                    <div class="sp-cc1">
+	                        <p>`+ data[i].wsnm +`</p>
+	                    </div>
+	                    <div class="sp-cc2">
+	                        <p>`+ data[i].wtitl +`</p>
+	                    </div>
+	                    <div class="sp-cc3">
+	                        <p>`+ data[i].price +` 원</p>
+	                    </div>
+	                    <div class="sp-cc4">
+	                        
+	                    </div>
+	                </div><!-- sp-card-content -->
+	            </a><!-- card -->`).appendTo('#productlist');
+			}
+		});
+	});
+	</script>
+	<script src="../../js/works_search.js"></script>
+</body>
+</html>

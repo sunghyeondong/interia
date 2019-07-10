@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>INTERIA</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/header_move.css">
+    <link rel="stylesheet" type="text/css" href="../../css/workshop/form.css">
+    <link rel="stylesheet" type="text/css" href="../../css/workshop/workshop_main.css">
+    <link rel="stylesheet" href="../../node_modules/bxslider/dist/jquery.bxslider.min.css">
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/bxslider/dist/jquery.bxslider.min.js"></script>
+</head>
+
+<body>
+    <header id="header">
+    </header>
+    <section style="height: 1600px;">
+	    <div class="main_visual0">
+	        <ul class="workshop_visual_bg">
+	            <li><img src="../../images/workshop/visual01.png"></li>
+	            <li><img src="../../images/workshop/visual02.png"></li>
+	            <li><img src="../../images/workshop/visual03.png"></li>
+	        </ul>
+	    </div>
+	    
+	    <div class="form_subText">
+	        <h1>판매자 신청</h1>
+	        <p>('*'은 필수 항목입니다.)</p>
+	    </div>
+	    
+	    <!-- 이부분은 그냥 회원번호를 불려오는 저장용 변수로만 넣었고, 아무런 기능을 수행하지 않는다. -->
+	    <div id="fNo" />
+	    
+	    <div class="form_mainForm">
+	        <form>
+	            <div>
+	                <div class="form_mainForm_Id00">
+	                    <label>사업자번호 *</label>
+	                </div>
+	                <div class="form_mainForm_Id02">
+	                    <input id="fBno1" type="text" style="width: 100px;">
+	                    <input id="fBno2" type="text" style="width: 100px;">
+	                    <input id="fBno3" type="text" style="width: 100px;">
+	                </div>
+	            </div>
+	            <div>
+	                <div class="form_mainForm_Id00">
+	                    <label>상호 *</label>
+	                </div>
+	                <div class="form_mainForm_Id01">
+	                    <input id="fMutual" type="text">
+	                </div>
+	            </div>
+	            <div>
+	                <div class="form_mainForm_Id00">
+	                    <label>대표자명 *</label>
+	                </div>
+	                <div class="form_mainForm_Id01">
+	                    <input id="fRpstName" type="text">
+	                </div>
+	            </div>
+	            <div>
+	                <div class="form_mainForm_Id00">
+	                    <label>업태 *</label>
+	                </div>
+	                <div class="form_mainForm_Id01">
+	                    <input id="fIndustry" type="text">
+	                </div>
+	            </div>
+	            <div>
+	                <div class="form_mainForm_Id00">
+	                    <label>종목 *</label>
+	                </div>
+	                <div class="form_mainForm_Id01">
+	                    <select id="selectOption" onChange="setValuse();">
+	                        <option>가구</option>
+	                        <option>패브릭</option>
+	                        <option>데코/조명</option>
+	                        <option>가전</option>
+	                        <option>생활</option>
+	                        <option>주방</option>
+	                        <option>욕실</option>
+	                    </select>
+	                    <input id="fItems" type="hidden">
+	                </div>
+	            </div>
+	            <div>
+	                <div class="form_mainForm_Id00_1">
+	                    <label>주소 *</label>
+	                </div>
+	                <div class="form_mainForm_Id03">
+	                    <input id="fZcode" name="fZcode" type="text" readonly="true" >
+                        <input type="button" onclick="execDaumPostCode()" value="배송지찾기" >
+	                </div>
+                    <div class="form_mainForm_Address">
+                      <input id="fBaddr" name="fBaddr" type="text" readonly="true" style="width:400px">
+                      <input id="fDaddr" name="fDaddr" type="text" style="width:400px">
+                    </div>
+	            </div>
+	            
+	        </form>
+	    </div>
+	    <div class="form_subText">
+	        <h1>개인정보제공</h1>
+	    </div>
+	    <div class="workshop_sellerRequest_input">
+	        <input id="checkbox_comfime" type="checkbox">
+	        <p>개인정보 수집 및 이용약관 동의</p>
+	    </div>
+	    <div class="workshop_sellerRequest_warning">
+	        <p>INTERIA는 홈페이지에서 파트너님이 가입시 필요한 서비스 제공과 사업자식별, 필요한 정보 전달을 위해 최소한의 개인정보를 수집합니다.</p>
+	    </div>
+	    <div class="workshop_sellerRequest_form">
+	        <div class="workshop_sellerRequest_form00">
+	            <div class="workshop_sellerRequest_form00_1">
+	                <p>목적</p>
+	            </div>
+	            <div class="workshop_sellerRequest_form00_1">
+	                <p>항목</p>
+	            </div>
+	            <div class="workshop_sellerRequest_form00_1">
+	                <p>보유기간</p>
+	            </div>
+	        </div>
+	        <div class="workshop_sellerRequest_form01">
+	            <div class="workshop_sellerRequest_form00_2">
+	                <p>판매자 식별 및 서비스 이행을 위한 연락</p>
+	            </div>
+	            <div class="workshop_sellerRequest_form00_2">
+	                <p>아이디,대표자명 비밀번호, 전화번호, 이메일</p>
+	            </div>
+	            <div class="workshop_sellerRequest_form00_2">
+	                <p>회원 탈퇴 후 14일 까지</p>
+	            </div>
+	        </div>
+	    </div>
+	
+	    <div class="form_mainButton" style="margin-top: 3em;">
+	        <div class="form_mainButton01">
+	            <button id="btnApplyWorks" type="button">신청하기</button>
+	            <button type="button" onClick="location.href='./workshop_main.html'">취소하기</button>
+	        </div>
+	    </div>
+	</section>
+
+    <!-- script Layer 팝업 실행 (다음 주소 API) -->
+    <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+    <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+            <img src="../../images/address_api/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+    </div>
+    <!-- 다음 API 주소 관련내용 -->
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="../../js/sp_daum_add.js"></script>
+    
+
+
+    <footer id="footer">
+    </footer>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="../../js/workshop_sellerRequest.js"></script>
+    <script>
+    function setValuse() {
+    	var sh = document.getElementById("selectOption");
+    	var tt = document.getElementById("fItems");
+    	tt.value = sh.options[sh.selectedIndex].text;
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+* { box-sizing: border-box; }
+
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+html {font-size: 16px}
+body {
+  font-family: 'Nanum Gothic';
+/*  height: 2000px;*/
+}
+
+
+
+
+
+/* 헤더 스타일 */
+header {
+   position: fixed;
+   top: 0;
+   right: 0;
+   width: 100%;
+   background-color: #fff;
+   border-bottom: 2px solid #ffc001;
+   box-sizing: border-box;
+   z-index: 1040;
+   box-shadow: 0 1px 8px 1px rgba(0,0,0,0.3);
+}
+
+.header_bg {
+   width: 1200px;
+   height:120px;
+   margin: 0 auto;
+   box-sizing: border-box;
+   transition: height 0.5s;
+}
+.header_logo {
+   display: flex;
+   align-items: flex-end;
+   width: 190px;
+   height: 100px;
+   margin-top: 20px;
+   float: left;
+   transition: height 0.5s, width 0.5s;
+}
+.header_logo a {
+  display: inline-block;
+  height: 100%;
+}
+.header_logo img {
+  height: 100%;
+}
+.header_nav1 {
+   display: flex;
+   align-items: flex-end;
+   justify-content: flex-end;
+   width: 1010px;
+   height: 30px;
+   float: right;
+   transition: height 0.5s;
+}
+.header_nav1 a {
+   margin-left: 0.625em;
+   font-size: 0.875rem;
+   color: #333;
+}
+.header_nav2 {
+   display: flex;
+   align-items: flex-end;
+   justify-content: space-between;
+   width: 600px;
+   height: 80px;
+   float: left;
+   padding-bottom: 0.3125em;
+   transition: height 0.5s;
+}
+.header_nav2 a {
+   font-size: 1.125rem;
+   font-weight: bold;
+   color: #333;
+   text-decoration: none;
+}
+.header_search {
+   display: flex;
+   align-items: flex-end;
+   justify-content: flex-end;
+   height: 80px;
+   float: right;
+   padding-bottom: 0.3125em;
+
+}
+.header_search input{
+   width: 170px;
+   height: 30px;
+   border: 1px solid #e6e6e6;
+   box-sizing: border-box;
+   border-radius: 5px;
+   font-size: 0.75rem;
+   padding: 5px 10px;
+}
+.header_search button{
+   width: 30px;
+   height: 30 px;
+   border: 0;
+   margin: 0;
+   padding: 0;
+}
+.header_bg.tiny {
+    height:60px;
+}
+.header_bg.tiny > .header_logo {
+  width: auto;
+  height: 60px;
+  margin:0;
+  padding-right: 90px;
+  padding-top: 10px;
+}
+.header_bg.tiny > .header_nav1 {
+  height: 0px;
+}
+.header_bg.tiny > .header_nav2 {
+  padding-top: 10px;
+  height: 50px;
+}
+.header_bg.tiny > .header_search {
+  height: 50px;
+}

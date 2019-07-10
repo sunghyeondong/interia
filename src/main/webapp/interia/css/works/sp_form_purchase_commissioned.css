@@ -1,0 +1,86 @@
+/* 주문하기, 구매의뢰 공통 기능의 대한 css 기능을 수행!*/
+
+.sp-title {
+    padding-bottom:0.125em;
+}
+
+.sp-title-sub {
+    border-bottom:2px solid #e6e6e6; 
+    padding-bottom:20px;
+}
+
+label {
+    margin:-1.563em;
+}
+
+.sp-margin-top {
+    margin-top:-80px;
+}
+
+.sp-input-height {
+    height:40px;
+}
+
+.sp-input-email {
+    width:150px;
+}
+
+.sp-add-ress {
+    margin-bottom:1em
+}
+
+.sp-btn {
+    background:#ffc001;
+    color:#FFFFFF;
+    margin-top:-0.313em;
+    width: 120px;
+}
+
+.sp-input-phone {
+    width:120px;
+    text-align:center;
+}
+
+
+.sp-form-botton {
+    padding-bottom:6.25em;
+    padding-top:1.25em;
+}
+
+.sp-sms-agree {
+    color:gray;
+    font-size:0.562rem;
+}
+
+.sp-sms-checkbox-agree {
+    margin-left:5.1875em;
+}
+
+
+.sp-table-sub {
+    border-top: 2px solid #333;
+    padding-bottom:20px;
+}
+
+.sp-table-pay-infomation {
+    height:40px;
+}
+
+.sp-table-pay-information-th {
+    width:150px;
+    text-align:right;
+    background:#e6e6e6;
+    border-right:1px solid #e6e6e6;
+}
+
+.sp-table-left {
+    border-right:1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.sp-table-right {
+    border-bottom: 1px solid #222;
+}
+
+
+

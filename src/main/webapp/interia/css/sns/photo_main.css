@@ -1,0 +1,83 @@
+
+/* ---- grid ---- */
+.grid {
+  max-width: 1200px;
+  min-height: 800px;
+  counter-reset: grid-item;
+  margin: 0 auto;
+  margin-top: 170px;
+}
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- grid-item ---- */
+
+.grid-item {
+  width: 224px;
+  float: left;
+  background: #fff;
+  margin-bottom: 20px;
+}
+.grid-photo-a {
+  display: inline-block;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  overflow:hidden;
+  box-shadow: 0 1px 2px 2px #ccc;
+}
+.grid-photo {
+  width: inherit;
+  overflow: hidden;
+  max-height: 500px;
+}
+.grid-item img {
+  width: 100%;
+}
+.grid-photo-cont {
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: inherit;
+  overflow: hidden;
+  font-size: 0.875rem;
+  padding: 0.3125rem 0.625rem;
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  color:#fff;
+}
+.grid-item:before {
+  display: block;
+  color: white;
+  padding-top: 0.2em;
+  text-align: center;
+  font-size: 1.4rem;
+}
+.grid-photo-like {
+  display: flex;
+  cursor:pointer;
+  align-items: center;
+  color:#fff;
+  margin-right: 10px;
+}
+.grid-photo-bookmark {
+  display: flex;
+  cursor:pointer;
+  align-items: center;
+  color:#fff;
+}
+.grid-photo-like:hover, .grid-photo-bookmark:hover {
+  text-decoration: none;
+}
+.grid-photo-view {
+  margin-top:0.3125em;
+}
+.grid-photo-view span {
+  padding-left: 0.625em;
+}

@@ -1,0 +1,384 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+<title>공방관리자</title>
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../css/admin/store_admin_common.css">
+<link rel="stylesheet"
+	href="../../node_modules/@fortawesome/fontawesome-free/css/all.css">
+<link rel="stylesheet"
+	href="../../node_modules/blueimp-file-upload/css/jquery.fileupload.css">
+<link rel="stylesheet"
+	href="../../node_modules/blueimp-file-upload/css/jquery.fileupload-ui.css">
+<link rel="stylesheet"
+	href="../../css/jquery.tag-editor.css">
+<link rel="shortcut icon" href="../favicon.ico">
+
+</head>
+
+<body>
+	<div id="ad-header"></div>
+	<div class="ad-main-wrapper">
+		<div class="ad-main-content">
+			<!-- ad-breadcrumb -->
+			<ol class="ad-breadcrumb">
+				<li class="ad-breadcrumb-item"><a href="#">관리자</a></li>
+				<li class="ad-breadcrumb-item active">작품관리</li>
+			</ol>
+			<div class="ad-card-default">
+				<div class="ad-card-body">
+					<div class="ad-status-wrapper">
+						<div class="ad-product-status">
+							<div class="ad-status-img ad-status-all"></div>
+							<div class="ad-status-content">
+								<p>전체</p>
+								<p>
+									<span id="totalCnt"></span><b>건</b>
+								</p>
+							</div>
+						</div>
+						<div class="ad-product-status">
+							<div class="ad-status-img ad-status-sell"></div>
+							<div class="ad-status-content">
+								<p>판매중</p>
+								<p>
+									<span id="sellCnt"></span><b>건</b>
+								</p>
+							</div>
+						</div>
+						<div class="ad-product-status"> 
+							<div class="ad-status-img ad-status-wait"></div>
+							<div class="ad-status-content">
+								<p>판매 대기</p>
+								<p>
+									<span id="waitCnt"></span><b>건</b>
+								</p>
+							</div>
+						</div>
+						<div class="ad-product-status">
+							<div class="ad-status-img ad-status-sold"></div>
+							<div class="ad-status-content">
+								<p>품절</p>
+								<p>
+									<span id="outCnt"></span><b>건</b>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ad-card-default">
+				<div class="ad-card-header">
+					<i class="fas fa-search"></i> 작품 검색
+				</div>
+				<div class="ad-card-body">
+					<form class="ad-searchForm">
+						<div class="ad-searchInfo">
+							<div class="ad-searchDist ad-searchText">
+								<p>
+									검색어&ensp;<b>|</b>
+								</p>
+								<ul>
+									<li>상품번호 <input type="text" id="">
+									</li>
+									<li>상품명 <input type="text" id="">
+									</li>
+								</ul>
+							</div>
+							<div class="ad-searchDist ad-sellingStatus">
+								<p>
+									판매상태&ensp;<b>|</b>
+								</p>
+								<ul>
+									<li><label class="ad-checkbox">판매중&ensp; <input
+											type="checkbox" checked="checked"> <span
+											class="ad-checkmark"></span>
+									</label></li>
+									<li><label class="ad-checkbox">판매대기&ensp; <input
+											type="checkbox" checked="checked"> <span
+											class="ad-checkmark"></span>
+									</label></li>
+									<li><label class="ad-checkbox">품절&ensp; <input
+											type="checkbox" checked="checked"> <span
+											class="ad-checkmark"></span>
+									</label></li>
+								</ul>
+							</div>
+							<div class="ad-searchDist ad-searchTerm">
+								<p>
+									기간&ensp;<b>|</b>
+								</p>
+								<div class="ad-cat-select">
+									<select class="ad-cat-select-content" name="slct" id="slct">
+										<option>분류기준일</option>
+										<option value="1">제품등록일</option>
+										<option value="2">최종수정일</option>
+									</select>
+								</div>
+								<input type="date" class="datepicker" id="">&ensp; ~&ensp;<input
+									type="date" class="datepicker" id="">
+							</div>
+						</div>
+						<div class="ad-cat-search">
+							<button type="button" class="ad-search-btn btn btn-warning">검색</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="ad-card-default">
+				<div class="ad-card-header">
+					<i class="fas fa-list"></i> 작품 목록
+				</div>
+				<div class="ad-card-body">
+					<div class="ad-table-btn">
+						<button type="button" class="ad-btn ad-btn-color2">선택삭제</button>
+						<button type="button" id="ad-wors-addForm"class="ad-btn ad-btn-color1 ad-works-enroll"
+							data-toggle="modal" data-target="#worksModal">새작품등록</button>
+					</div>
+					<table cellspacing="0" border="1" summary="명단관리  리스트"
+						class="frt_tbl_type"
+						style="min-width: 900px; padding-right: 15px;">
+						<caption>제품관리 리스트</caption>
+						<colgroup>
+								<col width="30" />
+								<col width="80" />
+								<col width="120" />
+								<col width="80" />
+								<col width="80" />
+<!-- 								<col width="80" /> -->
+								<col width="100" />
+								<col width="120" />
+								<col width="120" />
+								<col width="100" />
+								<col width="15" />
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col"><input type="checkbox" name="" id='chk_all'
+									value="" onclick="" />
+									<label for="chk_all">선택</label>
+								</th>
+								<th scope="cols">상품번호</th>
+								<th scope="cols">상품명</th>
+								<th scope="cols">상태</th>
+								<th scope="cols">재고</th>
+<!-- 								<th scope="cols">제작의뢰</th> -->
+								<th scope="cols">판매가</th>
+								<th scope="cols">등록일</th>
+								<th scope="cols">수정일</th>
+								<th scope="cols">삭제</th>
+							</tr>
+						</thead>
+					</table>
+
+					<div
+						style="max-height: 300px; min-width: 1010px; overflow-x: hidden; overflow-y: scroll;">
+						<table cellspacing="0" border="1" summary="명단관리 리스트"
+							class="frt_tbl_type" style="border-top: 0px;">
+							<caption>제품관리 리스트</caption>
+							<colgroup>
+								<col width="30" />
+								<col width="80" />
+								<col width="120" />
+								<col width="80" />
+<!-- 								<col width="80" /> -->
+								<col width="80" />
+								<col width="100" />
+								<col width="120" />
+								<col width="120" />
+								<col width="100" />
+							</colgroup>
+							<tbody class="ad-works-data">
+							
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<!-- worksModal -->
+			<div class="modal fade" id="worksModal" tabindex="-1" role="dialog"
+				aria-labelledby="worksModalTitle" aria-hidden="true"
+				style="z-index: 10800;">
+				<div class="modal-dialog modal-lg " role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="worksModalTitle">
+								<b>작품등록 / 수정</b>
+							</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<form>
+							<div class="modal-body">
+							<input type="text" 
+								id="wno" 
+								style="display:none;"
+								>
+							<input type="date" 
+								id="wrtdt" 
+								style="display:none;"
+								>
+								<div class="ad-modal-contentgap" style="display:flex;">
+									<b>카테고리</b> <input type="text"
+										class="ad-works-modal-inputlg ad-works-modal-content"
+										id=tname>
+								</div>
+								<div class="ad-modal-contentgap">
+									<b>상품명</b> <input type="text"
+										class="ad-works-modal-inputlg ad-works-modal-content"
+										placeholder="상품명을 입력하세요"
+										id="wtitl">
+								</div>
+								<div class="ad-modal-content-collapse">
+									<div class="ad-modal-contentgap" style="display:flex;">
+										<b>판매가</b> <input type="text"
+											class="ad-works-modal-inputsm ad-works-modal-content"
+											placeholder="가격을 입력하세요"
+											id="price">
+									</div>
+									<div class="ad-modal-contentgap" style="display:flex;">
+										<b>재고수량</b> <input type="text"
+											class="ad-works-modal-inputsm ad-works-modal-content "
+											placeholder="수량을 입력하세요"
+											id="alstk"> 
+										<div class="ad-cat-select" style="margin-left:10px;">
+										<select class="ad-cat-select-content"
+										id="slst">
+											<option value="default">판매상태</option>
+											<option value="판매대기">판매대기</option>
+											<option value="판매중">판매중</option>
+											<option value="품절">품절</option>
+										</select>
+										</div>
+									</div>
+								</div>
+								<div class="ad-modal-contentgap">
+									<b>상품이미지</b>                         	
+									<button class="ad-btn ad-btn-color3" id='imgUpload1' type='button'>파일첨부</button>
+									<input id="fileupload1" type="file" name="files"
+										multiple>
+									<div id="ad-images-div"></div>
+								</div>
+<!--  								<div class="ad-modal-contentgap">
+									<b>제작의뢰 서비스</b> <input type="checkbox"
+										class="ad-works-modal-content"
+										onclick="openOption('.ad-works-commission', this)"><span>사용하기</span>
+									<div class="ad-works-commission">
+										<textarea cols="80" placeholder="제작시 필요한 항목을 작성하세요"></textarea>
+									</div>
+								</div> -->
+								<div class="ad-modal-contentgap"> 
+									<b>옵션</b> <input type="checkbox" class="ad-works-modal-content"
+										id="ad-opt-chk"
+										onclick="openOption('.ad-works-options', this)"><span>사용하기</span>
+									<div class="ad-works-options">
+											<textarea class="form-control form-rounded ad-class-discrpt" 
+													name="content" 
+													id="abvl" cols='87'></textarea>
+											<!-- <div class="ad-works-opt-add">
+												<p>
+													<i class="far fa-plus-square"></i>옵션 추가하기
+												</p> 
+											</div> -->
+									</div>
+								</div>
+								<div class="ad-modal-contentgap" id="ad-works-detail">
+								<b>제품상세</b>
+									<button class="ad-btn ad-btn-color3" id='imgUpload2' type='button'>파일첨부</button>
+									<input id="fileupload2" type="file" name="files">
+									<input type="text" id="pddt"style="display:none;">
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="ad-btn ad-btn-color3">초기화</button>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">닫기</button>
+								<button type="button" id="addBtn" class="ad-btn ad-btn-color1">등록하기</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- ad-main-content-->
+	</div>
+<script id ="ad-works-template" type="text/x-handlebars-template">
+{{#each list}}
+<tr>
+	<td class="frm"><input type="checkbox" id="chk" name="chk" value="{{worksNumber}}" /></td>
+	<td class="num">{{worksNumber}}</a></td>
+	<td class="title">{{title}}</td>
+	<td class="date">{{salesStatus}}</td>
+	<td class="writer">{{capacity}}</td>
+	<td class="writer">{{price}}</td>
+	<td class="writer">{{ryear}}-{{rmonth}}-{{rday}}</td>
+	<td class="writer">{{myear}}-{{mmonth}}-{{mday}}</td>
+	<td>
+		<button class="ad-btn-sm ad-btn-color1 ad-works-update" data-worksNo="{{worksNumber}}" data-toggle="modal" data-target="#worksModal" style="margin-right:5px;">수정</button>
+		<button class="ad-btn-sm ad-btn-color2" onclick="worksdel({{worksNumber}})">삭제</button>
+	</td>
+</tr>
+{{/each}}
+
+</script>
+
+<!--ad-main-wrapper-->
+<script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+<script
+	src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script
+	src="../../node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
+<script
+	src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script
+	src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+<script
+	src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script
+	src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+<script
+	src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+<script src="../../js/jquery.caret.min.js"></script>
+<script src="../../js/jquery.tag-editor.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/ad_header.js"></script>
+<script src="../../js/ad_admin.js"></script>
+<script src="../../js/ad_works.js"></script>
+
+
+<script>
+/*모달 초기화*/
+	$('.modal').on('hidden.bs.modal', function (e) { 
+		
+		$(this).find('form')[0].reset();
+		
+		if ( $('#tname') > 0 ) {
+			$('#tname').tagEditor('destroy');
+		} 
+		
+		if( $('#ad-claimRejectForm') > 0) {
+			var template = $('#ad-claimRejectForm');
+			var children = $('#ad-claimRejectForm').children();
+			if(template.children().length > 0) {
+				children.remove();
+			}
+		}
+	});
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>장바구니</title>
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" href="../../css/header_move.css">
+<link rel="stylesheet" type="text/css"
+	href="../../css/works/sp_bascket.css">
+<link rel="stylesheet"
+	href="../../node_modules/@fortawesome/fontawesome-free/css/all.css">
+<link rel="shortcut icon" href="../favicon.ico">
+
+<!-- 구매 수량 버튼 증감 연산 (여기는 무조건 헤더 부분에 정의 해야해서 기존 sp_bascket.js와 별도 분리) -->
+<script>
+// 구매수량 증가 버튼 이벤트
+function purchasePlus(worksNumber, capacity, price) {
+	var sellerValue = $("#purchase-value" + worksNumber).val();
+    if (sellerValue == capacity) {
+        window.alert("더이상의 재고 수량이 존재하지 않습니다.");
+    } else {
+        $("#purchase-value" + worksNumber).val(++sellerValue);
+        $("#price-value" + worksNumber).text(price * sellerValue);
+    }
+}
+
+// 구매수량 감소 버튼 이벤트
+function purchaseMinus(worksNumber, price) {
+	var sellerValue = $("#purchase-value" + worksNumber).val();
+    if (sellerValue == 1) {
+        window.alert("최소 1개 이상을 지정해야합니다.");
+    } else {
+        $("#purchase-value" + worksNumber).val(--sellerValue);
+        $("#price-value" + worksNumber).text(price * sellerValue);
+    }
+}
+
+// 전체 상품 체크 구매 가격
+var workshopAllProductPrice = 0;
+var workshopDeliveryPrice = 0;
+var workshopAllOrderPrice = 0;
+
+// 구매할 제품을 체크박스로 클릭시
+function selectPurchaseCheckbox(checkbox, worksNumber, workshopNumber, deliveryPrice, price, capacity) {
+	if ($(checkbox).is(':checked') == true) {
+		// 1) 총 상품 금액> 초기화 후 실행
+		var selectProductPrice = parseInt($("#price-value" + worksNumber).text());
+		var allProductPrice = parseInt($("#all-product-price" + workshopNumber).text()) + selectProductPrice;
+		$("#all-product-price" + workshopNumber).text(allProductPrice);
+		
+		// 2) 배송비 여부 -> 여기서 배송비가 하나 존재하면, 2500원으로 고정
+		// allPrice => 여기는 배송비 모두 합친 값입니다.
+		//var allDeliveryPrice = parseInt($("#temp-all-delivery-price" + workshopNumber).val());
+		var allDeliveryPrice = parseInt($("#all-delivery-price" + workshopNumber).text());
+
+		var fixDeliveryPrice = 0; // 고정 배송비
+		if (deliveryPrice === "y" || deliveryPrice === "Y") {
+			allDeliveryPrice += 2500;
+			//$("#temp-all-delivery-price" + workshopNumber).val(allDeliveryPrice);
+			$("#all-delivery-price" + workshopNumber).text(allDeliveryPrice);
+            $("#all-delivery-price" + workshopNumber).val(allDeliveryPrice);
+		/* 	if (allDeliveryPrice > 0) {
+				fixDeliveryPrice = 2500;
+				$("#all-delivery-price" + workshopNumber).text(fixDeliveryPrice);
+				$("#all-delivery-price" + workshopNumber).val(fixDeliveryPrice);
+			} */
+		} 
+		
+		// 3) 총 결제 금액
+		//var allPrice = allProductPrice + fixDeliveryPrice;
+		var allPrice = allProductPrice + allDeliveryPrice;
+        $("#all-order-price" + workshopNumber).text(allPrice);
+        $("#all-order-price" + workshopNumber).val(allPrice);
+        
+        // 4) 수량 증감 이벤트 막기 (버그 방지를 위해)
+        // 수량 감소 이벤트 제거
+        $(".minus-product-value-btn" + worksNumber).attr("onclick", 
+        		"javascript:window.alert('체크 박스를 해제하고 작업하세요')");
+        // 수량 증가 이벤트 제거
+        $(".plus-product-value-btn" + worksNumber).attr("onclick", 
+        "javascript:window.alert('체크 박스를 해제하고 작업하세요')"); // 초기 값 설정
+		
+        // 5) 최종 값
+        workshopAllProductPrice += allProductPrice;
+        //workshopDeliveryPrice += fixDeliveryPrice;
+        workshopDeliveryPrice += allDeliveryPrice;
+        workshopAllOrderPrice += allPrice;
+        $("#all-product-price").text(workshopAllProductPrice);
+        $("#all-delivery-price").text(workshopDeliveryPrice);
+        $("#all-order-price").text(workshopAllOrderPrice);
+	} else {
+		// 1) 총 상품 금액> 초기화 후 실행
+        var selectProductPrice = parseInt($("#price-value" + worksNumber).text());
+        var allProductPrice = parseInt($("#all-product-price" + workshopNumber).text()) - selectProductPrice;
+        $("#all-product-price" + workshopNumber).text(allProductPrice);
+        
+        // 2) 배송비 여부 -> 여기서 배송비가 존재한 제품을 취소하면, 다시 원위치로 
+        //var allDeliveryPrice = parseInt($("#temp-all-delivery-price" + workshopNumber).val());
+        var allDeliveryPrice = parseInt($("#all-delivery-price" + workshopNumber).val());
+        var fixDeliveryPrice = 0; // 고정 배송비
+        var tempDeliveryPrice = 0; // 이건 최종적으로 합한 배송비 값을 넣기위한 용도
+        
+        
+        if (deliveryPrice === "y" || deliveryPrice === "Y") {
+        	tempDeliveryPrice = allDeliveryPrice; // 배송비 관련해서
+        	allDeliveryPrice -= 2500;
+            //$("#temp-all-delivery-price" + workshopNumber).val(allDeliveryPrice);
+            $("#all-delivery-price" + workshopNumber).text(allDeliveryPrice);
+            $("#all-delivery-price" + workshopNumber).val(allDeliveryPrice);
+           /*  // 각 공방별로 제품별 각 배송비가 한개라도 존재 하지 않을 시
+            if(allDeliveryPrice == 0) {
+            	tempDeliveryPrice = 2500;
+                $("#all-delivery-price" + workshopNumber).text(fixDeliveryPrice);
+                $("#all-delivery-price" + workshopNumber).val(fixDeliveryPrice);
+            } */
+        } 
+         
+         // 3) 총 결제 금액
+         var allPrice = allProductPrice + fixDeliveryPrice;
+         $("#all-order-price" + workshopNumber).text(allPrice);
+         $("#all-order-price" + workshopNumber).val(allPrice);
+         
+         // 4) 수량 증감 이벤트 재가동 (버그 방지를 위해)
+         // 수량 감소 이벤트 재가동
+         $(".minus-product-value-btn" + worksNumber).attr("onclick",
+        		 "purchaseMinus(" + worksNumber + ", " + price + ")");
+         // 수량 증가 이벤트 재가동
+         $(".plus-product-value-btn" + worksNumber).attr("onclick",
+                 "purchasePlus(" + worksNumber +", " + capacity + ", " + price + ")");
+         
+         // 5) 최종값
+         // 기존의 판매값을 전체상품금액을 넣는다.
+         // 기존의 배달비용은 임시로 지정하여 2500원이 0원이 될시를 대비하여 따로 변수 선언해서 사용
+         // 기존의 총 가격  = 기존 판매값 + 기존 배달배용
+         workshopAllProductPrice -= selectProductPrice;
+         workshopDeliveryPrice -= tempDeliveryPrice;
+         //workshopAllOrderPrice -= (selectProductPrice + tempDeliveryPrice);
+         workshopAllOrderPrice -= (selectProductPrice + tempDeliveryPrice);
+         $("#all-product-price").text(workshopAllProductPrice);
+         $("#all-delivery-price").text(workshopDeliveryPrice);
+         $("#all-order-price").text(workshopAllOrderPrice);
+	}
+	console.log(workshopAllProductPrice)
+}
+</script>
+</head>
+
+<body>
+	<header id="header"> </header>
+	<div class="sp-sb-header1">
+		<div class="sp-sb-header2">
+			<div class="sp-sb-h-name">
+				<p>장바구니</p>
+			</div>
+			<div class="sp-sb-h-nav">
+				<p>
+					<b>장바구니</b>&ensp;>&ensp;주문결제&ensp;>&ensp;주문완료
+				</p>
+			</div>
+		</div>
+		<!-- sp-sb-header2 -->
+	</div>
+	<!-- sp-sb-header1 -->
+	<div class="sp-sb-option1">
+		<div class="sp-sb-option2">
+			<a href="#">전체 선택</a> &ensp;|&ensp; <a id="delete-bascket" href="">선택 삭제</a>
+	</div>
+
+
+	<div class="ib-container">
+		<div class="sp-sb-list" id="basket-list">
+		      <!--  핸들바 참조 -->
+		</div>
+		<div class="sp-sb-totalprice">
+			<div id="sp-sb-order" class="sp-sb-order">
+				<div class="sp-sb-tpname">
+					<p>전체합계</p>
+				</div>
+				<div class="sp-sb-tptotal">
+					<p>전체 상품 금액</p>
+					<p><span id="all-product-price">0</span> 원</p>
+				</div>
+				<div class="sp-sb-tpdelivery">
+					<p>전체 배송비</p>
+					<p><span id="all-delivery-price">0</span> 원</p>
+				</div>
+				<div class="sp-sb-tpfinal">
+					<p>결제금액</p>
+					<p><span id="all-order-price">0</span> 원</p>
+				</div>
+				<div id="submit-purchase" class="sp-sb-payment">
+					<p>전체 장바구니 결제하기</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+    <script id="basket-template" type="text/x-handlebars-template">
+        {{#each bascket}}
+            <div class="sp-sb-list-store">
+                <div class="sp-sb-sname">
+                    {{!-- 공방명 --}}
+                    <p id="studioName{{workshopNumber}}">{{studioName}}</p>
+                </div>
+                {{!-- 제품 찾기 --}}
+                <span id="bascket-list-detail{{workshopNumber}}">
+                </span>
+                {{!-- 제품 찾기 끝 --}}
+
+                <div class="sp-sb-sprice">
+                    {{!-- 총 상품 가격 --}}
+                    <p>총 상품 가격 <span id="all-product-price{{workshopNumber}}">0</span> 원&ensp;&ensp;&ensp;</p>
+                    <i class="fas fa-plus-circle"></i>
+                    {{!-- 배송비 여부(있으면 2500원) --}}
+                    <input id="temp-all-delivery-price{{workshopNumber}}" type="hidden" value="0">
+                    <p>&ensp;&ensp;&ensp;배송비 <span id="all-delivery-price{{workshopNumber}}">0</span> 원&ensp;&ensp;&ensp;</p>
+                    <i class="fas fa-equals"></i>
+                    {{!-- 총 상품 가격 + 배송비 여부 --}}
+                    <p>&ensp;&ensp;&ensp;총 주문 금액 <span id="all-order-price{{workshopNumber}}">0</span> 원</p>
+                </div>
+            </div>
+        {{/each}}
+    </script>
+    
+    <script id="product-template" type="text/x-handlebars-template">
+                {{#each product}}
+                <div class="sp-sb-sproduct ">
+                    <div class="sp-sb-check">
+                        <input id="select-checkbox{{worksNumber}}" type="checkbox" onClick="selectPurchaseCheckbox(this, {{worksNumber}}, {{workshopNumber}}, '{{deliveryPrice}}', {{price}}, {{capacity}});" style="width: 20px; height: 20px;">
+                    </div>
+                    <div class="sp-sb-img">
+                        <div class="sp-sb-putimg">
+                            {{!-- 메인사진 들어갈곳 --}}
+                            <img src="../../../files/works/{{path}}" />
+                        </div>
+                    </div>
+                    <div class="sp-sb-info">
+                        <div class="sp-sb-info-product">
+                            {{!-- 해당 공방에서 판매하는 제품 제목 --}}
+                            <p>{{title}}</p>
+                        </div>
+                        <div class="sp-sb-info-option">
+                            {{!-- 옵션 값 --}}
+                            <p>{{optionValue}}</p>
+                        </div>
+                        <div class="sp-sb-info-delivery">
+                            {{!-- 배송비 여부 --}}
+                            <p id="delivery{{worksNumber}}">{{resultDelivery}}</p>
+                        </div>
+                    </div>
+                    <div class="sp-sb-qty">
+                        <div class="sp-sb-qty-wrap">
+                            <div class="sp-sb-qty-btn-wrap">
+                                {{!-- 구매 갯수 감소 --}}
+                                <button class="sp-sb-qty-minus minus-product-value-btn{{worksNumber}}" onclick="purchaseMinus({{worksNumber}}, {{price}});">
+                                    <i class="far fa-minus-square"></i>
+                                </button>
+                            </div>
+                            {{!-- 구매 갯수  output --}}
+                            <input id="purchase-value{{worksNumber}}" class="item_qty_count" type="text" maxlength="3" value="1" readonly="true">
+                            <div class="sp-sb-qty-btn-wrap">
+                                {{!-- 구매 갯수 증가 --}}
+                                <button class="sp-sb-qty-plus plus-product-value-btn{{worksNumber}}" onclick="purchasePlus({{worksNumber}}, {{capacity}}, {{price}});">
+                                    <i class="far fa-plus-square"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sp-sb-productprice">
+                        {{!-- 상품가격 --}}
+                        <p><span id="price-value{{worksNumber}}">{{price}}</span> 원</p>
+                    </div>
+                </div>
+                {{/each}}
+    </script>
+
+
+
+	<footer id="footer"> </footer>
+	<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script src="../../js/common.js"></script>
+	<script src="../../js/sp_bascket.js"></script>
+	<script src="../../js/header.js"></script>
+	<script src="../../js/footer.js"></script>
+</body>
+
+</html>

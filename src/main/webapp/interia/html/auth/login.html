@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>INTERIA</title>
+	<meta charset="utf-8">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"> 
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/header_move.css">
+	<link rel="stylesheet" type="text/css" href="../../css/auth/login.css">
+	<link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+<header id="header">
+</header>
+<section>
+	<div class="main_visual0">
+	</div>
+	<div class="form_mainText">
+		<h1>로그인</h1>
+		<h1>다양한 정보를 제공받으세요.</h1>
+	</div>
+
+	<div class="login_grid">
+		<div class="login_Inputbox">
+			<div class="login_Inputbox_id">
+				<p>아이디</p>
+				<input type="text" id="fId" placeholder="아이디를 입력하세요">
+			</div>
+			<div class="login_Inputbox_pwd">
+				<p>비밀번호</p>
+				<input type="password" id="fPassword" placeholder="암호를 입력하세요.">
+			</div>
+		</div>
+		<div class="login_Submitbox">
+			<button id="loginBtn" type="button">로그인</button>
+		</div>
+		<div class="login_checkbox">
+			<div class="login_checkbox_grid">
+				<label for="fAutoLogin"><input id="fAutoLogin" type="checkbox" name="자동 로그인">자동 로그인</label>
+				<label for="fSaveId"><input id="fSaveId" type="checkbox" name="아이디 저장">아이디 저장</label>
+			</div>
+		</div>
+	</div>
+	
+    <div class="login_sns_login">
+        <div id="btn-kakao-login">
+            <a href="javascript:loginWithKakao()"><img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"></a>
+        </div>
+        
+        <div class="fb-login-button" data-width="300"  data-max-rows="1" 
+             data-size="large" data-button-type="continue_with" data-show-faces="false"
+             data-auto-logout-link="false" data-use-continue-as="false" data-onlogin="checkLoginState();"></div>
+        <!-- 
+        <div id="naverIdLogin">
+        </div>
+         -->
+    </div>
+    <!-- 페이스북 로그인용  -->
+    <div id="fb-root"></div>
+	
+	<div class="login_submenu">
+		<div class="login_submenu01">
+			<p>아직 회원이 아니신가요?</p>
+			<a href="./form.html"><p>회원가입하기 〉</p></a>
+		</div>
+		<div class="login_submenu02">
+			<p>정보를 잊어버리셨다면</p>
+			<a href="./usersearch.html"><p>아이디/비밀번호 찾기 〉</p></a>
+		</div>
+	</div>
+</section>
+
+
+
+
+<footer id="footer">
+</footer>
+    <script src="../../js/common.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../js/login.js"></script>
+    <script src="../../js/facebook_login.js"></script> <!--  여기는 직접 facebook.js 에서 만든 것을 따온것 -->
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="../../js/kakao_login.js"></script>
+    <!-- 
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+    <script src="../../js/naver_login.js"></script>  -->
+    <script>
+    var input = document.getElementById("fPassword");
+    input.addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            document.getElementById("loginBtn").click();
+        }
+    });
+    </script>
+</body>
+
+</html>

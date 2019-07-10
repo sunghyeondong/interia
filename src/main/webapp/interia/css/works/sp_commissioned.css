@@ -1,0 +1,21 @@
+    /* 나머지 부분 */
+.sp-privacy {
+    color:gray;
+    font-size: 0.562rem;
+    text-align:center;
+}
+
+.sp-submit-button {
+    background:#ffc001;
+    color:#FFFFFF;
+    width:200px;
+    height:50px;
+    margin-bottom:1.125em;
+    margin-top:-1.725em;
+}
+
+.sp-commisioned-memo {
+    resize: none;
+    height: 200px;
+}
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- MemberDao.class 파일에서 불러온다! -->
+<mapper namespace="bitcamp.java106.pms.dao.AcrgttDao">
+
+<!-- 여기는 DB 컬럼을 Java에서 지정한 함수명을 저장하는 것 -->
+<!-- Member 클래스 -->
+  <resultMap type="Acrgtt" id="AcrgttMap">
+    <id column="memno" property="wno"/>
+    <result column="wsano" property="wsno"/>
+    <result column="acpt" property="personnel"/>
+    <result column="acrdt" property="workshopDate"/>
+  </resultMap>
+  
+  <insert id="insert" parameterType="Acrgtt">
+    insert into INTR_ACRGTT(MEMNO, WSANO, ACPT, ACRDT)
+    values(#{wno},#{wsno},#{personnel},now())
+  </insert>
+</mapper>
+
+
+
+
+
+
+

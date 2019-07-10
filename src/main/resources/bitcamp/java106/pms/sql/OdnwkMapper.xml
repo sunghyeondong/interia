@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 이름은 SQL을 찾을 때 사용하는 그룹명이다.
+     따라서 SQL 문을 사용하는 DAO 클래스 이름과 같게 하면
+     유지보수할 때 알아보기 쉽다.
+     단순히 알아보기 쉬울 뿐만 아니라 
+     스프링 프레임워크와 연동할 때 DAO 객체를 자동 생성할 수 있다. 
+-->
+<mapper namespace="bitcamp.java106.pms.dao.OdnwkDao">
+
+  <resultMap type="Odnwk" id="OdnwkMap">
+    <id column="wono" property="no"/>
+    <result column="ostor" property="oderStore"/>
+    <result column="qctt" property="purchEpilo"/>
+    <result column="pchrv" property="reqContext"/>
+    <result column="path" property="revPhoto"/>
+    <result column="odopt" property="worksOption" />
+    <association property="order" javaType="Order">
+        <result column="odno" property="oderNo"/>
+    </association>
+    <association property="works" javaType="Works">
+        <result column="wno" property="no"/>
+    </association>
+  </resultMap>
+  
+  <!-- SQL 문 id를 설정할 때 SQL문을 사용하는 메서드 이름과 같게하면
+       유지보수할 때 알아보기 쉽다. 
+       알아보기 쉬울 뿐만 아니라
+       스프링 프레임워크와 연동할 때 DAO객체를 자동생성하고 
+       그 메서드를 자동생성할 때 사용할 수 있다.
+  -->
+  <select id="selectList" 
+          resultType="Map" 
+          parameterType="map">
+SELECT onk.wono, qctt, wks.wno, odr.odno, odr.memno, wtitl, abvl, path FROM INTR_ODNWK onk
+inner join INTR_WORKS wks on onk.wno = wks.wno
+inner join INTR_WKOT wkt on wks.wno = wkt.wno
+inner join INTR_WPHO wpho on wks.wno = wpho.wno
+inner join INTR_ORDER odr on onk.odno = odr.odno
+where odr.memno = #{value} and (wpho.mipt = "y" or wpho.mipt = "Y")
+  </select>
+  
+  <select id="selectRevList" 
+          resultType="Map" 
+          parameterType="map">
+SELECT onk.wono, qctt, wks.wno, odr.odno, odr.memno, wtitl, abvl, path, repath FROM INTR_ODNWK onk
+inner join INTR_WORKS wks on onk.wno = wks.wno
+inner join INTR_WKOT wkt on wks.wno = wkt.wno
+inner join INTR_WPHO wpho on wks.wno = wpho.wno
+inner join INTR_ORDER odr on onk.odno = odr.odno
+inner join INTR_RVPHO rpho on onk.wono = rpho.wono
+where odr.memno = #{value} and (wpho.mipt = "y" or wpho.mipt = "Y")
+  </select>
+  
+  <select id="selectRevOne"
+          resultType="Map" 
+          parameterType="map">
+select wtitl, mutua, path, qctt from INTR_ODNWK onk
+inner join INTR_WORKS wks on onk.wno = wks.wno
+inner join INTR_WRKSHP wkp on wks.memno = wkp.memno
+inner join INTR_WPHO wpho on wks.wno = wpho.wno
+inner join INTR_ORDER odr on onk.odno = odr.odno
+where onk.wono = #{value} and (wpho.mipt = "y" or wpho.mipt = "Y")
+  </select>
+  
+  <select id="selectRevListOne"
+          resultType="Map" 
+          parameterType="map">
+select wtitl, mutua, path, qctt, repath from INTR_ODNWK onk
+inner join INTR_WORKS wks on onk.wno = wks.wno
+inner join INTR_WRKSHP wkp on wks.memno = wkp.memno
+inner join INTR_WPHO wpho on wks.wno = wpho.wno
+inner join INTR_ORDER odr on onk.odno = odr.odno
+inner join INTR_RVPHO rpho on onk.wono = rpho.wono
+where onk.wono = #{value} and (wpho.mipt = "y" or wpho.mipt = "Y")
+  </select>
+  
+  <!-- 제품 상세 페이지에서 리뷰의 페이지 번호대로 표시
+       만일 테스트시, 아래의 and (wpho.mipt = "y" or wpho.mipt = "Y")
+       어떤 차이인지 확인할 것!
+   -->
+  <select id="selectRevCount" 
+          resultType="Map" 
+          parameterType="map">
+SELECT count(*) as count FROM INTR_ODNWK onk
+inner join INTR_WORKS wks on onk.wno = wks.wno
+inner join INTR_WKOT wkt on wks.wno = wkt.wno
+inner join INTR_WPHO wpho on wks.wno = wpho.wno
+inner join INTR_ORDER odr on onk.odno = odr.odno
+inner join INTR_RVPHO rpho on onk.wono = rpho.wono
+where wks.wno = #{wno} <!-- and (wpho.mipt = "y" or wpho.mipt = "Y") -->
+  </select>
+  
+  <select id="selectRevdetail" 
+          resultType="Map" 
+          parameterType="map">
+SELECT onk.wono, qctt, wks.wno, odr.odno, odr.memno, wtitl, abvl, path, repath, mutua FROM INTR_ODNWK onk
+inner join INTR_WORKS wks on onk.wno = wks.wno
+inner join INTR_WKOT wkt on wks.wno = wkt.wno
+inner join INTR_WPHO wpho on wks.wno = wpho.wno
+inner join INTR_WRKSHP wkp on wks.memno = wkp.memno
+inner join INTR_ORDER odr on onk.odno = odr.odno
+inner join INTR_RVPHO rpho on onk.wono = rpho.wono
+where wks.wno = #{wno}  and (wpho.mipt = "y" or wpho.mipt = "Y")
+limit #{startNo}, #{pageNo}
+  </select>
+  
+    
+<select id="selectSellerSite" resultType="Map" parameterType="map">
+select onk.qctt, nknm, wor.wtitl, wp.path
+from INTR_ODNWK onk
+inner join INTR_ORDER ord on onk.odno = ord.odno
+inner join INTR_MEMBER mem on ord.memno = mem.memno
+inner join INTR_WORKS wor on onk.wno = wor.wno
+inner join INTR_WPHO wp on onk.wno = wp.wno
+where wor.memno = #{value} and (wp.mipt = "y" or wp.mipt = "Y")
+  </select>
+  
+  <insert id="insert" parameterType="Odnwk">
+    insert into INTR_ODNWK(ostor, wno, odno, odopt) 
+    values(#{oderStore}, #{worksNo}, #{oderNo}, #{worksOption})
+  </insert>
+  
+  <select id="selectOne" parameterType="int" resultMap="OdnwkMap">
+    select * from INTR_ODNWK where wono=#{value}
+  </select>
+  
+  <update id="update" parameterType="Odnwk">
+    update `INTR_ODNWK` set `qctt`= #{purchEpilo} WHERE `wono` = #{no}
+  </update>
+  
+    <update id="updateMod" parameterType="Odnwk">
+    update `INTR_ODNWK` set `qctt`= #{purchEpilo} WHERE `wono` = #{no}
+  </update>
+  
+  <delete id="delete" parameterType="map">
+<!--     delete from INTR_ACRGTT WHERE memno=#{memno} and wsano=#{wsano} -->
+  </delete>
+</mapper>

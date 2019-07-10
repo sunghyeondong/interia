@@ -1,0 +1,81 @@
+    /* 나머지 부분 */
+.sp-table-center {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* 우편번호 찾기 */
+#layer {
+	z-index: 9999 !important;
+}
+
+/* 임의의 태그를 작성 */
+.sp-product-image {
+    position: relative;
+    vertical-align:middle;
+    padding:0.625em 0.625em 0.625em 0.625em
+}
+
+.sp-product-store {
+    position: relative;
+    left: 3.75em;
+    /* flex로 가운데 정렬*/
+    display: flex;
+    align-items:center;
+}
+
+.sp-price-store {
+    position: relative;
+    /* flex로 가운데 정렬*/
+    left:10em;
+    display: flex;
+    align-items:center;
+    
+}
+
+.sp-privacy {
+    color:gray;
+    font-size: 0.562rem;
+    text-align:center;
+}
+
+.sp-sb-header2 {
+    width: 1200px;
+    display:flex;
+    margin: 0 auto;
+    padding-bottom: 0px;
+    height: 90px;
+}
+
+.sp-sb-h-name {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 50%;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.sp-sb-h-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 50%;
+    font-size: 0.8rem;
+    text-align:right;
+    color:#212529
+}
+
+.sp-submit-button {
+    background:#ffc001;
+    color:#FFFFFF;
+    width:200px;
+    height:50px;
+    margin-bottom:1.125em;
+    margin-top:-1.725em;
+}
+
+.sp-input-email {
+    width:150px;
+}
+

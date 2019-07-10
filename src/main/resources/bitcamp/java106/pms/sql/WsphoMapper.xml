@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- MemberDao.class 파일에서 불러온다! -->
+<mapper namespace="bitcamp.java106.pms.dao.WsphoDao">
+
+<!-- 여기는 DB 컬럼을 Java에서 지정한 함수명을 저장하는 것 -->
+<!-- Member 클래스 -->
+  <resultMap type="Wspho" id="WsphoMap">
+    <id column="wspno" property="wsno"/>
+    <result column="memno" property="wno"/>
+    <result column="pclsf" property="wsPclsf"/>
+    <result column="path" property="filename"/>
+    <result column="lpath" property="filenametwo"/>
+  </resultMap>
+  
+  <!-- 각 회원마다 판매자 등록이 되어있는지 안되어 있는지 검사! -->
+  <select id="selectOneNumber" resultType="int" parameterType="int">
+    select count(*)
+    from INTR_WRKSHP where memno=#{no}
+  </select>
+  
+  <insert id="insert" parameterType="Wspho">
+    insert into INTR_WSPHO(wspno, memno, pclsf, path, lpath)
+    values(#{wsno}, #{wno}, 'profile', #{filenametwo}, #{filename});
+  </insert>
+  
+  <insert id="insertIntroduce" parameterType="Wspho">
+    insert into INTR_WSPHO(wspno, memno, pclsf, path, lpath)
+    values(#{wsno}, #{wno}, 'introduce', #{filenametwo}, #{filename});
+  </insert>
+  
+    <delete id="delete" parameterType="map">
+	DELETE FROM `INTR_WSPHO` WHERE memno=#{memno} AND pclsf=#{pclsf};
+  </delete>
+  
+    <insert id="insertAd" parameterType="Wspho">
+    insert into INTR_WSPHO(memno, pclsf, path, lpath)
+    values(#{wno}, #{wsPclsf}, #{filenametwo}, #{filename});
+  </insert>
+  
+
+  
+</mapper>
+
+
+
+
+
+
+

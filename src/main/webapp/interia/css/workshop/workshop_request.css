@@ -1,0 +1,433 @@
+section {height: 2400px;margin: 0 auto;}
+h1,h2,h3,h4,h5,h6,p {margin: 0;padding: 0;}
+a {color:#333;text-decoration:none}
+a:active, a:hover {text-decoration:none;}
+
+.bx-wrapper {
+    margin: 0 auto;
+    border: 0 !important;
+}
+.bx-wrapper img {
+    display: inline-block !important;
+}
+/*workshop_request css*/
+.workshop_request_visual {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 650px;
+	margin: 0 auto;
+	margin-top: 7.5em;
+	background: url('../../images/workshop/storeRequestBanner.png') no-repeat 50% 50%;
+}
+.workshop_request_visual h1 {
+	color: #fff;
+	font-weight: bold;
+	margin-bottom: 1em;
+}
+.workshop_request_visual button {
+	border: 0;
+	padding: 0;
+	width: 200px;
+	height: 50px;
+	color: #000;
+	font-weight: bold;
+	margin-top: 2em;
+	background-color: #ffc001;
+}
+.workshop_request_storyTitle {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 1200px;
+	height: 100px;
+	margin: 0 auto;
+	margin-top: 4em;
+}
+.workshop_request_storyTitle h1 {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+.workshop_request_storyTitle_line {
+	width: 100px;
+	height: 5px;
+	margin: 0 auto;
+	margin-top: 0.75em;
+	background-color: #ffc001;
+}
+.workshop_request_storyTitle p {
+	font-size: 0.825rem;
+	margin-top: 1em;
+}
+
+.workshop_request_storyImg {
+    display: flex;
+    justify-content: center;
+	width: 100%;
+	height: 400px;
+    max-width: 1920px;
+	margin: 0 auto;
+}
+#request_test {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* img 00 */
+.workshop_request_storyImg00 {
+	position: relative;
+    width: 400px;
+	height: 400px;
+	float: left;
+}
+.workshop_request_storyImg00_text {
+    position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+    bottom: 0;
+	width: 100%;
+	height: 100px;
+	background-color: #000;
+	opacity: 0.7;
+}
+.workshop_request_storyImg00_text p{
+	color: #fff;
+	font-size: 1.125rem;
+	opacity: 1;
+	line-height: 2em;
+}
+.workshop_request_storyImg00_text p:nth-child(2){
+	font-weight: bold;
+}
+.request_click_box {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+	width: 100%;
+	height: 100px;
+	background-color: #000;
+}
+.request_click_box img:nth-child(1){
+    margin-top: 2em;
+    margin-left: 20em;
+}
+.request_click_box p:nth-child(2){
+    font-size: 0.825rem;
+    margin-top: 1.5em;
+    font-weight: normal;
+}
+.request_click_box p:nth-child(3){
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.request_click_box p:nth-child(4){
+    font-size: 0.7rem;
+    margin-top: 1em;
+}
+.request_click_box img:nth-child(5){
+    margin-top: 2em;
+}
+
+
+/* img 01 */
+.workshop_request_storyImg01 {
+	position: relative;
+    width: 400px;
+	height: 400px;
+	float: left;
+}
+.workshop_request_storyImg01_text {
+    position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+    bottom: 0;
+	width: 100%;
+	height: 100px;
+	background-color: #000;
+	opacity: 0.7;
+}
+.workshop_request_storyImg01_text p{
+	color: #fff;
+	font-size: 1.125rem;
+	opacity: 1;
+	line-height: 2em;
+}
+.workshop_request_storyImg01_text p:nth-child(2){
+	font-weight: bold;
+}
+.request_click_box01 {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+	width: 100%;
+	height: 100px;
+	background-color: #000;
+}
+.request_click_box01 img:nth-child(1){
+    margin-top: 2em;
+    margin-left: 20em;
+}
+.request_click_box01 p:nth-child(2){
+    font-size: 0.825rem;
+    margin-top: 1.5em;
+    font-weight: normal;
+}
+.request_click_box01 p:nth-child(3){
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.request_click_box01 p:nth-child(4){
+    font-size: 0.7rem;
+    margin-top: 1em;
+}
+.request_click_box01 img:nth-child(5){
+    margin-top: 2em;
+}
+
+
+
+/* img 02 */
+.workshop_request_storyImg02 {
+	position: relative;
+    width: 400px;
+	height: 400px;
+	float: left;
+}
+.workshop_request_storyImg02_text {
+    position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+    bottom: 0;
+	width: 100%;
+	height: 100px;
+	background-color: #000;
+	opacity: 0.7;
+}
+.workshop_request_storyImg02_text p{
+	color: #fff;
+	font-size: 1.125rem;
+	opacity: 1;
+	line-height: 2em;
+}
+.workshop_request_storyImg02_text p:nth-child(2){
+	font-weight: bold;
+}
+.request_click_box02 {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+	width: 100%;
+	height: 100px;
+	background-color: #000;
+}
+.request_click_box02 img:nth-child(1){
+    margin-top: 2em;
+    margin-left: 20em;
+}
+.request_click_box02 p:nth-child(2){
+    font-size: 0.825rem;
+    margin-top: 1.5em;
+    font-weight: normal;
+}
+.request_click_box02 p:nth-child(3){
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.request_click_box02 p:nth-child(4){
+    font-size: 0.7rem;
+    margin-top: 1em;
+}
+.request_click_box02 img:nth-child(5){
+    margin-top: 2em;
+}
+
+
+/* img 03 */
+.workshop_request_storyImg03 {
+	position: relative;
+    width: 400px;
+	height: 400px;
+	float: left;
+}
+.workshop_request_storyImg03_text {
+    position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+    bottom: 0;
+	width: 100%;
+	height: 100px;
+	background-color: #000;
+	opacity: 0.7;
+}
+.workshop_request_storyImg03_text p{
+	color: #fff;
+	font-size: 1.125rem;
+	opacity: 1;
+	line-height: 2em;
+}
+.workshop_request_storyImg03_text p:nth-child(2){
+	font-weight: bold;
+}
+.request_click_box03 {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+	width: 100%;
+	height: 100px;
+	background-color: #000;
+}
+.request_click_box03 img:nth-child(1){
+    margin-top: 2em;
+    margin-left: 20em;
+}
+.request_click_box03 p:nth-child(2){
+    font-size: 0.825rem;
+    margin-top: 1.5em;
+    font-weight: normal;
+}
+.request_click_box03 p:nth-child(3){
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.request_click_box03 p:nth-child(4){
+    font-size: 0.7rem;
+    margin-top: 1em;
+}
+.request_click_box03 img:nth-child(5){
+    margin-top: 2em;
+}
+
+/* img 04 */
+.workshop_request_storyImg04 {
+	position: relative;
+    width: 400px;
+	height: 400px;
+	float: left;
+}
+.workshop_request_storyImg04_text {
+    position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+    bottom: 0;
+	width: 100%;
+	height: 100px;
+	background-color: #000;
+	opacity: 0.7;
+}
+.workshop_request_storyImg04_text p{
+	color: #fff;
+	font-size: 1.125rem;
+	opacity: 1;
+	line-height: 2em;
+}
+.workshop_request_storyImg04_text p:nth-child(2){
+	font-weight: bold;
+}
+.request_click_box04 {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+	width: 100%;
+	height: 100px;
+	background-color: #000;
+}
+.request_click_box04 img:nth-child(1){
+    margin-top: 2em;
+    margin-left: 20em;
+}
+.request_click_box04 p:nth-child(2){
+    font-size: 0.825rem;
+    margin-top: 1.5em;
+    font-weight: normal;
+}
+.request_click_box04 p:nth-child(3){
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.request_click_box04 p:nth-child(4){
+    font-size: 0.7rem;
+    margin-top: 1em;
+}
+.request_click_box04 img:nth-child(5){
+    margin-top: 2em;
+}
+
+
+
+.workshop_request_start_bg {
+	width: 100%;
+	height: 950px;
+	margin: 0 auto;
+    max-width: 1920px;
+}
+.workshop_request_start {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 2em;
+}
+.workshop_request_start h1 {
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-top: 1.5em;
+}
+.workshop_request_storyTitle_line {
+	width: 100px;
+	height: 5px;
+	margin: 0 auto;
+	margin-top: 0.75em;
+	background-color: #ffc001;
+}
+.workshop_request_start p {
+	font-size: 0.825rem;
+	margin-top: 1em;
+	text-align: center;
+}
+.workshop_request_start_Mac {
+	width: 771px;
+	height: 474px;
+	margin-top: 2em;
+	background: url('../../images/workshop/111111111.png') no-repeat 50% 50%;
+}
+.workshop_request_start_Mac_abs {
+    width: 736px;
+    height: 373px;
+    background-color: #f00;
+    margin-left: 18px;
+    margin-top: 16px;
+}
+.workshop_request_start_deps {
+	display: flex;
+	justify-content: space-around;
+	width: 900px;
+	height: 140px;
+	margin: 0 auto;
+	margin-top: 3em;
+}
+.workshop_request_start_deps01 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	width: 120px;
+	height: 145px;
+}
+.workshop_request_start_deps01 p{
+	text-align: center;
+	font-size: 0.9rem;
+    font-weight: bold;
+}

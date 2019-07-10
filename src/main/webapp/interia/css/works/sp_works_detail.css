@@ -1,0 +1,650 @@
+ul, ol {list-style: none;}
+h4, h5, p {display: inline-block;}
+a:hover {text-decoration: none; color: #333;}
+.sp-font-yellow {color: #ffc001;}
+.sp-font-gray {color: #BDBDBD;}
+
+.ib-container-pt {padding-top: 8em;}
+
+.ib-container-pt>p:first-child {
+    font-weight: bold;
+}
+
+.ib-link-icon {display: block; width: 30px; height: 30px;}
+
+.ib-pd-title {
+    padding-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bx-wrapper .bx-controls-direction a {
+    z-index: 9;
+}
+
+.ib-pd-img {
+    /*height: 600px;*/
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.ib-pd-img img {
+    padding: 0 0.3em 0.7em 0.3em;
+}
+
+.ib-pd-img-c1 {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.ib-pd-img-c1 img {
+    padding: 0 0.3em 0.7em 0.3em;
+}
+
+.ib-pd-cont {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.ib-pd-cont div:nth-child(1) {
+    display: grid;
+    grid-template-rows: 50% 50% 50% 50%;
+}
+
+.ib-pd-cont-rows {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding: 0.7em;
+}
+
+.ib-pd-cont-rows textarea{
+    height:100px;
+    resize: none;
+    outline-color: #ffc001;
+}
+
+.ib-pd-cont-rows p:nth-child(1) {
+    font-weight: bold;
+}
+
+.ib-pd-cont-fy {
+    font-weight: bold;
+    color: #ffc001;
+}
+
+.ib-pd-option {
+    border-top: 1px solid #666;
+    border-bottom: 2px solid #666;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 70% 10% 10% 10%;
+}
+
+.ib-pd-option p {
+    margin: 0;
+}
+
+.ib-pd-option p:first-child {
+    font-weight: bold;
+}
+
+.ib-pd-option-count {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+.ib-pd-option-count {
+    text-align: center;
+}
+
+.ib-pd-option-close,.ib-pd-option-price {
+    text-align: right;
+}
+
+.ib-pd-tprice {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: right;
+    padding: 1em 0 1em 0;
+}
+
+.ib-pd-tprice span {
+    color: #ffc001;
+    font-size: 1.75rem;
+    padding-left: 1.8em; 
+}
+
+.ib-pd-btbox:after {
+    clear: both;
+    display: block;
+    content: '';
+}
+
+.ib-pd-btlist {
+    float: right;
+}
+
+.ib-pd-btn-sdark {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #999;
+    color: #ccc;
+}
+
+.ib-pd-btn {
+    width: 250px;
+    height: 50px;
+    line-height: 2em;
+    font-weight: bold;
+}
+
+.ib-pd-btn-dark {
+    border: 1px solid #999;
+}
+
+.ib-pd-btn-gary {
+    background: #333;
+    color: #fff;
+}
+
+.ib-pd-btn-yellow {
+    background: #ffc001;
+    color: #fff;
+}
+
+.ib-pd-tab {
+    padding: 2em 0 0 0;
+    margin: 0;
+    height: 80px;
+}
+
+.ib-pd-tab li {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.ib-pd-tab li a,.ib-pd-tab li a:hover {
+    color: #000;
+}
+
+.ib-pd-tab-line {
+    border: 1px solid #999;
+    /*border-right: 1px solid #999;*/
+    /*border-left: 1px solid #999;*/
+    background: #fff;
+}
+
+.ib-pd-tab-box {
+    border: 1px solid #999;
+    background: #ccc;
+}
+
+/* sticky */
+.sticky-top {
+    top: 30px;
+    /*border-bottom: 1px solid #999; */
+}
+
+.ib-pd-detail {
+    height: 500px;
+    padding: 1.8em;
+}
+
+.ib-pd-detail h4 {
+    letter-spacing: -0.1em;
+}
+
+.ib-pd-detail-box .bx-wrapper {
+    box-shadow: none;
+}
+
+.ib-pd-detail-box .bx-wrapper .bx-next {
+    right: -35px !important;
+}
+
+.ib-pd-detail-box .bx-wrapper .bx-prev {
+    left: -30px !important;
+}
+
+.ib-pd-detail-box {
+    width: 1130px;
+}
+
+.ib-pd-detail-cont {
+    position: relative;
+    float: left;
+    margin: 0 0.5em;
+    width: 400px;
+    height: 400px;
+    box-sizing: border-box;
+}
+
+.ib-pd-detail-contbar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    padding: 0 1em;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ib-pd-detail-probox {
+    display: flex;
+    align-items: center;
+}
+
+.ib-pd-detail-pro {
+    background: #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.ib-pd-detail-probox p {
+    padding-left: 0.7em; 
+}
+
+.ib-pd-detail-contbar p {
+    color: white;
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.ib-pd-detail-contbar p span {
+    color: #ffc001;
+}
+
+/* product footer fixed */
+.ib-pd-foot {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: #222;
+    display: none;
+}
+
+.ib-ft-right {
+    display: inherit;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.ib-ft-right a:nth-child(2),
+.ib-ft-right a:nth-child(3),
+.ib-ft-right a:nth-child(2):hover,
+.ib-ft-right a:nth-child(3):hover {
+    color: #fff;
+}
+
+.ib-ft-btn {
+    width: 180px;
+    height: 50px;
+    border-radius: .25rem;
+    background: #fff;
+    margin: 0 1em;
+    line-height: 2.3rem;
+    font-weight: bold;
+}
+
+.ft-btn-gray {
+    background: #666;
+}
+
+.ft-btn-yellow {
+    background: #ffc001;
+}
+
+/*.black_overlay{
+    display: none;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index:10001;
+    -moz-opacity: 0.8;
+    opacity:.80;
+    filter: alpha(opacity=80);
+}
+
+.white_content {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 25%;
+    width: 650px;
+    height: 80%;
+    background-color: white;
+    z-index:10002;
+    overflow: auto;
+}
+
+.ib-inq-content {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 35%;
+    width: 400px;
+    background-color: white;
+    z-index:10002;
+    overflow: auto;
+}*/
+
+
+
+
+/*****만족도*****/
+.sp-star-score {overflow: hidden;}
+.sp-stars {
+    float: left;
+    overflow: hidden;
+    margin: 0.625em 1.25em 0 0;
+}
+.sp-stars span {
+    overflow: hidden;
+    display: inline-block;
+}
+.sp-star-score img {
+    width: 28px;
+    height: 25px;
+}
+.sp-score {
+    float: left;
+    font-size: 1.875em;
+}
+
+
+/*****리뷰 버튼 3개*****/
+.sp-buttons {
+    margin-top: 0.9375em;
+    overflow: hidden;
+}
+.sp-buttons div {
+    display: inline-block;
+    margin: 0.3125em 0 0 0.1875em;
+}
+.sp-buttons input {
+    background: #BDBDBD;
+    color: white;
+    width: 130px; height: 30px;
+    padding-top: 2px;
+}
+.sp-btn-normal {
+    background: #fff;
+    border: solid #BDBDBD 1px;
+    width: 160px; 
+    height: 40px;
+    text-align: center;
+    padding: 0.4375em;
+    float: right;
+    color: #ffc001;
+    cursor: pointer;
+}
+.sp-btn-normal:hover{
+    text-decoration:none;
+    color: #ffc001; 
+    background: #EAEAEA;
+    opacity: 0.8;
+}
+input.sp-current {
+    background: #ffc001;
+    color: white;
+    cursor: default;
+}
+.btn:hover {
+    opacity: 0.8;
+}
+
+
+/*****리뷰 내용*****/
+.sp-riviews {overflow: hidden;}
+h5 {cursor: pointer;}
+.sp-report {
+    float: right;
+    cursor: pointer;
+}
+.sp-cont {
+    overflow: hidden;
+    width: 1200px;
+}
+.sp-left-cont div {margin: 0.3125em 0;}
+.sp-left-cont div:hover {cursor: pointer;}
+.sp-left-cont {
+    width: 1000px;
+    float: left;
+}
+.sp-rev-cont {
+    width: 1000px;
+    float: left;
+}
+.sp-stars2 {
+    overflow: hidden;
+    margin-right: 20px; 
+}
+.sp-stars2 span { 
+    overflow: hidden;
+    display: inline-block;
+    float: left;
+    margin-left: 0.125em;
+}
+.sp-stars2 img {
+    width: 22px;
+    height: 19px;
+}
+.sp-right-cont {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    float: right;
+}
+.sp-rev-img { /* img 태그 - bootstrap */
+    width: 100%;
+    cursor: pointer;
+}
+
+
+/*****번호 목록*****/
+nav {text-align: center;}
+.sp-nav ul {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0;
+}
+.sp-nav li {
+    float: left;
+    padding: 0.125em 0.5em;
+    margin-right: 0.125em;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.sp-nav > ul > li:first-child {
+    border: solid #D5D5D5 1px;
+    padding: 2px 3px 3px 5px;
+}
+.sp-nav > ul > li:last-child {
+    border: solid #D5D5D5 1px;
+    padding: 0.125em 0.3125em 0.1875em 0.125em;
+}
+.sp-current {
+    background: #ffc001;
+    color: white;
+    cursor: default;
+}
+.sp-not-current:hover {
+    color: #ffc001;
+}
+
+
+/*****문의*****/
+/*.sp-ask-all > div {margin: 5px 0;}*/
+.sp-ask1, .sp-ask2 {
+   width: 1000px;
+}
+.sp-ask1 > div:nth-child(2n-1) {
+   float: left;
+   margin-right: 0.625em;
+   margin-bottom: 1.875em;
+}
+.sp-ask1 > div:nth-child(2n) {
+   display: inline;
+}
+
+.sp-gray-cont  {float: left;}
+
+
+/*****배송시 주의사항*****/
+table {
+    margin: 1.25em 0;
+    color: #747474
+}
+th {
+    border-top: none;
+    width: 150px;
+    font-weight: normal;
+}
+ol {margin: 0; padding: 0;}
+ol > li {font-size: 0.8125em;}
+
+
+/*****같이 보면 좋은 상품*****/
+.sp-pdt-recomm {
+    padding-bottom: 2em;
+    border-top: solid #BDBDBD 1px;
+}
+
+.sp-pdt-recomm .bx-wrapper {
+    box-shadow: none;
+}
+
+.sp-pdt-header {
+    padding: 1.5em 0.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sp-btn-arrow{
+    width: 110px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sp-btn-arrow div {
+    width: 50px;
+}
+
+.sp-btn-arrow img {
+    width: 100%;
+    cursor: pointer;
+}
+
+.sp-products {
+    display: flex;
+}
+
+.sp-products a {
+    display: block;
+    margin: 0 0.31em;
+}
+
+.sp-pdt-cont {
+    width: 230px;
+    height: 290px;
+}
+
+.sp-pdt-cimg {
+    overflow: hidden;
+}
+
+.sp-pdt-cimg>img {
+    width: 100%;
+    transform: scale(1);
+    transition: all 0.4s ease-in-out; 
+}
+
+.sp-pdt-cimg>img:hover {
+  transform: scale(1.05);
+}
+
+.sp-pdt-ctext p {
+    display: block;
+    margin: 0;
+}
+
+.sp-pdt-ctext p:first-child {
+    font-weight: bold;
+}
+
+.sp-pdt-ctext p:last-child {
+    font-size: 0.875rem;
+    text-align: right;
+    padding-top: 0.4em;
+}
+
+.sp-pdt-ctext>p>span {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.bx-wrapper {
+    max-width: 1200px !important; 
+    border: 0;
+    margin: 0;
+}
+
+
+
+
+/* 모달창 */
+.modal-backdrop {
+    z-index: 10000;
+}
+
+.modal {
+    z-index: 10001;
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.ib-rev-cont-modal {
+    max-width: 650px !important;
+}
+
+.ib-inq-cont-modal {
+    max-width: 400px !important;
+}
+
+.ib-det-cont-modal {
+    max-width: 500px !important;
+}
+
+.sp-riviews-box {
+    cursor: pointer;
+}
+
+
+.ib-pd-detailImg {
+    padding: 2em 0 2em 0;
+}
+
+.ib-pd-detailImg img {
+    width: 100%;
+}
+
+.sp-rev-box {
+    border-bottom: 1px solid #ccc;
+    margin-top: 1em; 
+}

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>공방관리자</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/admin/store_admin_common.css">
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="shortcut icon" href="../favicon.ico">
+
+</head>
+
+<body>
+    <div id="ad-header">
+
+    </div>
+
+    <div class="ad-main-wrapper">
+        <div class="ad-main-content">
+            <!-- ad-breadcrumb -->
+            <ol class="ad-breadcrumb">
+                <li class="ad-breadcrumb-item">
+                    <a href="#">관리자</a>
+                </li>
+                <li class="ad-breadcrumb-item active">
+                    제작의뢰관리
+                </li>
+            </ol>
+
+            <div class="ad-card-default">
+                <div class="ad-card-header">
+                    <i class="fas fa-search"></i> 의뢰검색
+                </div>
+                <div class="ad-card-body">
+                    <div class="ad-claim">
+                        <div class="ad-claim-status ad-claim-request">
+                            <p>의뢰요청&ensp;<span>N</span>&ensp;건</p>
+                        </div>
+                        <div class="ad-claim-status ad-claim-finish">
+                            <p>의뢰완료&ensp;<span>N</span>&ensp;건</p>
+                        </div>
+                        <div class="ad-claim-status ad-claim-withdraw">
+                            <p>의뢰철회&ensp;<span>N</span>&ensp;건</p>
+                        </div>
+                    </div>
+                    <form class="ad-searchForm ad-searchForm-collapse">
+                        <div class="ad-searchInfo">
+
+                            <div class="ad-searchDist ad-searchTerm">
+                                <div class="ad-cat-select">
+                                    <select class="ad-cat-select-content" name="slct" id="slct">
+                                <option value="0">분류기준일</option>
+                                <option value="1">클레임요청일</option>
+                                <option value="2">주문일</option>
+                              </select>
+                                </div>
+                                <input type="date"> &ensp;~&ensp; <input type="date">
+                                <div class="ad-form-group">
+                                    <div class="ad-btn-toolbar">
+                                        <div class="ad-btn-group">
+                                            <button type="button" class="ad-term-btn ad-term-btn-color">
+                                        오늘
+                                    </button>
+                                            <!---->
+                                            <button type="button" class="ad-term-btn ad-term-btn-color">
+                                        1주일
+                                    </button>
+                                            <!---->
+                                            <button type="button" class="ad-term-btn ad-term-btn-color">
+                                        1개월
+                                    </button>
+                                            <!---->
+                                            <button type="button" class="ad-term-btn ad-term-btn-color">
+                                        3개월
+                                    </button>
+                                            <!---->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ad-searchDist ad-searchTerm ad-input-long">
+                                <div class="ad-cat-select">
+                                    <select class="ad-cat-select-content" name="slct" id="slct">
+                                <option value="0">처리상태전체</option>
+                                <option value="1">의뢰진행</option>
+                                <option value="2">의뢰완료</option>
+                                <option value="3">의뢰철회</option>
+                              </select>
+                                </div>
+                                <div class="ad-cat-select">
+                                    <select class="ad-cat-select-content" name="slct" id="slct">
+                            <option value="0">상세조건검색</option>
+                            <option value="1">주문상태</option>
+                            <option value="2">구매자ID</option>
+                            <option value="3">상품명</option>
+                            <option value="4">상품번호</option>
+                            <option value="5">상품주문번호</option>
+                            <option value="6">주문번호</option>
+                            <option value="7">상품번호</option>
+                            <option value="8">클레임</option>
+                          </select>
+                                </div>
+                                <input type="text">
+
+                            </div>
+                        </div>
+                        <div class="ad-cat-search-left">
+                            <button type="button" class="btn btn-warning">검색</button>
+                            <button type="button" class="btn btn-secondary">초기화</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="ad-card-default">
+                <div class="ad-card-header">
+                    <i class="fas fa-paste"></i> 조회결과
+                </div>
+                <div class="ad-card-body">
+                    <div class="ad-table-btn">
+                        <span style="font-size: 18px; font-weight: bold;">의뢰처리 &ensp;|  &ensp;</span>
+                        <button type="button" class="ad-btn ad-btn-color1">의뢰완료</button>
+                        <button type="button" class="ad-btn ad-btn-color2" data-toggle="modal" data-target="#CommissionRejectModal">의뢰철회</button>
+                    </div>
+                    <table cellspacing="0" border="1" summary="명단관리  리스트" class="frt_tbl_type" style="min-width:900px;padding-right:15px;">
+                        <caption>명단관리 리스트</caption>
+                        <colgroup>
+                            <col width="50" />
+                            <col width="130" />
+                            <col width="130" />
+                            <col width="130" />
+                            <col width="80" />
+                            <col width="80" />
+                            <col width="130" />
+                            <col width="80" />
+                            <col width="80" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col"><input type="checkbox" name="" id='chk_all' value="" onclick="" /><label for="chk_all">선택</label></th>
+                                <th scope="cols">상품주문번호</th>
+                                <th scope="cols">주문번호</th>
+                                <th scope="cols">주문일시</th>
+                                <th scope="cols">주문상태</th>
+                                <th scope="cols">클레임</th>
+                                <th scope="cols">클레임요청일</th>
+                                <th scope="cols">상품명</th>
+                                <th scope="cols">구매자ID</th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <div style="max-height:300px; min-width:1010px; overflow-x:hidden; overflow-y:scroll;">
+                        <table cellspacing="0" border="1" summary="명단관리 리스트" class="frt_tbl_type" style="border-top:0px;">
+                            <caption>명단관리 리스트</caption>
+                            <colgroup>
+                                <col width="50" />
+                                <col width="130" />
+                                <col width="130" />
+                                <col width="130" />
+                                <col width="80" />
+                                <col width="80" />
+                                <col width="130" />
+                                <col width="80" />
+                                <col width="80" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num " data-toggle="modal" data-target="#commissioninfoModal"><a href="#">12345678</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                                <tr>
+                                    <td class="frm"><input type="checkbox" id="chk" name="chk" value="" /></td>
+                                    <td class="num"><a href="#">1</a></td>
+                                    <td class="title">홍길동</td>
+                                    <td class="date">참가</td>
+                                    <td class="writer">청구</td>
+                                    <td class="writer">적용</td>
+                                    <td class="writer">미환급</td>
+                                    <td class="writer">N</td>
+                                    <td class="writer">이수</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commission info Modal -->
+            <div class="modal fade" id="commissioninfoModal" tabindex="-1" role="dialog" aria-labelledby="commissioninfoModalTitle" aria-hidden="true" style="z-index: 10800;">
+                <div class="modal-dialog modal-lg " role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="commissioninfoModalTitle"><b>의뢰정보조회</b></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                        </div>
+                        <form>
+                            <div class="modal-body">
+                                <div class="ad-modal-contentgap">
+                                    <b>의뢰상세정보</b>
+                                    <div class="ad-modal-content-collapse ad-orderDetail">
+                                        <div class="ad-orderDetail-menu">
+                                            <div class="ad-modal-orderinfo">
+                                                의뢰번호
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                의뢰자ID
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                처리상태
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                의뢰내용
+                                            </div>
+                                        </div>
+                                        <div class="ad-modal-info-data">
+                                            <div class="ad-modal-orderinfo">
+                                                의뢰번호 data
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                의뢰자ID data
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                처리상태 data
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                의뢰내용 data
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="ad-modal-contentgap">
+                                    <b>배송정보</b>
+                                    <div class="ad-modal-content-collapse ad-orderDetail">
+                                        <div class="ad-orderDetail-menu">
+                                            <div class="ad-modal-orderinfo">
+                                                상품발송일
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                택배사
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                송장번호
+                                            </div>
+                                        </div>
+                                        <div class="ad-modal-info-data">
+                                            <div class="ad-modal-orderinfo">
+                                                상품발송일 data
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                택배사 data
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                송장번호 data
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="ad-modal-contentgap">
+                                    <b>배송지 정보</b>
+                                    <div class="ad-modal-content-collapse ad-orderDetail">
+                                        <div class="ad-orderDetail-menu">
+                                            <div class="ad-modal-orderinfo">
+                                                수취인명
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                연락처1
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                연락처2
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                배송지
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                배송메모
+                                            </div>
+                                        </div>
+                                        <div class="ad-modal-info-data">
+                                            <div class="ad-modal-orderinfo">
+                                                수취인명 data
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                연락처1 data
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                연락처2 data
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                배송지 data
+                                            </div>
+                                            <div class="ad-modal-orderinfo">
+                                                배송메모 data
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                                <button type="button" class="ad-btn ad-btn-color1">정보 수정하기</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- commissionRejectModal -->
+            <div class="modal fade" id="CommissionRejectModal" tabindex="-1" role="dialog" aria-labelledby="CommissionRejectModalTitle" aria-hidden="true" style="z-index: 10800;">
+                <div class="modal-dialog modal-dialog-centered " role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="CommissionRejectModalitle"><b>의뢰철회</b></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                        </div>
+                        <form>
+                            <div class="modal-body">
+                                <div class="ad-modal-contentgap">
+                                    <b>상품주문번호(XXXXXX)</b>
+                                </div>
+
+                                <div class="ad-modal-contentgap">
+                                    <b>의뢰 철회 사유 상세</b>
+                                </div>
+                                <textarea cols="50" rows="8"></textarea>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                                <button type="button" class="ad-btn ad-btn-color1">의뢰철회</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <!-- ad-main-content-->
+    </div>
+    <!--ad-main-wrapper-->
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/ad_header.js"></script>
+    <script src="../../js/ad_admin.js"></script>
+</body>
+
+</html>

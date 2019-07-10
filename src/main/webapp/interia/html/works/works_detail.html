@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>INTERIA</title>
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/header_move.css">
+    <link rel="stylesheet" href="../../css/works/sp_review_write.css">
+    <link rel="stylesheet" href="../../css/works/sp_review_detail.css">
+    <link rel="stylesheet" href="../../css/works/sp_inquire.css">
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../node_modules/bxslider/dist/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" href="../../node_modules/bxslider/dist/jquery.bxslider.min.css">
+    <script type="text/javascript" src="../../js/sp_include.js"></script>
+    <link rel="stylesheet" href="../../css/works/sp_works_detail.css">
+</head>
+
+<body>
+    <header id="header">
+        <!-- header -->
+    </header>
+    <!-- header -->
+
+    <div class="ib-container ib-container-pt">
+        <!-- 타이틀 시작 -->
+        <p>가구 > 테이블 > #사이드 테이블</p>
+        <div class="ib-pd-title">
+            <h2 id="fTitle">제품 제목을 입력하세요</h2>
+            <i class="fa fa-share-alt" style="font-size:30px"></i>
+        </div>
+        <!-- 타이틀 끝 -->
+
+        <!-- 이미지 그리드 시작 -->
+        
+        <!-- 조금 있다가 핸들바로 처리 예정 -->
+        <div class="ib-pd-img">
+            <img id="main-image" src="" width="100%">
+            <div class="ib-pd-img-c1" id="fHandlebar-image">
+                <img id="sub-image1" src="../../images/works/works_detail/temp_image.jpg" width="100%">
+                <img id="sub-image2" src="../../images/works/works_detail/temp_image.jpg" width="100%">
+                <div class="ib-pd-img-c1">
+                    <img id="sub-image3" src="../../images/works/works_detail/temp_image.jpg" width="100%">
+                    <img id="sub-image4" src="../../images/works/works_detail/temp_image.jpg" width="100%">
+                    <img id="sub-image5" src="../../images/works/works_detail/temp_image.jpg" width="100%">
+                    <img id="sub-image6" src="../../images/works/works_detail/temp_image.jpg" width="100%">
+                </div>
+                <div class="ib-pd-img-c1">
+                    <img id="sub-image7" src="../../images/works/works_detail/temp_image.jpg" width="100%">
+                    <img id="sub-image8" src="../../images/works/works_detail/temp_image.jpg" width="100%">
+                    <img id="sub-image9" src="../../images/works/works_detail/temp_image.jpg" width="100%">
+                    <img id="sub-image10" src="../../images/works/works_detail/temp_image.jpg" width="100%">
+                </div>
+            </div>
+        </div>
+        <!-- 이미지 그리드 끝 -->
+
+        <div class="ib-pd-cont">
+            <div>
+                <div class="ib-pd-cont-rows">
+                    <p>판매가</p>
+                    <p class="ib-pd-cont-fy"><span id="fPrice">판매 가격</span> 원</p>
+                </div>
+                <div class="ib-pd-cont-rows">
+                    <p>배송비</p>
+                    <p id="fDeliveryPrice">(가격)</p>
+                </div>
+                <div class="ib-pd-cont-rows">
+                    <p>기타사항</p>
+                    <p>제주, 도선 산선지역은 물품 종류, 수량, 무게에 따라 차등 배송비가 있습니다.</p>
+                </div>
+            </div>
+            <div>
+                <div class="ib-pd-cont-rows">
+                    <p>상품 옵션 선택</p>
+                    <!-- 속성 내용 -->
+                    <textarea id="fOptionValue" rows="10"></textarea>
+                </div>
+            </div>
+        </div>
+    
+       
+        <!-- ib-pd-cont -->
+
+        <div class="ib-pd-option">
+            <p id="fTitle2">제품 제목을 입력하세요</p>
+            <div class="ib-pd-option-count">
+                <!-- 수량 증감 연산하기 -->
+                <i id="plus-value" class="fa fa-plus" style="font-size:24px; color:#999"></i>
+                <p id="buy-Value"></p>
+                <i id="minus-value" class="fa fa-minus" style="font-size:24px; color:#999"></i>
+            </div>
+            <p class="ib-pd-option-price"><span id="price-value">판매가격</span> 원</p>
+            <i class="fa fa-close ib-pd-option-close" style="font-size:24px; color:#999"></i>
+        </div>
+        <!-- ib-pd-option -->
+
+        <p class="ib-pd-tprice">총 상품 금액 <span id="All-Price">총 판매가격</span> 원</p>
+        <!-- ib-pd-tprice -->
+
+        <div class="ib-pd-btbox">
+            <div class="ib-pd-btlist">
+                <div class="btn ib-pd-btn-sdark"><i class="fa fa-heart" style="font-size:24px; line-height: inherit;"></i></div>
+                <a id="btn-basket" href=""><div class="btn ib-pd-btn ib-pd-btn-dark">장바구니 담기</div></a>
+                <!-- <a href="sp_commissioned.html"><div class="btn ib-pd-btn ib-pd-btn-gary">제작 의뢰 하기</div></a> -->
+                <a id="btn-purchased" href=""><div class="btn ib-pd-btn ib-pd-btn-yellow">구매하기</div></a>
+            </div>
+        </div>
+        <!-- ib-pd-btbox -->
+
+        <ul class="ib-pd-tab row sticky-top">
+            <li class="col ib-pd-tab-line" onclick="fnMove('1')"><a>상품정보</a></li>
+            <li class="col ib-pd-tab-box" onclick="fnMove('2')"><a>리뷰</a></li>
+            <li class="col ib-pd-tab-box" onclick="fnMove('3')"><a>문의</a></li>
+            <li class="col ib-pd-tab-box" onclick="fnMove('4')"><a>배송/교환/환불</a></li>
+        </ul>
+        <!-- ib-pd-tab -->
+
+        <section id="produ1">
+            <!-- <div class="ib-pd-detail">
+                <h4>제품 사용기</h4>
+                <div class="ib-pd-detail-box">
+                    <div class="pro_bxslider">
+                        <div class="ib-pd-detail-cont">
+                            <img src="../../images/works/works_detail/product.jpg" width="100%">
+                            <div class="ib-pd-detail-contbar">
+                                <div class="ib-pd-detail-probox">
+                                    <div class="ib-pd-detail-pro"></div>
+                                    <p>비트짱</p>
+                                </div>
+                                <p><span>1</span>/335</p>
+                            </div>
+                        </div>
+
+                        <div class="ib-pd-detail-cont">
+                            <img src="../../images/works/works_detail/product.jpg" width="100%">
+                            <div class="ib-pd-detail-contbar">
+                                <div class="ib-pd-detail-probox">
+                                    <div class="ib-pd-detail-pro"></div>
+                                    <p>비트짱</p>
+                                </div>
+                                <p><span>1</span>/335</p>
+                            </div>
+                        </div>
+
+                        <div class="ib-pd-detail-cont">
+                            <img src="../../images/works/works_detail/product.jpg" width="100%">
+                            <div class="ib-pd-detail-contbar">
+                                <div class="ib-pd-detail-probox">
+                                    <div class="ib-pd-detail-pro"></div>
+                                    <p>비트짱</p>
+                                </div>
+                                <p><span>1</span>/335</p>
+                            </div>
+                        </div>
+
+                        <div class="ib-pd-detail-cont">
+                            <img src="../../images/works/works_detail/product.jpg" width="100%">
+                            <div class="ib-pd-detail-contbar">
+                                <div class="ib-pd-detail-probox">
+                                    <div class="ib-pd-detail-pro"></div>
+                                    <p>비트짱</p>
+                                </div>
+                                <p><span>1</span>/335</p>
+                            </div>
+                        </div>
+
+                        <div class="ib-pd-detail-cont">
+                            <img src="../../images/works/works_detail/product.jpg" width="100%">
+                            <div class="ib-pd-detail-contbar">
+                                <div class="ib-pd-detail-probox">
+                                    <div class="ib-pd-detail-pro"></div>
+                                    <p>비트짱</p>
+                                </div>
+                                <p><span>1</span>/335</p>
+                            </div>
+                        </div>
+
+                        <div class="ib-pd-detail-cont">
+                            <img src="../../images/works/works_detail/product.jpg" width="100%">
+                            <div class="ib-pd-detail-contbar">
+                                <div class="ib-pd-detail-probox">
+                                    <div class="ib-pd-detail-pro"></div>
+                                    <p>비트짱</p>
+                                </div>
+                                <p><span>1</span>/335</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div> -->
+            <div class="ib-pd-detailImg">
+                <img src="../../images/works/works_detail/works_product_img01.png">
+            </div>
+        </section>
+        <!-- ib-pd-detail -->
+
+        <!-- bxsilder -->
+        <!-- <script>
+        $(function(){
+          $('.pro_bxslider').bxSlider({
+            mode: 'horizontal',
+            moveSlides: 1,
+            slideWidth: 400,
+            pager: false
+          });
+        });
+        </script> -->
+        
+        <section>
+            <section id="produ2">
+                <h4>리뷰</h4>
+                <section>
+                    <div class="sp-buttons">
+                        <!-- <button type="button" class="sp-btn-normal" data-toggle="modal" data-target="#revModalLong"> + 리뷰 쓰기</button> -->
+
+                    </div>
+                </section>
+
+                <section>
+                    <!-- <a class="sp-riviews-box" data-toggle="modal" data-target="#detailModalLong"> -->
+                        <article class="sp-riviews">
+                            
+                        </article>
+                    <!-- </a> -->
+                </section>
+                <!--구매 후기 -->
+            </section>
+            <br>
+            <!-- <div id="paging"></div> -->
+            <nav class="sp-nav">
+                <div id="paging"></div>
+            </nav>
+            <!-- 번호 목록 -->
+
+            <br><br>
+
+            <section id="produ3" class="sp-ask-all">
+                <h4>문의</h4>
+                <button type="button" class="sp-btn-normal" data-toggle="modal" data-target="#qnaModalLong"> 문의하기</button>
+                <div>
+                    <small>
+                <span class="sp-font-yellow">답변완료</span>
+                </small>
+                </div>
+                <div class="sp-gray-cont">
+                    <small class="sp-font-gray">
+                    <span>username***</span>
+                     | 
+                    <span>2018.06.28</span>
+                </small>
+                </div><br>
+                <div class="sp-ask1">
+                    <span class="sp-font-yellow"><strong>Q</strong></span>
+                    <div>
+                        생각보다커서 방에 사용하기 힘들것같아 반품합니다 ㅠㅠ 너무너무 죄송해요. 반품 신청은 그냥 이렇게 하면 되나요? 반품절차 답글 부탁드립니다.
+                    </div>
+                </div><br>
+                <div class="sp-ask1">
+                    <span class="sp-font-yellow"><strong>A</strong></span>
+                    <div>
+                        <span><strong>주)콕콕 답변</strong></span>
+                        <span><small class="sp-font-gray">2018.06.28</small></span><br> 안녕하세요. 고객님^^ 행복한 픽사(Fixa) 입니다. 상품의 조립시도여부 확인을 부탁드립니다. 미조립시에만 반품이 가능합니다~ 미개봉이시면 오늘의집측으로 반품요청해주시면, 배송비 문자 안내드릴예정입니다. 감사합니다.
+                    </div>
+                </div>
+            </section>
+            <!-- 문의하기 -->
+            <br>
+
+            <nav class="sp-nav">
+                <ul>
+                    <li><strong>&lt;&nbsp;</strong></li>
+                    <li class="sp-current">1</li>
+                    <li class="sp-not-current">2</li>
+                    <li class="sp-not-current">3</li>
+                    <li class="sp-not-current">4</li>
+                    <li class="sp-not-current">5</li>
+                    <li><strong>&nbsp;&gt;</strong></li>
+                </ul>
+            </nav>
+            <!-- 번호 목록 -->
+
+            <br><br>
+
+            <section id="produ4">
+                <section>
+                    <h4>배송 관련 안내</h4>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>배송</th>
+                                <td>일반택배배송</td>
+                            </tr>
+                            <tr>
+                                <th>배송비</th>
+                                <td>무료</td>
+                            </tr>
+                            <tr>
+                                <th>배송불가 지역</th>
+                                <td>배송불가 지역이 없습니다.</td>
+                            </tr>
+                            <tr>
+                                <th>기타사항</th>
+                                <td>제주, 도선 산간 지역은 물품에 따라 차등 배송비가 있습니다.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <!-- 배송 관련 안내 -->
+
+                <br>
+
+                <section>
+                    <h4>교환 및 환불</h4>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>반품배송비</th>
+                                <td>편도 5,000원 (최초 배송비가 무료인 경우 10,000원 부과)</td>
+                            </tr>
+                            <tr>
+                                <th>교환배송비</th>
+                                <td>10,000원</td>
+                            </tr>
+                            <tr>
+                                <th>보내실 곳</th>
+                                <td colspan="3">\(12129) 경기 남양주시 진건읍 송능리 160-2 (송능리) 대한통운(주)북부지점 (주)동우_콕콕(COKCOK)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <!-- 교환 및 환불 -->
+
+                <br>
+
+                <section>
+                    <div>반품/교환 사유에 따른 요청 가능 기간</div>
+                    <div><small class="sp-font-gray">반품 시 먼저 판매자와 연락하셔서 반품사유, 택배사, 배송비, 반품지 주소 등을 협의하신 후 반품상품을 발송해 주시기 바랍니다.</small></div>
+                    <ol>
+                        <li>
+                            <span>1.</span>구매자 단순 변심은 상품 수령 후 7일 이내<small>(구매자 반품배송비 부담)</small>
+                        </li>
+                        <li>
+                            <span>2.</span> 표시/광고와 상이, 상품하자의 경우 상품 수령 후 3개월 이내 혹은 표시/광고와 다른 사실을 안 날로부터 30일이내.<br> 둘 중 하나 경과 시 반품/교환 불가
+                            <small>(판매자 반품배송비 부담)</small>
+                        </li>
+                    </ol>
+                </section>
+                <!-- 주의사항1 -->
+
+                <section>
+                    <div>반품/교환 불가능 사유</div>
+                    <div><small class="sp-font-gray">아래와 같은 경우 반품/교환이 불가능합니다.</small></div>
+                    <ol>
+                        <li>
+                            <span>1.</span>반품요청기간이 지난 경우
+                        </li>
+                        <li>
+                            <span>2.</span>구매자의 책임 있는 사유로 상품 등이 멸실 또는 훼손된 경우
+                            <small>(단, 상품의 내용을 확인하기 위하여 포장 등을 훼손한 경우는 제외)</small>
+                        </li>
+                        <li>
+                            <span>3.</span>포장을 개봉하였으나 포장이 훼손되어 상품가치가 현저히 상실된 경우<small>(예: 식품, 화장품)</small>
+                        </li>
+                        <li>
+                            <span>4.</span>구매자의 사용 또는 일부 소비에 의하여 상품의 가치가 현저히 감소한 경우
+                            <small>(라벨이 떨어진 의류 또는 태그가 떨어진 명품관 상품인 경우)</small>
+                        </li>
+                        <li>
+                            <span>5.</span>시간의 경과에 의하여 재판매가 곤란할 정도로 상품 등의 가치가 현저히 감소한 경우
+                            <small>(예: 식품, 화장품)</small>
+                        </li>
+                        <li>
+                            <span>6.</span>고객주문 확인 후 상품제작에 들어가는 주문제작상품
+                        </li>
+                        <li>
+                            <span>7.</span>복제가 가능한 상품 등의 포장을 훼손한 경우<small>(CD/DVD/GAME/도서의 경우 포장 개봉 시)</small>
+                        </li>
+                    </ol>
+                </section>
+                <!-- 주의사항2 -->
+            </section>
+
+            <br><br>
+
+            <!-- <section class="sp-pdt-recomm">
+                <div class="sp-pdt-header">
+                    <h4>같이 보면 좋은 상품</h4>
+                </div>
+
+                <div class="sp-products pdt_bxslider">
+                    <a href="#">
+                        <div class="sp-pdt-cont">
+                            <div class="sp-pdt-cimg">
+                                <img src="../../images/works/works_detail/img2.PNG">
+                            </div>
+                            <div class="sp-pdt-ctext">
+                                <p>IVOLV 커피 테이블 2종_7colors</p>
+                                <p><span>19,900</span> 원</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="sp-pdt-cont">
+                            <div class="sp-pdt-cimg">
+                                <img src="../../images/works/works_detail/img2.PNG">
+                            </div>
+                            <div class="sp-pdt-ctext">
+                                <p>IVOLV 커피 테이블 2종_7colors</p>
+                                <p><span>19,900</span> 원</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="sp-pdt-cont">
+                            <div class="sp-pdt-cimg">
+                                <img src="../../images/works/works_detail/img2.PNG">
+                            </div>
+                            <div class="sp-pdt-ctext">
+                                <p>IVOLV 커피 테이블 2종_7colors</p>
+                                <p><span>19,900</span> 원</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="sp-pdt-cont">
+                            <div class="sp-pdt-cimg">
+                                <img src="../../images/works/works_detail/img2.PNG">
+                            </div>
+                            <div class="sp-pdt-ctext">
+                                <p>IVOLV 커피 테이블 2종_7colors</p>
+                                <p><span>19,900</span> 원</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="sp-pdt-cont">
+                            <div class="sp-pdt-cimg">
+                                <img src="../../images/works/works_detail/img2.PNG">
+                            </div>
+                            <div class="sp-pdt-ctext">
+                                <p>IVOLV 커피 테이블 2종_7colors</p>
+                                <p><span>19,900</span> 원</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="sp-pdt-cont">
+                            <div class="sp-pdt-cimg">
+                                <img src="../../images/works/works_detail/img2.PNG">
+                            </div>
+                            <div class="sp-pdt-ctext">
+                                <p>IVOLV 커피 테이블 2종_7colors</p>
+                                <p><span>19,900</span> 원</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="sp-pdt-cont">
+                            <div class="sp-pdt-cimg">
+                                <img src="../../images/works/works_detail/img2.PNG">
+                            </div>
+                            <div class="sp-pdt-ctext">
+                                <p>IVOLV 커피 테이블 2종_7colors</p>
+                                <p><span>19,900</span> 원</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="sp-pdt-cont">
+                            <div class="sp-pdt-cimg">
+                                <img src="../../images/works/works_detail/img2.PNG">
+                            </div>
+                            <div class="sp-pdt-ctext">
+                                <p>IVOLV 커피 테이블 2종_7colors</p>
+                                <p><span>19,900</span> 원</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section> -->
+        </section>
+
+        <!-- bxsilder -->
+        <!-- <script>
+        $(function(){
+          $('.pdt_bxslider').bxSlider({
+            mode: 'horizontal',
+            moveSlides: 1,
+            slideWidth: 230,
+            pager: false
+          });
+        });
+        </script> -->
+
+        <!-- 리뷰 Modal -->
+        <div class="modal fade" id="revModalLong" tabindex="-1" role="dialog" aria-labelledby="revModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog ib-rev-cont-modal" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form>
+                            <div class="sp-rev-contents">
+                                <h5><b>리뷰쓰기</b></h5>
+                                <div class="sp-rev-top">
+                                    <div><img src="../../images/works/works_detail/review_img.PNG"></div>
+                                    <div>
+                                        <p>비트 공방</p>
+                                        <h6>FLENCE 460 사이드 테이블_2colors</h6>
+                                    </div>
+                                </div>
+                                <!--제목, 제품 정보-->
+                                <div class="sp-rev-like">
+                                    <h6>하트를 눌러 만족도를 알려주세요.</h6>
+                                    <div class="sp-likes">
+                                        <p>만족도</p>
+                                        <i class="fas fa-heart"></i>
+                                        <i class="fas fa-heart"></i>
+                                        <i class="fas fa-heart"></i>
+                                        <i class="fas fa-heart"></i>
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                </div>
+                                <!--만족도-->
+                                <div class="sp-rev-photo">
+                                    <h6>사진을 등록해주세요.</h6><span class="sp-font-gray sp-font-small"> (선택)</span><br>
+                                    <label for="sp-rev-file" class="btn btn-warning">+ 새로운 사진 업로드</label>
+                                    <input type="file" id="sp-rev-file" class="btn btn-warning">
+                                    <p class="sp-font-darkgray sp-font-small">
+                                        * 상품과 무관한 사진을 등록하거나, 동일한 사진의 반복 등록 등 부적합한 내용일 경우 통보 없이 삭제될 수 있습니다.
+                                    </p>
+                                </div>
+                                <!--사진 등록-->
+                                <div class="sp-rev-write">
+                                    <h6>리뷰를 작성해주세요.</h6>
+                                    <p class="sp-rev-p">이 제품을 사용하면서 느꼈던 장점과 단점을 솔직하게 알려주세요.</p>
+                                    <div class="sp-font-gray sp-rev-letter sp-font-small">
+                                        <span>0자</span> | <span>최소 20자</span>
+                                    </div>
+                                    <textarea class="form-control" rows="10" placeholder="이 제품을 사용하면서 느꼈던 장점과 단점을 솔직하게 알려주세요."></textarea>
+                                    <p class="sp-font-darkgray sp-font-small">
+                                        * 상품과 무관한 내용이나 동일 문자의 반복 등 부적합한 내용은 삭제될 수 있습니다.
+                                    </p>
+                                </div>
+                                <!--리뷰 작성-->
+                            </div>
+                            <div class="sp-rev-regist">
+                                <div class="sp-btns-regist">
+                                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">취소하기</button>
+                                    <input type="submit" class="btn btn-warning" value="등록하기">
+                                </div>
+                            </div>
+                            <!--하단-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 리뷰 Modal -->
+
+        <!-- 문의 Modal -->
+        <div class="modal fade" id="qnaModalLong" tabindex="-1" role="dialog" aria-labelledby="qnaModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog ib-inq-cont-modal" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <section class="sp-inq-popup">
+                            <div>
+                                <h5>상품 Q&A 작성하기</h5>
+                            </div>
+                            <form>
+                                <div class="sp-inq-cont">
+                                    <label for="sp-inq-select1" class="sp-font-darkgray sp-inq-titl">문의유형</label>
+                                    <select id="sp-inq-select1" required>
+                            <option value>선택해주세요.</option>
+                            <option value="상품">상품</option>
+                            <option value="배송">배송</option>
+                            <option value="반품">반품</option>
+                            <option value="교환">교환</option>
+                            <option value="환불">환불</option>
+                            <option value="기타">기타</option>
+                        </select>
+                                    <label for="sp-inq-select2" class="sp-font-darkgray sp-inq-titl">상품옵션</label>
+                                    <select id="sp-inq-select2">
+                            <option value>상품 옵션을 선택해주세요.</option>
+                            <option vlaue="제품선택:/색상선택:">제품선택:/색상선택:</option>
+                            <option vlaue="제품선택:/색상선택:">제품선택:/색상선택:</option>
+                        </select>
+                                    <label class="sp-font-darkgray sp-inq-titl">내용</label>
+                                    <textarea class="form-control" rows="5"></textarea>
+                                </div>
+                                <div class="sp-inq-btns">
+                                    <input type="submit" class="btn btn-warning" value="등록">
+                                    <button type="button" class="btn btn-outline-warning" data-dismiss="modal">취소</button>
+                                </div>
+                            </form>
+                        </section>
+                        <!--팝업창-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 문의 Modal -->
+
+        <!-- 상품 detail Modal -->
+        <div class="modal fade" id="detailModalLong" tabindex="-1" role="dialog" aria-labelledby="detailModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog ib-det-cont-modal" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <section class="sp-det-popup">
+                            <form>
+                                <div class="sp-det-top">
+                                    <h6><b>[까사마루] 매직 파티션_2colors (악세사리 추가구성)</b></h6>
+                                    <p>제품선택: 01.매직 파티션(단품) / 색상선택: 화이트</p>
+                                    <p class="sp-font-gray">
+                                        <span>뼈있는선인장</span> |
+                                        <span>2018.04.03</span> |
+                                        <span>인테리아 리뷰</span>
+                                    </p>
+                                    <div class="sp-likes">
+                                        <i class="fas fa-heart sp-like-full"></i>
+                                        <i class="fas fa-heart sp-like-full"></i>
+                                        <i class="fas fa-heart sp-like-full"></i>
+                                        <i class="fas fa-heart sp-like-full"></i>
+                                        <i class="fas fa-heart sp-like-empty"></i>
+                                    </div>
+                                </div>
+                                <!--제품정보-->
+                                <div class="sp-det-cont">
+                                    저는 추가적으로 선반과 바구니등 좀 더 구매하여 장식해봤습니다. 저는 조립할때 다른용도를 위해 두개의 파티션을 같은 정면으로 조립하지 않고 반대로 하여 한쪽면은 앞에 장식할 수 있게끔 또다른 한쪽면은 뒤쪽에 장식할 수 있게끔 조립했네요. 여기서 주의 할 점은 두개의 파티션을 똑같은 정면으로 맞추지 않으시면 저처첨 추가 악세서리 구매하셨을 경우 정면에만 걸이를 걸 수 있기 때문에 조립하실때 주의하세요!
+                                </div>
+                                <!--리뷰내용-->
+                                <div class="sp-det-img">
+                                    <img src="../../images/works/works_detail/review_img2.PNG">
+                                </div>
+                                <!--사진-->
+                                <div class="sp-det-help">
+                                    <button type="button" class="btn btn-light" data-dismiss="modal">도움이 됐어요</button>
+                                    <div class="sp-help-msg">4명에게 도움이 되었습니다.</div>
+                                </div>
+                                <!--도움 버튼-->
+                            </form>
+                        </section>
+                        <!--팝업창-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 상품 detail Modal -->
+
+    </div>
+    </div>
+    <!-- ib-container -->
+
+    <footer id="footer">
+        
+    </footer>
+
+    <div class="ib-pd-foot">
+        <div class="ib-container ib-ft-right">
+            <a id="btn-basket" class="btn ib-ft-btn" href="">장바구니 담기</a>
+            <!-- <a class="btn ib-ft-btn ft-btn-gray" href="sp_commissioned.html">제작 의뢰 하기</a> -->
+            <a id="btn-purchased" class="btn ib-ft-btn ft-btn-yellow">구매하기</a>
+        </div>
+    </div>
+    <!-- 하단 고정 바 -->
+    
+    <script src="../../js/common.js"></script>
+    <script src="../../js/works_detail.js"></script>
+    <script src="../../js/works_detail_rev.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/footer.js"></script>
+</body>
+</html>
